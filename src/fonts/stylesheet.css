@@ -4,6 +4,7 @@
   src: local('Neue Montreal Medium'), local('NeueMontreal-Medium'),
     url('NeueMontreal-Medium.eot?#iefix') format('embedded-opentype'),
     url('NeueMontreal-Medium.woff2') format('woff2'),
+    url('NeueMontreal-Medium.woff') format('woff'),
     url('NeueMontreal-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
@@ -15,6 +16,7 @@
   src: local('Neue Montreal Regular'), local('NeueMontreal-Regular'),
     url('NeueMontreal-Regular.eot?#iefix') format('embedded-opentype'),
     url('NeueMontreal-Regular.woff2') format('woff2'),
+    url('NeueMontreal-Regular.woff') format('woff'),
     url('NeueMontreal-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
