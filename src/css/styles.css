@@ -10,25 +10,46 @@
 @import url('./footer.css');
 @import url('./modal.css');
 :root {
-  --main-bg: #e8e8e2; /*footer-text-color*/ /*INPUT EMAIL TEXT AND TEXT BTN*/ /*BODI BG*/
-  --second-bg: #6d8434; /*footer-bg-text-green-color*/
+  --main-bg: #e8e8e2;
+  --second-bg: #6d8434;
   --third-bg: #fafafa;
-
   --text: #010101;
-  --second-text: #a3a3a3; /*PAGINATION ARROWS AND NUMBERS*/
-
-  --btn-green-dark: #586f1f; /*DARK-GREEN BTN HOVER;*/
-  /*--btn-gray: #e8e8e2;   */
+  --second-text: #a3a3a3;
+  --btn-green-dark: #586f1f;
   --btn-black: #010101;
-
   --discount: #fdc152;
-
-  --black-transparent: #0101014d; /* rgba(1, 1, 1, 0.30);  ----- MODAL SMALL TEXT */
-  --second-transparent: #e8e8e899; /* rgba(232, 232, 226, 0.60); -- INPUT EMAIL */
-
+  --black-transparent: #0101014d;
+  --second-transparent: #e8e8e899;
   --transition-duration: 250ms;
   --transition-delay: 250ms;
 }
 body {
-  font-family: 'Neue Montreal';
+  font-family: 'Neue Montreal', sans-serif;
+}
+
+section {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+@media screen and (min-width: 375px) {
+  .container {
+    max-width: 375px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 100px;
+  }
 }
