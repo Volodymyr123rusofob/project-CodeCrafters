@@ -21,18 +21,31 @@ class ApiService {
     }
   }
 
+  async getAllProducts(page = 1, limit = 6) {
+    try {
+      const response = await axios.get(`${this.BASE_URL}/products`, {
+        params: {
+          page,
+          limit,
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error('Помилка при отриманні всіх продуктів:', error.message);
+      throw error;
+    }
+  }
+
   async getPopularProducts(limit) {
     try {
       const params = {
         limit,
       };
 
-      const response = await axios.get(
-        `${this.BASE_URL}/products/popular?${params}`,
-        {
-          params,
-        }
-      );
+      const response = await axios.get(`${this.BASE_URL}/products/popular`, {
+        params,
+      });
 
       return response.data;
     } catch (error) {
