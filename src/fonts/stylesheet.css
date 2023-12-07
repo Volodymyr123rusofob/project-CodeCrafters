@@ -21,3 +21,12 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Quincy CF';
+  src: local('Quincy CF Black'), local('Quincy-CF-Black'),
+    url('QuincyCF-Black.woff2') format('woff2'),
+    url('QuincyCF-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
