@@ -1,6 +1,7 @@
 import { openModal } from './modal';
 import ApiService from './requests';
 import createMarkup from './markup_products_list';
+import icons from '../img/symbol-defs.svg';
 
 const productsList = document.querySelector('.js-products-list');
 productsList.addEventListener('click', onClickCart);
@@ -12,17 +13,21 @@ async function prod() {
   const allProducts = await apiService.getAllProducts();
   const productsOnePage = allProducts.results.slice(0, itemsPerPage);
   displayProducts(productsOnePage, productsList);
+  listenBtn();
 }
 
 prod();
-
+function listenBtn() {
+  const basketButton = document.getElementsByClassName('cart-button');
+  console.log(basketButton);
+  for (let i = 0; i < basketButton.length; i += 1) {
+    basketButton[i].addEventListener('click', onClickBasket);
+  }
+}
 function displayProducts(products, container) {
   container.innerHTML = createMarkup(products);
-  console.log(products);
+  // console.log(products);
 }
-
-const basketButton = document.querySelector('.cart-button');
-basketButton.addEventListener('click', onClickBasket);
 
 function onClickCart(e) {
   e.preventDefault();
@@ -82,11 +87,11 @@ function handleBasketClick(cartButton) {
 function updateBasketIcon(cartButton, inCart) {
   if (inCart) {
     cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
-                    <use href="./img/symbol-defs.svg#icon-check"></use>
+                    <use href="${icons}#icon-check"></use>
                   </svg>`;
   } else {
     cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
-                    <use href="./img/symbol-defs.svg#icon-basket"></use>
+                    <use href="${icons}#icon-basket"></use>
                   </svg>`;
   }
 }
