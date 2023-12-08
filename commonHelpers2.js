@@ -35,7 +35,7 @@
   </button>
   </div>
   </div>
-  `,document.querySelector(".modal-prod-add-btn").addEventListener("click",()=>$(e)),document.querySelector(".modal-prod-close-btn").addEventListener("click",()=>p()),window.addEventListener("click",m),window.addEventListener("keydown",g)}catch(t){console.error(t)}}function $(e){const t=e._id,r=shopStorage.getAllProducts().some(a=>a._id===t),o=document.querySelector(".modal-prod-add-text");r?o.textContent="Add to":o.textContent="Remove from"}function p(){document.body.classList.remove("stop-scroll"),n.classList.remove("modal-active"),n.innerHTML="",window.removeEventListener("click",m),window.removeEventListener("keydown",g)}function m(e){e.target===n&&p()}function g(e){e.keyCode===27&&p()}function b(e){return e.map(({_id:t,name:s,img:r,category:o,price:a,size:d,popularity:f})=>`
+  `,document.querySelector(".modal-prod-add-btn").addEventListener("click",()=>$(e)),document.querySelector(".modal-prod-close-btn").addEventListener("click",()=>p()),window.addEventListener("click",m),window.addEventListener("keydown",g)}catch(t){console.error(t)}}function $(e){const t=e._id,r=shopStorage.getAllProducts().some(a=>a._id===t),o=document.querySelector(".modal-prod-add-text");r?o.textContent="Add to":o.textContent="Remove from"}function p(){document.body.classList.remove("stop-scroll"),n.classList.remove("modal-active"),n.innerHTML="",window.removeEventListener("click",m),window.removeEventListener("keydown",g)}function m(e){e.target===n&&p()}function g(e){e.keyCode===27&&p()}function S(e){return e.map(({_id:t,name:s,img:r,category:o,price:a,size:d,popularity:f})=>`
             <li class="product-item" data-product-id='${t}'>
               <div class="product-img-container">
                 <a class="products-card-link" href="">
@@ -54,12 +54,12 @@
                 <p class="price">$${a}</p>
                 <button class="cart-button" type="button" data-item-id="${t}" data-in-cart="false">
                   <svg class="cart-icon" width="18" height="18">
-                    <use href="/img/symbol-defs.svg#icon-basket"></use>
+                    <use href="${i}#icon-basket"></use>
                   </svg>
                 </button>
               </div>
             </li>
-            `).join("")}const h=document.querySelector(".js-products-list");h.addEventListener("click",_);const S=new u,k=6;async function B(){const t=(await S.getAllProducts()).results.slice(0,k);P(t,h),C()}function P(e,t){t.innerHTML=b(e)}const l=JSON.parse(localStorage.getItem("cart"))||[];function C(){E()}function E(){const e=document.querySelectorAll(".cart-button");e&&e.forEach(t=>{t.addEventListener("click",A)})}function A(e){const t=e.target.closest(".cart-button");if(t){const s=t.dataset.itemId;I(t,s)}}function I(e,t){l.findIndex(r=>r.productId===t)!==-1?alert("Цей продукт вже доданий до кошика!"):l.push({productId:t,quantity:1}),x(e,!0),localStorage.setItem("cart",JSON.stringify(l))}function x(e,t){t?e.innerHTML=`<svg class="cart-icon" width="18" height="18">
+            `).join("")}const h=document.querySelector(".js-products-list");h.addEventListener("click",_);const b=new u,k=6;async function B(){const t=(await b.getAllProducts()).results.slice(0,k);P(t,h),C()}function P(e,t){t.innerHTML=S(e)}const l=JSON.parse(localStorage.getItem("cart"))||[];function C(){E()}function E(){const e=document.querySelectorAll(".cart-button");e&&e.forEach(t=>{t.addEventListener("click",A)})}function A(e){const t=e.target.closest(".cart-button");if(t){const s=t.dataset.itemId;I(t,s)}}function I(e,t){l.findIndex(r=>r.productId===t)!==-1?alert("Цей продукт вже доданий до кошика!"):l.push({productId:t,quantity:1}),x(e,!0),localStorage.setItem("cart",JSON.stringify(l))}function x(e,t){t?e.innerHTML=`<svg class="cart-icon" width="18" height="18">
         <use href="${i}#icon-check"></use>
         </svg>`:e.innerHTML=`<svg class="cart-icon" width="18" height="18">
         <use href="${i}#icon-basket"></use>
