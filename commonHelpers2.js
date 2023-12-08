@@ -59,9 +59,9 @@
                 </button>
               </div>
             </li>
-            `).join("")}const h=document.querySelector(".js-products-list");h.addEventListener("click",_);const b=new u,k=6;async function B(){const t=(await b.getAllProducts()).results.slice(0,k);P(t,h),C()}function P(e,t){t.innerHTML=S(e)}const l=JSON.parse(localStorage.getItem("cart"))||[];main;function C(){E()}function E(){const e=document.querySelectorAll(".cart-button");e&&e.forEach(t=>{t.addEventListener("click",A)})}function A(e){const t=e.target.closest(".cart-button");if(t){const s=t.dataset.itemId;I(t,s)}}function I(e,t){l.findIndex(r=>r.productId===t)!==-1?alert("Цей продукт вже доданий до кошика!"):l.push({productId:t,quantity:1}),x(e,!0),localStorage.setItem("cart",JSON.stringify(l))}function x(e,t){t?e.innerHTML=`<svg class="cart-icon" width="18" height="18">
+            `).join("")}const h=document.querySelector(".js-products-list");h.addEventListener("click",_);const b=new u,k=6;async function B(){const t=(await b.getAllProducts()).results.slice(0,k);P(t,h),C()}function P(e,t){t.innerHTML=S(e)}const l=JSON.parse(localStorage.getItem("cart"))||[];function C(){E()}function E(){const e=document.querySelectorAll(".cart-button");e&&e.forEach(t=>{t.addEventListener("click",A)})}function A(e){const t=e.target.closest(".cart-button");if(t){const s=t.dataset.itemId;I(t,s)}}function I(e,t){l.findIndex(r=>r.productId===t)!==-1?alert("Цей продукт вже доданий до кошика!"):l.push({productId:t,quantity:1}),x(e,!0),localStorage.setItem("cart",JSON.stringify(l))}function x(e,t){t?e.innerHTML=`<svg class="cart-icon" width="18" height="18">
         <use href="${i}#icon-check"></use>
         </svg>`:e.innerHTML=`<svg class="cart-icon" width="18" height="18">
         <use href="${i}#icon-basket"></use>
-        </svg>`}B();function _(e){e.preventDefault();const t=e.target;if(t.closest("a")&&t.closest(".products-card-link")){const s=t.closest("li").dataset.productId;v(s).catch(r=>{console.error("Помилка при отриманні продукта за айді:",r.message)})}main}
+        </svg>`}B();function _(e){e.preventDefault();const t=e.target;if(t.closest("a")&&t.closest(".products-card-link")){const s=t.closest("li").dataset.productId;v(s).catch(r=>{console.error("Помилка при отриманні продукта за айді:",r.message)})}}
 //# sourceMappingURL=commonHelpers2.js.map
