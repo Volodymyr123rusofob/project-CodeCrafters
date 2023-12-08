@@ -1,6 +1,6 @@
 export class ShopStorage {
-  constructor(storageName) {
-    this.storageName = storageName;
+  constructor(storageBasketName) {
+    this.storageBasketName = storageBasketName;
     this.initStorage();
   }
 
@@ -8,39 +8,57 @@ export class ShopStorage {
     if (this.getAllProducts()) {
       return;
     }
-    localStorage.setItem(this.storageName, JSON.stringify([]));
-  }
-
-  setProduct(obj) {
-    if (!obj) {
-      return;
-    }
-
-    if (this.getAllProducts().some(item => item._id === obj._id)) {
-      return;
-    }
-
-    localStorage.setItem(
-      this.storageName,
-      JSON.stringify([...this.getAllProducts(), obj])
-    );
-  }
-
-  setAllProduct(dataArr) {
-    localStorage.setItem(this.storageName, JSON.stringify(dataArr));
+    this.#writeToLocalStorage([]);
   }
 
   getAllProducts() {
-    return JSON.parse(localStorage.getItem(this.storageName));
+    return JSON.parse(localStorage.getItem(this.storageBasketName));
   }
 
-  removeProduct(productId) {
-    this.setAllProduct(
-      this.getAllProducts().filter(item => item._id !== productId)
-    );
+  addProduct(newProduct) {
+    if (!newProduct) {
+      return;
+    }
+    const products = this.getAllProducts();
+    const searchProduct = products.find(item => item._id === newProduct._id)
+    if (!searchProduct) {
+      newProduct.amount = 1
+      products.push(newProduct)
+    } else {
+      searchProduct.amount += 1
+    }
+    this.#writeToLocalStorage(products)
   }
 
-  removeAllProducts() {
-    this.setAllProduct([]);
+  removeProductById(productId) {
+    const products = this.getAllProducts();
+    const searchProduct = products.find(item => item._id === productId)
+    if(!searchProduct){
+      return;
+    }else if(searchProduct.amount > 1) {
+      searchProduct.amount -= 1
+    }else {
+      products.filter(elem => elem._id === searchProduct._id)
+    }
+    this.#writeToLocalStorage(products)
   }
+
+
+  removeAllProductsById(productId) {
+    this.#writeToLocalStorage(this.getAllProducts().filter(elem => elem._id === productId))
+  }
+
+  removeAllProducts(){
+
+    this.#writeToLocalStorage([])
+  }
+
+  #writeToLocalStorage(productArray) {
+    localStorage.setItem(this.storageBasketName, JSON.stringify(productArray));
+  }
+
+
+
+
+
 }
