@@ -1,7 +1,7 @@
-// import { RequestToTheServer } from './filter';
-// import { onOpenModal } from './modal';
+// import {  } from './filter';
+// import { OpenModal } from './modal';
 // import sprite from '../img/symbol-defs.svg';
-// import { localStorageCheckCart } from './header';
+// import {  } from './header';
 
 // Робота з продуктами при завантаженні сторінки
 
