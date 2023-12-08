@@ -8,7 +8,8 @@
   <title>Vanilla App Template</title>
   
   <script type="module" crossorigin src="/project-CodeCrafters/commonHelpers2.js"></script>
-  <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-448d2609.css">
+  <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/vendor-a61d8330.js">
+  <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-2b0ebf6d.css">
 </head>
 
 <body>
@@ -19,18 +20,21 @@
     
     <h1></h1>
     <section class="products">
-  <div class="products-list-container">
-    <h2 class="products-section-title visually-hidden">Products</h2>
-    <ul class="js-products-list"></ul>
-  </div>
-  <div class="popular-discount-container">
-    <div class="popular-products">
-      <h2 class="products-title">Popular products</h2>
-      <ul class="js-popular-list"></ul>
+  <div class="container prodacts-container">
+    <div class="products-list-container">
+      <h2 class="products-section-title visually-hidden">Products</h2>
+      <ul class="js-products-list"></ul>
+      <div id="pagination"></div>
     </div>
-    <div class="discount-products">
-      <h2 class="products-title">Discount products</h2>
-      <ul class="js-discount-list"></ul>
+    <div class="popular-discount-container">
+      <div class="popular-products">
+        <h2 class="products-title">Popular products</h2>
+        <ul class="js-popular-list"></ul>
+      </div>
+      <div class="discount-products">
+        <h2 class="products-title">Discount products</h2>
+        <ul class="js-discount-list"></ul>
+      </div>
     </div>
   </div>
 </section>

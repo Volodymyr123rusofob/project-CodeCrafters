@@ -7,10 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     
-  <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-448d2609.css">
+  <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-2b0ebf6d.css">
 </head>
 
 <body>
+     <!--Тут буде header-->
+
+
+    <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
+    <div class="container cart-wrap"> 
+        <!--Секція Тані-->
+
+
+        <!---Секція Андрія-->
+        <h2 class="price-title">Your order</h2>
+        <div class="total-wrap">
+            <p class="price-text">Total</p>
+             <p class="price-numbers" id="totalPrice">$0.00</p>
+        </div>
+
+
+        <div class="input-wrap">
+            <label for="email"></label>
+            <input class="input-cart-email" type="email" id="email" name="email" placeholder="Mail:" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Enter a valid email address" required>
+            <button class="checkout-button" type="submit">Checkout</button>
+        </div>
+
+
+    <!--Тут буде footer-->
+    </div>
 </body>
 
 </html>
