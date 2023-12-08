@@ -64,6 +64,9 @@
     .product-item {
         width: calc((100% - 40px) / 3);
     }
+    .popularity {
+        flex-basis: 100%;
+    }
 }
 
 .product-img-container {
