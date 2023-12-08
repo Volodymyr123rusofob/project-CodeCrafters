@@ -9,12 +9,12 @@
                   <h3 class="product-title">${e}</h3>
                 </a>
               <div class="product-parameter-container">
-                <p class="product-parameter">Category: <span class="span-parameter-value">${o.replace(/_/g," ")}</span></p>
-                <p class="product-parameter">Size: <span class="span-parameter-value">${d}</span></p>
-                <p class="product-parameter">Popularity: <span class="span-parameter-value">${f}</span></p>
+                <p class="product-parameter">Category: <span class="span-parameter-value"> ${o.replace(/_/g," ")}</span></p>
+                <p class="product-parameter">Size: <span class="span-parameter-value"> ${d}</span></p>
+                <p class="product-parameter popularity">Popularity: <span class="span-parameter-value"> ${f}</span></p>
                 </div>
               <div class="price-card-container">
-                <p class="price">${a}</p>
+                <p class="price">$${a}</p>
                 <button class="cart-button" type="button" data-item-id="${t}" data-in-cart="false">
                   <svg class="cart-icon" width="18" height="18">
                     <use href="./img/symbol-defs.svg#icon-basket"></use>
@@ -22,7 +22,7 @@
                 </button>
               </div>
             </li>
-            `).join("")}const n=document.querySelector(".modal-prod-wrapper"),w="shop-storage",i=new y(w),S=new u;async function P(s){n.classList.add("modal-active"),n.classList.add("js-loader");const t=await S.getProductById(s);n.classList.remove("js-loader"),b(t),L(t)}function L(s){const t=document.querySelector(".modal-prod-add-text"),e=s._id;i.getAllProducts().some(o=>o._id===e)?t.textContent="Remove from":t.textContent="Add to"}function b(s){try{n.classList.add("modal-active"),document.body.classList.add("stop-scroll"),n.innerHTML=`
+            `).join("")}const n=document.querySelector(".modal-prod-wrapper"),w="shop-storage",i=new y(w),S=new u;async function P(s){n.classList.add("modal-active"),n.classList.add("js-loader");const t=await S.getProductById(s);n.classList.remove("js-loader"),$(t),L(t)}function L(s){const t=document.querySelector(".modal-prod-add-text"),e=s._id;i.getAllProducts().some(o=>o._id===e)?t.textContent="Remove from":t.textContent="Add to"}function $(s){try{n.classList.add("modal-active"),document.body.classList.add("stop-scroll"),n.innerHTML=`
   <div class="modal-prod-card">
   <button type="button" class="modal-prod-close-btn">
     <svg class="modal-prod-close-icon" width="22" height="22">
@@ -59,7 +59,7 @@
   </button>
   </div>
   </div>
-  `,document.querySelector(".modal-prod-add-btn").addEventListener("click",()=>$(s)),document.querySelector(".modal-prod-close-btn").addEventListener("click",()=>l()),window.addEventListener("click",m),window.addEventListener("keydown",g)}catch(t){console.error(t)}}function $(s){const t=s._id,r=i.getAllProducts().some(a=>a._id===t),o=document.querySelector(".modal-prod-add-text");r?(o.textContent="Add to",i.removeProduct(t)):(o.textContent="Remove from",i.setProduct(s))}function l(){document.body.classList.remove("stop-scroll"),n.classList.remove("modal-active"),n.innerHTML="",window.removeEventListener("click",m),window.removeEventListener("keydown",g)}function m(s){s.target===n&&l()}function g(s){s.keyCode===27&&l()}const h=document.querySelector(".js-products-list");h.addEventListener("click",_);const A=new u,k=6;async function C(){const t=(await A.getAllProducts()).results.slice(0,k);B(t,h)}C();function B(s,t){t.innerHTML=v(s),console.log(s)}const E=document.querySelector(".cart-button");E.addEventListener("click",I);function _(s){s.preventDefault();const t=s.target;if(t.closest("a")&&t.closest(".products-card-link")){const e=t.closest("li").dataset.productId;P(e).catch(r=>{console.error("Помилка при отриманні продукта за айді:",r.message)})}}function I(s){const t=s.target;console.log(s.target);const e=t.closest(".cart-button");if(console.log(e),e){const r=e.dataset.itemId;console.log(r),N(e)}}function N(s){const t=JSON.parse(s.dataset.inCart);console.log(t),O(s,!t)}function O(s,t){t?s.innerHTML=`<svg class="cart-icon" width="18" height="18">
+  `,document.querySelector(".modal-prod-add-btn").addEventListener("click",()=>b(s)),document.querySelector(".modal-prod-close-btn").addEventListener("click",()=>l()),window.addEventListener("click",m),window.addEventListener("keydown",g)}catch(t){console.error(t)}}function b(s){const t=s._id,r=i.getAllProducts().some(a=>a._id===t),o=document.querySelector(".modal-prod-add-text");r?(o.textContent="Add to",i.removeProduct(t)):(o.textContent="Remove from",i.setProduct(s))}function l(){document.body.classList.remove("stop-scroll"),n.classList.remove("modal-active"),n.innerHTML="",window.removeEventListener("click",m),window.removeEventListener("keydown",g)}function m(s){s.target===n&&l()}function g(s){s.keyCode===27&&l()}const h=document.querySelector(".js-products-list");h.addEventListener("click",_);const A=new u,k=6;async function C(){const t=(await A.getAllProducts()).results.slice(0,k);B(t,h)}C();function B(s,t){t.innerHTML=v(s),console.log(s)}const E=document.querySelector(".cart-button");E.addEventListener("click",I);function _(s){s.preventDefault();const t=s.target;if(t.closest("a")&&t.closest(".products-card-link")){const e=t.closest("li").dataset.productId;P(e).catch(r=>{console.error("Помилка при отриманні продукта за айді:",r.message)})}}function I(s){const t=s.target;console.log(s.target);const e=t.closest(".cart-button");if(console.log(e),e){const r=e.dataset.itemId;console.log(r),N(e)}}function N(s){const t=JSON.parse(s.dataset.inCart);console.log(t),O(s,!t)}function O(s,t){t?s.innerHTML=`<svg class="cart-icon" width="18" height="18">
                     <use href="./img/symbol-defs.svg#icon-check"></use>
                   </svg>`:s.innerHTML=`<svg class="cart-icon" width="18" height="18">
                     <use href="./img/symbol-defs.svg#icon-basket"></use>
