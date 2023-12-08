@@ -9,7 +9,6 @@ const apiService = new ApiService();
 const itemsPerPage = 6;
         
 const allProducts = await apiService.getAllProducts();
-console.log(allProducts);
 const productsOnePage = allProducts.results.slice(0, itemsPerPage);
 displayProducts(productsOnePage, productsList); 
 
@@ -17,6 +16,9 @@ function displayProducts(products, container) {
     container.innerHTML = createMarkup(products);
     console.log(products);
 }
+
+const basketButton = document.querySelector('.cart-button');
+basketButton.addEventListener('click', onClickBasket);
 
 function onClickCart(e) {
     e.preventDefault();
@@ -33,4 +35,59 @@ function onClickCart(e) {
     }
 }
 
+function onClickBasket(event) {
+    const targetElement = event.target;
+    console.log(event.target);
+    const cartButton = targetElement.closest('.cart-button');
+    console.log(cartButton);
+    if (cartButton) {
+        const itemId = cartButton.dataset.itemId;
+        console.log(itemId);
+        handleBasketClick(cartButton, itemId);
+    }
+}
 
+function handleBasketClick(cartButton) {
+    const inCart = JSON.parse(cartButton.dataset.inCart);
+    console.log(inCart);
+    // if (!inCart) {
+        // const isItemInBasket = checkIfItemInBasket(itemId);
+        // if (isItemInBasket) {
+        //     alert('The product already in the cart.')
+        //     return
+        // }
+        // addToBasket(itemId);
+        // alert('The product has been added to the cart.')
+    //}
+
+    updateBasketIcon(cartButton, !inCart);
+}
+
+// function checkIfItemInBasket(itemId) {
+//     const currentBasket = JSON.parse(localStorage.getItem('basket')) || {};
+//     return currentBasket[itemID] !== undefined;
+// }
+
+// function addToBasket(itemId){
+//     const currentBasket = JSON.parse(localStorage.getItem('basket')) || {};
+//     console.log(currentBasket)
+//     currentBasket[itemId] = {
+//         name: selectedProduct.name,
+//         price: selectedProduct.price,
+//         quantity: 1,
+//     }
+//     localStorage.setItem('basket', JSON.stringify(currentBasket));
+// }
+
+function updateBasketIcon(cartButton, inCart) {
+    if (inCart) {
+        cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
+                    <use href="./img/symbol-defs.svg#icon-check"></use>
+                  </svg>`;
+    } else {
+        cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
+                    <use href="./img/symbol-defs.svg#icon-basket"></use>
+                  </svg>`;
+    }
+
+}
