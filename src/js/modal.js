@@ -5,6 +5,7 @@ import createMarkupProducts from './markup_products_list'
 
 const modal = document.querySelector('.modal-prod-wrapper');
 
+
 const SHOP_STORAGE = 'shop-storage';
 const shopStorage = new ShopStorage(SHOP_STORAGE)
 const api = new ApiService();
@@ -13,11 +14,11 @@ const api = new ApiService();
 export async function openModal(productId) {
 
     modal.classList.add('modal-active');
-    modal.classList.add('js-loader');// тут создам cпинер через css
+    modal.classList.add('loader');// тут создам cпинер через css
     const productDetails = await api.getProductById(productId);
 
     // console.log(productDetails);
-    modal.classList.remove('js-loader');// тут ,буду очищать cпинер через css
+    modal.classList.remove('loader');// тут ,буду очищать cпинер через css
     renderModal(productDetails);
     isCurrentCart(productDetails);
 }
