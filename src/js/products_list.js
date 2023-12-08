@@ -24,6 +24,7 @@ function displayProducts(products, container) {
 // об'єкт для збереження стану кошика
 
 const cartState = JSON.parse(localStorage.getItem("cart")) || [];
+ main
 
 function addEventListenerToCardButton() {
     addEventListenersToBasketButtons();
@@ -65,6 +66,7 @@ function handleBasketClick(cartButton, itemId) {
 }
 
 function updateBasketIcon(cartButton, inCart) {
+  
     if (inCart) {
         cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
         <use href="${icons}#icon-check"></use>
@@ -91,4 +93,5 @@ function onClickCart(e) {
         console.error('Помилка при отриманні продукта за айді:', error.message);
         });
     }
+main
 }
