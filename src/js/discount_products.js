@@ -1,5 +1,5 @@
 // import sprite from '../img/symbol-defs.svg';
-// import {  } from './filters';
+// import {  } from './filter';
 // import {  } from './header';
 // import { openModal } from './modal';
 // const discountEl = document.querySelector('.discount-container');
