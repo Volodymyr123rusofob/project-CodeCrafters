@@ -1,8 +1,8 @@
 import ApiService from './requests';
 import icons from '../img/symbol-defs.svg';// імпортую свг собі в проект
 // import { ShopStorage } from './local-storage';
-import createMarkupProducts from './markup_products_list'
-import {addProductOnClickButton, removeProductOnClickButton} from './function.js'
+// import createMarkupProducts from './markup_products_list'
+// import {addProductOnClickButton, removeProductOnClickButton} from './function.js'
 
 const modal = document.querySelector('.modal-prod-wrapper');
 
@@ -168,7 +168,3 @@ function closeModalOnEsc(e) {
 // }
 
 
-
-// _________________________________________________________
-// const addBtn = document.querySelector('.modal-prod-add-btn');
-// addBtn.addEventListener('click', () => addToCart(productDetails));
