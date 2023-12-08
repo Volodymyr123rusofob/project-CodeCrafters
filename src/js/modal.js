@@ -1,13 +1,14 @@
 import ApiService from './requests';
 import icons from '../img/symbol-defs.svg';// імпортую свг собі в проект
-import { ShopStorage } from './local-storage';
+// import { ShopStorage } from './local-storage';
 import createMarkupProducts from './markup_products_list'
+import {addProductOnClickButton, removeProductOnClickButton} from './function.js'
 
 const modal = document.querySelector('.modal-prod-wrapper');
 
 
 const SHOP_STORAGE = 'shop-storage';
-const shopStorage = new ShopStorage(SHOP_STORAGE)
+// const shopStorage = new ShopStorage(SHOP_STORAGE)
 const api = new ApiService();
 
 
@@ -20,6 +21,7 @@ export async function openModal(productId) {
     // console.log(productDetails);
     modal.classList.remove('loader');// тут ,буду очищать cпинер через css
     renderModal(productDetails);
+
     isCurrentCart(productDetails);
 }
 
@@ -38,7 +40,7 @@ function isCurrentCart(productDetails) {
 
 
 //! Функція рендеру розмітки
- function renderModal(productDetails) {
+ export function renderModal(productDetails) {
   try {
     modal.classList.add('modal-active');
     document.body.classList.add('stop-scroll');
@@ -72,7 +74,7 @@ function isCurrentCart(productDetails) {
   </div>
   <div class="modal-prod-price-elem">
   <p class="modal-prod-price">&#36;${productDetails.price}</p>
-  <button class="modal-prod-add-btn">
+  <button class="modal-prod-add-btn" >
       <p class="modal-prod-add-text">Add to</p>
       <svg class="modal-prod-basket-icon" >
         <use href="${icons}#icon-basket"></use>
@@ -83,7 +85,7 @@ function isCurrentCart(productDetails) {
   `;
 
     const addBtn = document.querySelector('.modal-prod-add-btn');
-    addBtn.addEventListener('click', () => addToCart(productDetails));
+    addBtn.addEventListener('click', () => addProductToBasket(productDetails));
 
     const closeBtn = document.querySelector('.modal-prod-close-btn');
     closeBtn.addEventListener('click', () => closeModal());
@@ -98,23 +100,19 @@ function isCurrentCart(productDetails) {
 
 // //! Функція додавання в корзину и зміни стану кнопки
 
-export function addToCart(productDetails) {
+export function addProductToBasket(productDetails) {
   const productId = productDetails._id;
-
+  //
   const currentCart = shopStorage.getAllProducts();
   const isProductInCart = currentCart.some(item => item._id === productId);
   const addBtnText = document.querySelector('.modal-prod-add-text');
 
   if (isProductInCart) {
     addBtnText.textContent = 'Add to';
-    shopStorage.removeProduct(productId);
-    // setCartStateForOneProduct(productId, false);
-    // changeQuantityOrderedInBasket(shopStorage.getAllProducts());
+    // removeProductOnClickButton(productId)
   } else {
     addBtnText.textContent = 'Remove from';
-    shopStorage.setProduct(productDetails);
-    // setCartStateForOneProduct(productId, true);
-    // changeQuantityOrderedInBasket(shopStorage.getAllProducts());
+    // addProductOnClickButton(productId)
   }
 }
 //! Функція закриття модалки при кліку на хрестик
@@ -172,4 +170,5 @@ function closeModalOnEsc(e) {
 
 
 // _________________________________________________________
-
+// const addBtn = document.querySelector('.modal-prod-add-btn');
+// addBtn.addEventListener('click', () => addToCart(productDetails));
