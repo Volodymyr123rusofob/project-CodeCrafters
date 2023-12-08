@@ -5,46 +5,23 @@
 
 // Робота з продуктами при завантаженні сторінки
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   cartButtonStyle();
-
-//   const savedProducts = JSON.parse(localStorage.getItem('popularProducts'));
-//   let localProducts;
-
-//   if (savedProducts && savedProducts.length >= 5) {
-//     localProducts = savedProducts.slice(0, 5);
-//   } else {
-//     localProducts = [];
-//   }
-//   if (localProducts.length > 0) {
-//     createAndAppendProductElements(localProducts);
-//     addFunctionalityToElements();
-//   } else {
-//     fetchProductsFromServer();
-//   }
-// });
-
-// async function fetchProductsFromServer() {
-//   const request = new RequestToTheServer('products/popular', '', 1, 5);
-
-//   try {
-//     const fetchedData = await request.fetchBreeds();
-
-//     saveProductsToLocalStorage(fetchedData);
-
-//     const productsToDisplay = fetchedData.slice(0, 5);
-
-//     createAndAppendProductElements(productsToDisplay);
-
-//     addFunctionalityToElements();
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// }
-// function addFunctionalityToElements() {
-//   cartButtonStyle();
-// }
-// const productsContainer = document.querySelector('.products-container');
+// function fetchProductsFromServer() {
+   // const request = new RequestToTheServer('products/popular', '', 1, 5);
+  
+    // return request.fetchBreeds()
+     // .then(fetchedData => {
+      //  saveProductsToLocalStorage(fetchedData);
+  
+       // const productsToDisplay = fetchedData.slice(0, 5);
+  
+       // createAndAppendProductElements(productsToDisplay);
+  
+       // addFunctionalityToElements();
+     // })
+     // .catch(error => {
+      //  console.error('Error:', error);
+     // });
+ // }
 
 // // Збереження продуктів в локальне сховище
 
