@@ -1,3 +1,18 @@
+export class Storage {
+  constructor(storageName) {
+    this.storageName = storageName;
+  }
+  setValue(data) {
+    localStorage.setItem(this.storageName, JSON.stringify(data));
+  }
+  getValue() {
+    return JSON.parse(localStorage.getItem(this.storageName));
+  }
+  removeItem() {
+    localStorage.removeItem(this.storageName);
+  }
+}
+
 export class ShopStorage {
   constructor(storageName) {
     this.storageName = storageName;
