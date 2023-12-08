@@ -28,7 +28,7 @@ export default function createMarkup(arr) {
                 <p class="price">$${price}</p>
                 <button class="cart-button" type="button" data-item-id="${_id}" data-in-cart="false">
                   <svg class="cart-icon" width="18" height="18">
-                    <use href="./img/symbol-defs.svg#icon-basket"></use>
+                    <use href="/img/symbol-defs.svg#icon-basket"></use>
                   </svg>
                 </button>
               </div>
