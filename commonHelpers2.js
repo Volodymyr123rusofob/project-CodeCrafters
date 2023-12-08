@@ -60,8 +60,8 @@
               </div>
             </li>
             `).join("")}const g=document.querySelector(".js-products-list");g.addEventListener("click",B);const $=new p,k=6;async function S(){const e=(await $.getAllProducts()).results.slice(0,k);P(e,g)}S();function P(t,e){e.innerHTML=b(t),console.log(t)}const C=document.querySelector(".cart-button");C.addEventListener("click",E);function B(t){t.preventDefault();const e=t.target;if(e.closest("a")&&e.closest(".products-card-link")){const s=e.closest("li").dataset.productId;f(s).catch(r=>{console.error("Помилка при отриманні продукта за айді:",r.message)})}}function E(t){const e=t.target;console.log(t.target);const s=e.closest(".cart-button");if(console.log(s),s){const r=s.dataset.itemId;console.log(r),A(s)}}function A(t){const e=JSON.parse(t.dataset.inCart);console.log(e),_(t,!e)}function _(t,e){e?t.innerHTML=`<svg class="cart-icon" width="18" height="18">
-                    <use href="/img/symbol-defs.svg#icon-check"></use>
+                    <use href="../img/symbol-defs.svg#icon-check"></use>
                   </svg>`:t.innerHTML=`<svg class="cart-icon" width="18" height="18">
-                    <use href="/img/symbol-defs.svg#icon-basket"></use>
+                    <use href="../img/symbol-defs.svg#icon-basket"></use>
                   </svg>`}
 //# sourceMappingURL=commonHelpers2.js.map
