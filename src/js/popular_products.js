@@ -1,5 +1,5 @@
 // import { RequestToTheServer } from './filter';
-// import { onOpenModal } from './modal';
+// import { OpenModal } from './modal';
 // import sprite from '../img/symbol-defs.svg';
 // import { localStorageCheckCart } from './header';
 
