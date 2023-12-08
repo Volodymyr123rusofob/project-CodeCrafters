@@ -85,6 +85,26 @@ class ApiService {
     }
   }
 
+  // add for Viacheslav
+  async getProductsInCategories(categories, page = 1, limit = 6) {
+    try {
+      const params = new URLSearchParams({
+        category: categories,
+        page,
+        limit,
+      });
+      const response = await axios.get(`${this.BASE_URL}/products?${params}`);
+
+      return response.data;
+    } catch (error) {
+      console.error(
+        'Помилка при отриманні продуктів за категорією(при оновленні сторінки): ',
+        error.message
+      );
+      throw error;
+    }
+  }
+
   async getProductById(productId) {
     try {
       const response = await axios.get(
