@@ -82,11 +82,11 @@ function handleBasketClick(cartButton) {
 function updateBasketIcon(cartButton, inCart) {
   if (inCart) {
     cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
-                    <use href="/img/symbol-defs.svg#icon-check"></use>
+                    <use href="../img/symbol-defs.svg#icon-check"></use>
                   </svg>`;
   } else {
     cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
-                    <use href="/img/symbol-defs.svg#icon-basket"></use>
+                    <use href="../img/symbol-defs.svg#icon-basket"></use>
                   </svg>`;
   }
 }
