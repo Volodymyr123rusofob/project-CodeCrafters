@@ -1,0 +1,105 @@
+.header-border {
+	border-bottom: 1px solid var(--accent-color);
+	box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
+}
+@media screen and (max-width:767px) {
+	.header-border {
+		padding-top: 24px;
+		padding-bottom: 24px;
+	}
+	
+}
+
+.header-container {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+.web {
+color: var(--primary-blue);
+font-family: "Raleway",sans-serif;
+font-weight: 800;
+font-size: 18px;
+line-height: 1.17;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+display: flex;
+align-items: center;
+margin-left: auto;
+margin-right: 76px;
+}
+.web-studio {
+color: var(--overlay-dark);
+}
+.header-navigation {
+	display: flex;
+	align-items: center;
+}
+.adress {
+	margin-left: auto;
+}
+.header-navigation-adress {
+	display: none;
+	
+}
+@media screen and (min-width:768px) {
+	.header-navigation-adress {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+	}
+}
+@media screen and (min-width:1158px) {
+	.header-navigation-adress {
+		display: flex;
+		flex-direction: row;
+		gap: 40px;
+		transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+	}
+}
+
+.header-navigation-list {
+	display: none;
+	position: relative;;
+}
+@media screen and (min-width:768px) {
+	.header-navigation-list {
+		display: flex;
+		margin-left: auto;
+		gap: 40px;
+	}
+}
+
+
+.header-nav {
+	display: block;
+	padding: 24px 0;
+	color:var(--overlay-dark);
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.5; 
+	letter-spacing: 0.02em;
+	position: relative;
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.header-nav:hover,
+.header-nav:focus {
+	color: var(--pressed-blue);
+}
+.navigation-list {
+	position: relative;
+}
+.current {
+	color: var(--pressed-blue);
+}
+.current::after {
+  content: "";
+  background-color: var(--pressed-blue);
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  display: block;
+  position: absolute;
+  bottom: -1px;
+}
