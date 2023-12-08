@@ -1,3 +1,5 @@
+import icons from '../img/symbol-defs.svg';
+
 export default function createMarkup(arr) {
     return arr
         .map(
@@ -20,15 +22,15 @@ export default function createMarkup(arr) {
                   <h3 class="product-title">${name}</h3>
                 </a>
               <div class="product-parameter-container">
-                <p class="product-parameter">Category: <span class="span-parameter-value">${category.replace(/_/g, ' ')}</span></p>
-                <p class="product-parameter">Size: <span class="span-parameter-value">${size}</span></p>
-                <p class="product-parameter">Popularity: <span class="span-parameter-value">${popularity}</span></p>
+                <p class="product-parameter">Category: <span class="span-parameter-value"> ${category.replace(/_/g, ' ')}</span></p>
+                <p class="product-parameter">Size: <span class="span-parameter-value"> ${size}</span></p>
+                <p class="product-parameter popularity">Popularity: <span class="span-parameter-value"> ${popularity}</span></p>
                 </div>
               <div class="price-card-container">
-                <p class="price">${price}</p>
+                <p class="price">$${price}</p>
                 <button class="cart-button" type="button" data-item-id="${_id}" data-in-cart="false">
                   <svg class="cart-icon" width="18" height="18">
-                    <use href="./img/symbol-defs.svg#icon-basket"></use>
+                    <use href="${icons}#icon-basket"></use>
                   </svg>
                 </button>
               </div>
