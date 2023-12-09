@@ -40,7 +40,7 @@ function addEventListenerToCardButton() {
     addEventListenersToBasketButtons();
 }
 
-function addEventListenersToBasketButtons() {
+export function addEventListenersToBasketButtons() {
   const basketButtons = document.querySelectorAll('.cart-button');
   
   if (basketButtons) {

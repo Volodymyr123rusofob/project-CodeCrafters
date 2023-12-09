@@ -1,7 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import ApiService from './requests';
-import { displayProducts } from './products_list';
+import { displayProducts, addEventListenersToBasketButtons } from './products_list';
 const productsList = document.querySelector('.js-products-list');
 const apiService = new ApiService();
 const container = document.getElementById('pagination');
@@ -45,6 +45,7 @@ pagination.on('beforeMove', async event => {
   const currentPage = event.page;
   const newProducts = await apiService.getAllProducts(currentPage, 6);
   displayProducts(newProducts.results, productsList);
+  addEventListenersToBasketButtons();
 });
 // // Показуємо або приховуємо пагінацію відповідно до умови
 // // if (totalPages > 1) {
