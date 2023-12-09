@@ -1,30 +1,16 @@
-let counterValue = 0;
+const LS_KEY = "cart"; // Запитать у колеги хто робить корзину, якщо він то він знає як називається ключ в LS
 
-const decrementValue = event => {
-getValue.textContent = counterValue -= 1;
-	//  value.textContent = counterValue -= 1;
-	console.log(counterValue);
-}
-const incrementValue = event => {
-	getValue.textContent = counterValue += 1;
-	// value.textContent = counterValue += 1;
-	console.log(counterValue);
-}
+const cartCounter = document.querySelector("#cart-counter");
 
-// const getForm = document.querySelector("#counter");
-// console.log(getForm);
+const loadFromLS = (key) => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error("Get state error: ", error.message);
+  }
+};
 
-const getDecrement = document.querySelector('[data-action="decrement"]');
-// console.log(getDecrement);
-const getIncrement = document.querySelector('[data-action="increment"]');
-// console.log(getIncrement);
-const getValue = document.querySelector("#value");
-// console.log(getValue);
+const items = loadFromLS(LS_KEY) ?? [];
 
-
-
-getDecrement.addEventListener("click", decrementValue);
-
-getIncrement.addEventListener("click", incrementValue);
-
-console.log(value);
+cartCounter.textContent = `(${items.length})`;
