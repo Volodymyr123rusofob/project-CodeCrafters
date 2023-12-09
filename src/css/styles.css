@@ -10,6 +10,7 @@
 @import url('./pagination.css');
 @import url('./footer.css');
 @import url('./modal.css');
+
 :root {
   --main-bg: #e8e8e2;
   --second-bg: #6d8434;
