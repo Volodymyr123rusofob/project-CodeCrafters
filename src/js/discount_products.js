@@ -46,22 +46,22 @@
 
 // function productTemplate(product) {
    // const { _id, name, img, price } = product;
-   // return `<div>
-              // <div>
-                // <svg>
+   // return `<div class="discount-card">
+              // <div class="discount-logo">
+                // <svg class="logo">
                    // <use href="${sprite}#icon-discount" width="60" height="60"></use>
                  // </svg>
                // </div>
-               // <div>
+               // <div class="discount-card-image">
                // <img src="${img}" alt="${name}" data-id=${_id} width="114" height="'114" />
                // </div>
-              // <div>
-                // <div>
-                  // <p>${name}</p>
+              // <div class="discount-card-info">
+                // <div class="discount-card-name">
+                  // <p class="discount-card-text">${name}</p>
                 // </div>
-                // <div>
-                  // <p>$${price}</p>
-                  // <button type="button" data-id=${_id}>
+                // <div class="discount-card-price">
+                  // <p class="discount-card-text">$${price}</p>
+                  // <button class="discount-card-button" type="button" data-id=${_id}>
                      // <svg class="">
                       //  <use href="${sprite}#${
      // isProductAlreadyInCart(_id)
@@ -78,7 +78,7 @@
 // Перевірка чи клікнуто на зображення для відкривання модального вікна
 
 // discountEl.addEventListener('click', event => {
-   // const imageEl = event.target.closest('.тут селектор img');
+   // const imageEl = event.target.closest('.discount-card-image img');
    // if (imageEl !== null) {
     //  const productId = imageEl.dataset.id;
     //  OpenModal(productId);
@@ -94,8 +94,8 @@
    // const selectedProduct = products.find(p => p._id === productId);
    // if(selectedProduct){
    // addToCart(selectedProduct);
-   // renderCards();
-   // localStorageCheckCart();
+   // імпорт з фільтра ();
+   // імпорт з хедера ();
  // } else { 
    // return ;
  // }
@@ -104,7 +104,7 @@
 // Для прикріплення обробника подій до кнопки
 
  // function attachButtonClickHandlers() {
-   // const cartButtons = document.querySelectorAll('.тут селектор');
+   // const cartButtons = document.querySelectorAll('.discount-card-button');
    // cartButtons.forEach(button => {
     // button.addEventListener('click', handleButtonClick);
    // });
