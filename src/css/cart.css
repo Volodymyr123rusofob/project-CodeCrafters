@@ -1,6 +1,9 @@
 /* ==========================================================================
    Styles of products (Таня)
    ========================================================================== */
+body {
+  background-color: var(--main-bg);
+}
 .cart-title {
   display: flex;
   align-items: center;
@@ -49,7 +52,73 @@
   height: 24px;
   width: 24px;
 }
-.icon-close-sharp {
+
+.cart-products-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 480px;
+}
+.cart-product-item {
+  display: flex;
+  width: 335px;
+  height: 160px;
+}
+.cart-delete {
+}
+.cart-btn-delete {
+}
+.cart-icon-close-sharp {
+}
+.cart-product-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 335px;
+  height: 160px;
+}
+.cart-product-img-container {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--third-bg);
+}
+.cart-product-img {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+.cart-product-parameter-container {
+}
+.cart-product-title {
+  color: var(--text);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 111.111% */
+}
+.cart-product-parameter {
+  color: rgba(1, 1, 1, 0.3);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px; /* 116.667% */
+}
+.cart-span-parameter-value {
+  color: var(--text);
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px; /* 116.667% */
+}
+.price {
+  color: var(--text);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 111.111% */
 }
 /* ==========================================================================
    Media for products
