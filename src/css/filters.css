@@ -95,7 +95,7 @@ font-family: Neue Montreal;
 font-size: 14px;
 font-style: normal;
 font-weight: 400;
-line-height: 1.28em; 
+line-height: 18px; /* 128.571% */
 
   display: flex;
   padding: 14px 20px;
@@ -109,7 +109,7 @@ line-height: 1.28em;
   border-radius: 30px;
   background: #e8e8e2;
   /* local */
-  background-image: url("/src/img/symbol-defs.svg#shevron-down");
+  background-image: url("./chevron-down.svg");
   /* Project */
   background-repeat: no-repeat;
   background-position: calc(100% - 20px) center;
@@ -141,7 +141,7 @@ line-height: 1.28em;
   border-radius: 30px;
   background: #fafafa;
   /* local */
-  background-image: url("/src/img/symbol-defs.svg#shevron-down");
+  background-image: url("./chevron-down.svg");
   /* Project */
   background-repeat: no-repeat;
   background-position: calc(100% - 20px) center;
@@ -221,7 +221,7 @@ line-height: 1.28em;
     -moz-appearance: none;
     appearance: none;
     background-color: #e8e8e2;
-    background-image: url("/src/img/symbol-defs.svg#shevron-down");
+    background-image: url("./chevron-down.svg");
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
@@ -231,7 +231,7 @@ line-height: 1.28em;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("/src/img/symbol-defs.svg#shevron-down");
+    background-image: url("./chevron-down.svg");
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
@@ -323,7 +323,7 @@ line-height: 1.33em;
   -moz-appearance: none;
   appearance: none;
   background-color: #E8E8E2;
-  background-image: url("/src/img/symbol-defs.svg#shevron-down");
+  background-image: url("./chevron-down.svg");
   background-repeat: no-repeat;
   background-position: calc(100% - 25px) center; 
   }
@@ -334,7 +334,7 @@ line-height: 1.33em;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("/src/img/symbol-defs.svg#shevron-down");
+    background-image: url("./chevron-down.svg");
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
