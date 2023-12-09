@@ -32,7 +32,6 @@ function isCurrentCart(productDetails) {
   if (currentCart.some(item => item.productId === productId)) {
     addBtnText.textContent = 'Remove from';
   } else {
-    console.log('sdvvdsfgd');
     addBtnText.textContent = 'Add to';
   }
 }
