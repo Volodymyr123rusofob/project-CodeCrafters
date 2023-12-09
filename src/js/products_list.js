@@ -17,7 +17,7 @@ async function prod() {
   addEventListenerToCardButton();
 }
 
-function displayProducts(products, container) {
+export function displayProducts(products, container) {
   container.innerHTML = createMarkup(products);
 }
 
