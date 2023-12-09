@@ -7,4 +7,158 @@
     gap: 13px;
   }
 
+  .product-template {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding-left: 12px;
+  }
   
+  .popular-con {
+    display: flex;
+    gap: 9px;
+  }
+
+  .product-image-container {
+    background: #e8e8e2;
+    width: 74px;
+    height: 74px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .product-image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .product-text {
+    display: flex;
+    width: 152px;
+    height: 74px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+
+  .product-name {
+    color: #010101;
+    margin-bottom: 12px;
+    font-family: 'Neue Montreal Medium';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  .product {
+    color: rgba(1, 1, 1, 0.3);
+    font-family: 'Neue Montreal Regular';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+  }
+
+  .margin {
+    margin-bottom: 9px;
+  }
+
+  .category-value,
+  .popularity-value,
+  .size-value {
+    color: #010101;
+    font-family: 'Neue Montreal Regular';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+  }
+
+  .add-to-cart-btn {
+    border: none;
+    display: inline-flex;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  .add-to-cart-btn:hover {
+    background: #586f1f;
+  }
+
+  .ico {
+    stroke: #6d8434;
+    width: 12px;
+    height: 12px;
+  }
+
+  .ico:hover,
+  :focus {
+    stroke: #e8e8e2;
+  }
+
+  .product-image-container {
+    background: #e8e8e2;
+    width: 74px;
+    height: 74px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) and (max-width: 1280px) {
+    .products-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .product-con {
+      width: 251px;
+      height: 74px;
+    }
+    .product-template {
+      width: 275px;
+      height: 98px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .product-name {
+      margin-bottom: 10px;
+    }
+    .product-con {
+      width: 251px;
+      height: 74px;
+    }
+    .product-template {
+      width: 275px;
+      height: 98px;
+    }
+    .products-container {
+      margin-bottom: 40px;
+    }
+    .contain {
+      margin-top: 136px;
+      width: 275px;
+      display: flex;
+      flex-direction: column;
+      align-content: flex-end;
+      align-items: flex-end;
+    }
+  }
