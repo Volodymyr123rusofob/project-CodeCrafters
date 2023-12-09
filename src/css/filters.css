@@ -35,7 +35,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-
 .keyword-input {
   border: none;
   outline: none;
@@ -71,7 +70,6 @@
 /* ------------select---------- */
 .category-select option {
   background-color: #e8e8e2; /* Фоновый цвет для каждого элемента списка */
-
 }
 /* ------------------------------------ */
 .category-select:focus {
@@ -80,7 +78,6 @@
 
 .category-select,
 .category-select-letter {
-  
   outline: none;
   box-shadow: 0 0 0 transparent;
   transition: box-shadow 0.25s;
@@ -91,11 +88,11 @@
   border: 1px solid rgba(1, 1, 1, 0.3);
 
   color: #010101;
-font-family: Neue Montreal;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.28em; 
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
 
   display: flex;
   padding: 14px 20px;
@@ -109,7 +106,7 @@ line-height: 1.28em;
   border-radius: 30px;
   background: #e8e8e2;
   /* local */
-  background-image: url("/src/img/symbol-defs.svg#shevron-down");
+  background-image: url('../img/symbol-defs.svg#chevron-down');
   /* Project */
   background-repeat: no-repeat;
   background-position: calc(100% - 20px) center;
@@ -141,7 +138,7 @@ line-height: 1.28em;
   border-radius: 30px;
   background: #fafafa;
   /* local */
-  background-image: url("/src/img/symbol-defs.svg#shevron-down");
+  background-image: url("../img/symbol-defs.svg#chevron-down");
   /* Project */
   background-repeat: no-repeat;
   background-position: calc(100% - 20px) center;
@@ -164,37 +161,37 @@ line-height: 1.28em;
     flex-wrap: wrap;
   }
 
-.keyword-input {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  outline: none;
-  background: transparent;
-  width: 100%;
-  /* *************************************************************** */
-  padding: 16px 60px 12px 20px;
-  box-sizing: border-box;
-}
+  .keyword-input {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    /* *************************************************************** */
+    padding: 16px 60px 12px 20px;
+    box-sizing: border-box;
+  }
 
-.keyword-input::placeholder {
-  color: #010101;
-  font-family: Neue Montreal;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.33em;
-}
+  .keyword-input::placeholder {
+    color: #010101;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33em;
+  }
 
-.submit-btn {
-  display: flex;
-  cursor: pointer;
-  width: fit-content;
-  margin-right: 20px;
-  background: transparent;
-  border: none;
-  padding: 0;
-}
+  .submit-btn {
+    display: flex;
+    cursor: pointer;
+    width: fit-content;
+    margin-right: 20px;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
 
   .category-select,
   .category-select-letter {
@@ -221,7 +218,7 @@ line-height: 1.28em;
     -moz-appearance: none;
     appearance: none;
     background-color: #e8e8e2;
-    background-image: url("/src/img/symbol-defs.svg#shevron-down");
+    background-image: url("../img/symbol-defs.svg#chevron-down");
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
@@ -231,7 +228,7 @@ line-height: 1.28em;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("/src/img/symbol-defs.svg#shevron-down");
+    background-image: url("../img/symbol-defs.svg#chevron-down");
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
@@ -287,7 +284,7 @@ line-height: 1.28em;
     /* + */
     cursor: pointer;
     width: fit-content;
-    background: transparent; 
+    background: transparent;
     border: none;
     padding: 0;
     margin-right: 20px;
@@ -305,36 +302,36 @@ line-height: 1.28em;
     width: 189px;
     height: 52px;
     border-radius: 30px;
-  border: 1px solid rgba(1, 1, 1, 0.3);
+    border: 1px solid rgba(1, 1, 1, 0.3);
 
-  display: flex;
-  padding: 14px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 44px;
+    display: flex;
+    padding: 14px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 44px;
 
-   color: #010101;
-font-family: Neue Montreal;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.33em;  
- -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: #E8E8E2;
-  background-image: url("/src/img/symbol-defs.svg#shevron-down");
-  background-repeat: no-repeat;
-  background-position: calc(100% - 25px) center; 
+    color: #010101;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #e8e8e2;
+    background-image: url("../img/symbol-defs.svg#chevron-down");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 25px) center;
   }
-  
+
   /* for add task */
   .category-select-letter {
     background: #fafafa;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("/src/img/symbol-defs.svg#shevron-down");
+    background-image: url("../img/symbol-defs.svg#chevron-down");
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
