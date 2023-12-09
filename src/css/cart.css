@@ -1,7 +1,56 @@
 /* ==========================================================================
    Styles of products (Таня)
    ========================================================================== */
+.cart-title {
+  display: flex;
+  align-items: center;
+}
 
+.cart-title-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--second-bg);
+  width: 42px;
+  height: 42px;
+  border-radius: 90px;
+  border: 0;
+}
+
+.cart-title-text {
+  padding-left: 14px;
+  color: var(--text);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; /* 100% */
+  text-transform: uppercase;
+}
+.delete-all {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-delete-all {
+  width: 112px;
+  height: 24px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+  cursor: pointer;
+}
+.btn-x {
+  height: 24px;
+  width: 24px;
+}
+.icon-close-sharp {
+}
 /* ==========================================================================
    Media for products
    ========================================================================== */

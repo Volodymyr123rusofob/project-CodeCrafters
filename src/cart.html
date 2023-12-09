@@ -11,13 +11,37 @@
 
   <body>
     <!--Тут буде header-->
+    <load ="partials/header.html" />
+    <!--кнопка для роботи -->
+    <a href="index.html">HOME</a>
+    <!--кнопка для роботи -->
+    <!-- Заголовок сторінки -->
+    <div class="container cart-title">
+      <span class="cart-title-icon">
+        <svg class="icon-basket" width="18" height="18">
+          <use href="/img/symbol-defs.svg#icon-basket"></use>
+        </svg>
+      </span>
+      <h1 class="cart-title-text" id="cart-counter">CART (0)</h1>
+    </div>
 
     <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
-    <div class="container cart-wrap">
+    <div class="container cart-wrap" id="basket">
       <!--Секція Тані-->
+      <!-- <div class="delete-all">
+        <button type="button" class="btn-delete-all">
+          Delete All
+          <span class="icon-close-sharp">
+            <svg class="icon-basket" width="24" height="24">
+              <use href="/img/symbol-defs.svg#icon-ion_close-sharp"></use>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div class="cart-products"></div> -->
 
       <!---Секція Андрія-->
-      <h2 class="checkout-title">Your order</h2>
+      <!-- <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
         <p class="checkout-total">$0.00</p>
@@ -33,15 +57,11 @@
           placeholder="Mail:"
           required
         />
-        <button class="checkout-button" type="submit">Checkout</button>
+        <button class="checkout-button" type="submit">Checkout</button> -->
       </div>
 
-      <!-- Ця частина з'являється, коли корзина порожня -->
-      <div
-        class="container empty-container"
-        id="emptyCartContainer"
-        style="display: none"
-      >
+      <!-- Ця частина з'являється, коли корзина порожня 
+      <div class="container empty-container" id="emptyCartContainer">
         <picture>
           <source
             srcset="
@@ -81,10 +101,13 @@
           the cart.
         </p>
       </div>
-
-      <!--Тут буде footer-->
+-->
     </div>
-    <script src="./js/cart_products.js"></script>
-    <script src="./js/cart_checkout.js"></script>
+    <!--Тут буде footer-->
+
+    <load ="partials/footer.html" />
+
+    <script type="module" src="./js/cart_products.js"></script>
+    <script type="module" src="./js/cart_checkout.js"></script>
   </body>
 </html>
