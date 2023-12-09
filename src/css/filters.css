@@ -1,0 +1,338 @@
+/* ------------mobile first------------ */
+/* mobile */
+@media screen and (max-width: 767px) {
+}
+.filter-section {
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-bottom: 40px;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.input-box {
+  max-width: 334px;
+  height: 47px;
+  border-radius: 30px;
+  border: 1px solid rgba(1, 1, 1, 0.3);
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: #e8e8e2;
+}
+
+.input-box {
+  transition: box-shadow 0.25s ease-in-out;
+}
+
+.input-box.focus-within {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.keyword-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 14px 60px 14px 20px;
+  box-sizing: border-box;
+}
+
+.keyword-input::placeholder {
+  color: #010101;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 00;
+  line-height: 1.28em;
+}
+
+.submit-btn {
+  cursor: pointer;
+  width: fit-content;
+  margin-right: 20px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.submit-btn img {
+  display: block;
+  align-items: center;
+  /* width: 20px;  */
+}
+/* ------------select---------- */
+.category-select option {
+  background-color: #e8e8e2; /* Фоновый цвет для каждого элемента списка */
+}
+/* ------------------------------------ */
+.category-select:focus {
+  box-shadow: 0 0 8px #b3b3af;
+}
+
+.category-select,
+.category-select-letter {
+  outline: none;
+  box-shadow: 0 0 0 transparent;
+  transition: box-shadow 0.25s;
+
+  max-width: 335px;
+  height: 48px;
+  border-radius: 30px;
+  border: 1px solid rgba(1, 1, 1, 0.3);
+
+  color: #010101;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+
+  display: flex;
+  padding: 14px 20px;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* gap: 44px; */
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 30px;
+  background: #e8e8e2;
+  /* local */
+  background-image: url('../img/symbol-defs.svg#chevron-down');
+  /* Project */
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
+}
+/*  for add task */
+.category-select-letter:focus {
+  box-shadow: 0 0 8px #989890;
+}
+.category-select-letter {
+  width: 335px;
+  height: 48px;
+
+  border-radius: 30px;
+  background: #fafafa;
+
+  display: inline-flex;
+  padding: 14px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 94px;
+
+  outline: none;
+  box-shadow: 0 0 0 transparent;
+  transition: box-shadow 0.25s;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 30px;
+  background: #fafafa;
+  /* local */
+  background-image: url("../img/symbol-defs.svg#chevron-down");
+  /* Project */
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
+}
+
+/* tablet --------------------------------------------------------------------------------------------*/
+@media screen and (min-width: 768px) {
+  .filter-section {
+    /* + */
+    width: 100%;
+    max-width: 768px;
+    padding-left: 32px;
+    padding-bottom: 40px;
+  }
+  .filter-form {
+    /* + */
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .keyword-input {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    /* *************************************************************** */
+    padding: 16px 60px 12px 20px;
+    box-sizing: border-box;
+  }
+
+  .keyword-input::placeholder {
+    color: #010101;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33em;
+  }
+
+  .submit-btn {
+    display: flex;
+    cursor: pointer;
+    width: fit-content;
+    margin-right: 20px;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .category-select,
+  .category-select-letter {
+    /* + */
+    width: 189px;
+    height: 52px;
+    border-radius: 30px;
+    border: 1px solid rgba(1, 1, 1, 0.3);
+
+    display: flex;
+    padding: 14px 20px;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 44px;
+
+    color: #010101;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33em;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #e8e8e2;
+    background-image: url("../img/symbol-defs.svg#chevron-down");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 25px) center;
+  }
+  /* for add task */
+  .category-select-letter {
+    background: #fafafa;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("../img/symbol-defs.svg#chevron-down");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 25px) center;
+  }
+}
+/* desktop ------------------------------------------------------------------------------------------*/
+@media screen and (min-width: 1440px) {
+  .filter-section {
+    /* + */
+    width: 100%;
+    max-width: 1440px;
+    padding-left: 100px;
+    padding-bottom: 60px;
+  }
+
+  .filter-form {
+    /* + */
+    display: inline-flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .input-box {
+    /* + */
+    width: 269px;
+    height: 51px;
+    border-radius: 30px;
+    border: 1px solid rgba(1, 1, 1, 0.3);
+    /* padding: 14px 20px;  */
+
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+
+    background-color: #e8e8e2;
+    padding: 0;
+  }
+
+  .keyword-input {
+    /* + */
+    padding: 14px 60px 14px 20px;
+  }
+  .keyword-input::placeholder {
+    color: #010101;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 00;
+    line-height: 1.33em;
+  }
+
+  .submit-btn {
+    /* + */
+    cursor: pointer;
+    width: fit-content;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-right: 20px;
+  }
+
+  .submit-btn img {
+    /* + */
+    display: block;
+    align-items: center;
+  }
+
+  .category-select,
+  .category-select-letter {
+    /* + */
+    width: 189px;
+    height: 52px;
+    border-radius: 30px;
+    border: 1px solid rgba(1, 1, 1, 0.3);
+
+    display: flex;
+    padding: 14px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 44px;
+
+    color: #010101;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #e8e8e2;
+    background-image: url("../img/symbol-defs.svg#chevron-down");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 25px) center;
+  }
+
+  /* for add task */
+  .category-select-letter {
+    background: #fafafa;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("../img/symbol-defs.svg#chevron-down");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 25px) center;
+  }
+}

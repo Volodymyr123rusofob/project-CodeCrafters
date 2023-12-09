@@ -4,6 +4,7 @@ import './js/discount_products';
 import './js/local-storage';
 import './js/popular_products';
 import './js/products_list';
+import './js/pagination.js';
 import './js/footer';
 import './js/modal';
 import './js/function.js';
