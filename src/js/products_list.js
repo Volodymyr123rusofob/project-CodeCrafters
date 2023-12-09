@@ -2,6 +2,7 @@ import { openModal } from './modal';
 import ApiService from './requests';
 import createMarkup from './markup_products_list';
 import icons from '../img/symbol-defs.svg';
+import Swal from 'sweetalert2';
 
 const productsList = document.querySelector('.js-products-list');
 productsList.addEventListener('click', onClickCart);
@@ -52,7 +53,14 @@ export function handleBasketClick(cartButton, itemId) {
   if (cartItemIndex !== -1) {
     // Товар вже є в кошику, збільшуємо кількість
     //cartState[cartItemIndex].quantity += 1;
-    alert('Цей продукт вже доданий до кошика!');
+    //alert('Цей продукт вже доданий до кошика!');
+     //Swal.fire("", "This product has already been added to the cart!", "success");
+      Swal.fire({
+          title: "",
+          text: "his product has already been added to the cart!",
+          icon: "success",
+          confirmButtonColor: "#6d8434",
+        });
   } else {
     // Товару не кошику, додаємо його
     cartState.push({ productId: itemId, quantity: 1 });
@@ -69,10 +77,18 @@ function updateBasketIcon(cartButton, inCart) {
     cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
         <use href="${icons}#icon-check"></use>
         </svg>`;
+        Swal.fire({
+          title: "",
+          text: "The product has been added to the cart!",
+          icon: "success",
+          confirmButtonColor: "#6d8434",
+        });
+        //Swal.fire("", "The product has been added to the cart!", "success");
   } else {
     cartButton.innerHTML = `<svg class="cart-icon" width="18" height="18">
         <use href="${icons}#icon-basket"></use>
         </svg>`;
+    
   }
 }
 
