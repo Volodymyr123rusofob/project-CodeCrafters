@@ -160,3 +160,9 @@
 .cart-icon {
     fill: var(----main-bg);
 }
+
+element.style {
+    display: inline-block;
+}
+
+

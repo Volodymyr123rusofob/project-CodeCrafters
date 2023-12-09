@@ -20,45 +20,40 @@ export class ShopStorage {
       return;
     }
     const products = this.getAllProducts();
-    const searchProduct = products.find(item => item._id === newProduct._id)
+    const searchProduct = products.find(item => item._id === newProduct._id);
     if (!searchProduct) {
-      newProduct.amount = 1
-      products.push(newProduct)
+      newProduct.amount = 1;
+      products.push(newProduct);
     } else {
-      searchProduct.amount += 1
+      searchProduct.amount += 1;
     }
-    this.#writeToLocalStorage(products)
+    this.#writeToLocalStorage(products);
   }
 
   removeProductById(productId) {
     const products = this.getAllProducts();
-    const searchProduct = products.find(item => item._id === productId)
-    if(!searchProduct){
+    const searchProduct = products.find(item => item._id === productId);
+    if (!searchProduct) {
       return;
-    }else if(searchProduct.amount > 1) {
-      searchProduct.amount -= 1
-    }else {
-      products.filter(elem => elem._id === searchProduct._id)
+    } else if (searchProduct.amount > 1) {
+      searchProduct.amount -= 1;
+    } else {
+      products.filter(elem => elem._id === searchProduct._id);
     }
-    this.#writeToLocalStorage(products)
+    this.#writeToLocalStorage(products);
   }
-
 
   removeAllProductsById(productId) {
-    this.#writeToLocalStorage(this.getAllProducts().filter(elem => elem._id === productId))
+    this.#writeToLocalStorage(
+      this.getAllProducts().filter(elem => elem._id === productId)
+    );
   }
 
-  removeAllProducts(){
-
-    this.#writeToLocalStorage([])
+  removeAllProducts() {
+    this.#writeToLocalStorage([]);
   }
 
   #writeToLocalStorage(productArray) {
     localStorage.setItem(this.storageBasketName, JSON.stringify(productArray));
   }
-
-
-
-
-
 }

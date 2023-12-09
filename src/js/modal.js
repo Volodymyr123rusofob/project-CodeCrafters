@@ -1,28 +1,27 @@
 import ApiService from './requests';
-import icons from '../img/symbol-defs.svg';// імпортую свг собі в проект
-// import { ShopStorage } from './local-storage';
+import icons from '../img/symbol-defs.svg'; // імпортую свг собі в проект
+import { ShopStorage } from './local-storage';
 // import createMarkupProducts from './markup_products_list'
+import { handleBasketClick } from './products_list';
 // import {addProductOnClickButton, removeProductOnClickButton} from './function.js'
 
 const modal = document.querySelector('.modal-prod-wrapper');
 
-
-const SHOP_STORAGE = 'shop-storage';
-// const shopStorage = new ShopStorage(SHOP_STORAGE)
+// const SHOP_STORAGE = 'shop-storage';
+const SHOP_STORAGE = 'cart';
+const shopStorage = new ShopStorage(SHOP_STORAGE);
 const api = new ApiService();
 
-
 export async function openModal(productId) {
+  modal.classList.add('modal-active');
+  modal.classList.add('loader'); // тут создам cпинер через css
+  const productDetails = await api.getProductById(productId);
 
-    modal.classList.add('modal-active');
-    modal.classList.add('loader');// тут создам cпинер через css
-    const productDetails = await api.getProductById(productId);
+  // console.log(productDetails);
+  modal.classList.remove('loader'); // тут ,буду очищать cпинер через css
+  renderModal(productDetails);
 
-    // console.log(productDetails);
-    modal.classList.remove('loader');// тут ,буду очищать cпинер через css
-    renderModal(productDetails);
-
-    isCurrentCart(productDetails);
+  isCurrentCart(productDetails);
 }
 
 //! Функція яка зберігає стан кнопки залежно від стану корзини
@@ -30,17 +29,15 @@ function isCurrentCart(productDetails) {
   const addBtnText = document.querySelector('.modal-prod-add-text');
   const productId = productDetails._id;
   const currentCart = shopStorage.getAllProducts();
-
-  if (currentCart.some(item => item._id === productId)) {
+  if (currentCart.some(item => item.productId === productId)) {
     addBtnText.textContent = 'Remove from';
   } else {
     addBtnText.textContent = 'Add to';
   }
 }
 
-
 //! Функція рендеру розмітки
- export function renderModal(productDetails) {
+export function renderModal(productDetails) {
   try {
     modal.classList.add('modal-active');
     document.body.classList.add('stop-scroll');
@@ -104,7 +101,9 @@ export function addProductToBasket(productDetails) {
   const productId = productDetails._id;
   //
   const currentCart = shopStorage.getAllProducts();
-  const isProductInCart = currentCart.some(item => item._id === productId);
+  const isProductInCart = currentCart.some(
+    item => item.productId === productId
+  );
   const addBtnText = document.querySelector('.modal-prod-add-text');
 
   if (isProductInCart) {
@@ -112,6 +111,7 @@ export function addProductToBasket(productDetails) {
     // removeProductOnClickButton(productId)
   } else {
     addBtnText.textContent = 'Remove from';
+    handleBasketClick(addBtnText, productId);
     // addProductOnClickButton(productId)
   }
 }
@@ -143,11 +143,7 @@ function closeModalOnEsc(e) {
   }
 }
 
-
-
-
 // ________________________откриваю модалку _____________________________
-
 
 // const list = document.querySelector('.js-products-list');
 // list.addEventListener('click', onClickCart);
@@ -166,5 +162,3 @@ function closeModalOnEsc(e) {
 //       });
 //   }
 // }
-
-
