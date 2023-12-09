@@ -1,5 +1,6 @@
 import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
+import {addEventListenersToBasketButtons} from './products_list.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const apiService = new ApiService();
@@ -74,10 +75,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Відображення HTML-розмітки на сторінці
       const productsList = document.querySelector('.js-products-list');
       productsList.innerHTML = productsMarkup;
+      addEventListenersToBasketButtons();
     } catch (error) {
       console.error('Ошибка при получении продуктов:', error.message);
     }
   });
+
+
 
   // Ініціалізація значень за замовчуванням під час завантаження сторінки
   const defaultFilters = {
