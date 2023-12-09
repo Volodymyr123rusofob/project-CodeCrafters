@@ -1,41 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/project-CodeCrafters/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     
-  <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-04ac067b.css">
-</head>
+    
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/cart-36dfd07f.css">
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-04ac067b.css">
+  </head>
 
-<body>
-     <!--Тут буде header-->
-
+  <body>
+    <!--Тут буде header-->
 
     <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
-    <div class="container cart-wrap"> 
-        <!--Секція Тані-->
+    <div class="container cart-wrap">
+      <!--Секція Тані-->
 
+      <!---Секція Андрія-->
+      <h2 class="checkout-title">Your order</h2>
+      <div class="checkout-total-wrap">
+        <p class="checkout-text">Total</p>
+        <p class="checkout-total">$0.00</p>
+      </div>
 
-        <!---Секція Андрія-->
-        <h2 class="price-title">Your order</h2>
-        <div class="total-wrap">
-            <p class="price-text">Total</p>
-             <p class="price-numbers" id="totalPrice">$0.00</p>
-        </div>
+      <div class="checkout-input-wrap">
+        <label for="checkoutEmail"></label>
+        <input
+          class="checkout-input-email"
+          type="email"
+          id="checkoutEmail"
+          name="email"
+          placeholder="Mail:"
+          required
+        />
+        <button class="checkout-button" type="submit">Checkout</button>
+      </div>
 
+      <!-- Ця частина з'являється, коли корзина порожня -->
+      <div
+        class="container empty-container"
+        id="emptyCartContainer"
+        style="display: none"
+      >
+        <picture>
+          <source
+            srcset="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png 1x, /project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png 2x"
+            media="
+            (min-width: 1440px)"
+          />
+          <source
+            srcset="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png 1x, /project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png 2x"
+            media="
+            (min-width: 768px)"
+          />
+          <source
+            srcset="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png 1x, /project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png 2x"
+            media="
+            (min-width: 375px)"
+          />
+          <img
+            src="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png"
+            alt="Empty Cart Image"
+            class="empty-cart-image"
+          />
+        </picture>
+        <h2 class="empty-cart-title">
+          Your basket is <span class="empty-cart-title-span">empty...</span>
+        </h2>
+        <p class="empty-cart-text">
+          Go to the main page to select your favorite products and add them to
+          the cart.
+        </p>
+      </div>
 
-        <div class="input-wrap">
-            <label for="email"></label>
-            <input class="input-cart-email" type="email" id="email" name="email" placeholder="Mail:" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Enter a valid email address" required>
-            <button class="checkout-button" type="submit">Checkout</button>
-        </div>
-
-
-    <!--Тут буде footer-->
+      <!--Тут буде footer-->
     </div>
-</body>
-
+    <script src="./js/cart_products.js"></script>
+    <script src="./js/cart_checkout.js"></script>
+  </body>
 </html>
