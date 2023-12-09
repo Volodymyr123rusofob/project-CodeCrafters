@@ -42,7 +42,7 @@
  // function addFunctionalityToElements() {
    // cartButtonStyle();
  // }
- // const productsContainer = document.querySelector('тут селектор');
+ // const productsContainer = document.querySelector('.products-container');
 
  // function saveProductsToLocalStorage(products) {
 
