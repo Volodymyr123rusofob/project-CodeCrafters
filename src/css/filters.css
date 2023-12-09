@@ -106,7 +106,7 @@
   border-radius: 30px;
   background: #e8e8e2;
   /* local */
-  background-image: url('../img/symbol-defs.svg#chevron-down');
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
   /* Project */
   background-repeat: no-repeat;
   background-position: calc(100% - 20px) center;
@@ -138,7 +138,7 @@
   border-radius: 30px;
   background: #fafafa;
   /* local */
-  background-image: url("../img/symbol-defs.svg#chevron-down");
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
   /* Project */
   background-repeat: no-repeat;
   background-position: calc(100% - 20px) center;
@@ -202,9 +202,9 @@
     border: 1px solid rgba(1, 1, 1, 0.3);
 
     display: flex;
-    padding: 14px 20px;
-    justify-content: center;
-    /* align-items: center; */
+padding: 12px 20px 16px 20px; 
+   justify-content: center;
+    align-items: center;
     gap: 44px;
 
     color: #010101;
@@ -218,17 +218,18 @@
     -moz-appearance: none;
     appearance: none;
     background-color: #e8e8e2;
-    background-image: url("../img/symbol-defs.svg#chevron-down");
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
   /* for add task */
   .category-select-letter {
+    width: 200px;
     background: #fafafa;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("../img/symbol-defs.svg#chevron-down");
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
@@ -305,7 +306,7 @@
     border: 1px solid rgba(1, 1, 1, 0.3);
 
     display: flex;
-    padding: 14px 20px;
+    padding: 12px 20px 16px 20px;
     justify-content: center;
     align-items: center;
     gap: 44px;
@@ -320,18 +321,20 @@
     -moz-appearance: none;
     appearance: none;
     background-color: #e8e8e2;
-    background-image: url("../img/symbol-defs.svg#chevron-down");
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
 
   /* for add task */
   .category-select-letter {
+    width: 200px;
     background: #fafafa;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("../img/symbol-defs.svg#chevron-down");
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
+/* background-image: url("../img/symbol-defs.svg#chevron-down"); */
     background-repeat: no-repeat;
     background-position: calc(100% - 25px) center;
   }
