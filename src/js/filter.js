@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         products = await apiService.getAllProducts(filters.page, filters.limit);
       } else if (!filters.keyword) {
         // Якщо немає ключового слова, запит на отримання всіх продуктів у вибраній категорії
-        products = await apiService.getProductsInCategory(
+        products = await apiService.getProductsInCategories(
           filters.category,
           filters.page,
           filters.limit
