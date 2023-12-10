@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/project-CodeCrafters/fav.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthy Food</title>
+    
+    
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/cart-64a4165b.css">
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-ecae55ba.css">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/project-CodeCrafters/fav.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Healthy Food</title>
-  
-  
-  <link rel="stylesheet" href="/project-CodeCrafters/assets/cart-85b304da.css">
-  <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-ecae55ba.css">
-</head>
-
-<body>
-  <header class="header" role="banner">
+  <body>
+    <header class="header" role="banner">
   <div class="container">
     <div class="header-container">
   
@@ -47,66 +46,90 @@
 
 
 
-  <div class="container cart-title">
-    <span class="cart-title-icon">
-      <svg class="icon-basket" width="18" height="18">
-        <use href="/project-CodeCrafters/assets/symbol-defs-011caa0e.svg#icon-basket"></use>
-      </svg>
-    </span>
-    <h1 class="cart-title-text" id="cart-counter">CART (0)</h1>
-  </div>
-
-  <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
-  <div class="container cart-wrap" id="basket">
-    <!--Секція Тані-->
-
-    <div class="delete-all">
-      <button type="button" class="btn-delete-all">
-        Delete All
-        <span class="icon-close-sharp">
-          <svg class="icon-basket" width="24" height="24">
-            <use href="/project-CodeCrafters/assets/symbol-defs-011caa0e.svg#icon-ion_close-sharp"></use>
-          </svg>
-        </span>
-      </button>
-    </div>
-    <div class="cart-products"></div>
-
-    <!---Секція Андрія-->
-
-    <h2 class="checkout-title">Your order</h2>
-    <div class="checkout-total-wrap">
-      <p class="checkout-text">Total</p>
-      <p class="checkout-total">$0.00</p>
+    <div class="container cart-title">
+      <span class="cart-title-icon">
+        <svg class="icon-basket" width="18" height="18">
+          <use href="/project-CodeCrafters/assets/symbol-defs-011caa0e.svg#icon-basket"></use>
+        </svg>
+      </span>
+      <h1 class="cart-title-text" id="cart-counter">CART (0)</h1>
     </div>
 
-    <div class="checkout-input-wrap">
-      <label for="checkoutEmail"></label>
-      <input class="checkout-input-email" type="email" id="checkoutEmail" name="email" placeholder="Mail:" required />
-      <button class="checkout-button" type="submit">Checkout</button> -->
-    </div>
+    <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
+    <div class="container cart-wrap" id="basket">
+      <!--Секція Тані-->
 
-    <!-- Ця частина з'являється, коли корзина порожня -->
-    <div class="container empty-container" id="emptyCartContainer" style="display: none">
-      <picture>
-        <source srcset="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png 1x, /project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png 2x" media="
-                    (min-width: 1440px)" />
-        <source srcset="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png 1x, /project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png 2x" media="
-                    (min-width: 768px)" />
-        <source srcset="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png 1x, /project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png 2x" media="
-                    (min-width: 375px)" />
-        <img src="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png" alt="Empty Cart Image" class="empty-cart-image" />
-      </picture>
-      <h2 class="empty-cart-title">
-        Your basket is <span class="empty-cart-title-span">empty...</span>
-      </h2>
-      <p class="empty-cart-text">
-        Go to the main page to select your favorite products and add them to
-        the cart.
-      </p>
+      <div class="delete-all">
+        <button type="button" class="btn-delete-all">
+          Delete All
+          <span class="icon-close-sharp">
+            <svg class="icon-basket" width="24" height="24">
+              <use href="/project-CodeCrafters/assets/symbol-defs-011caa0e.svg#icon-ion_close-sharp"></use>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div class="cart-products"></div>
+
+      <!---Секція Андрія-->
+
+      <h2 class="checkout-title">Your order</h2>
+      <div class="checkout-total-wrap">
+        <p class="checkout-text">Total</p>
+        <p class="checkout-total">$0.00</p>
+      </div>
+
+      <div class="checkout-input-wrap">
+        <label class="checkout-input-label" for="checkoutEmail"></label>
+        <input
+          class="checkout-input-email"
+          type="email"
+          id="checkoutEmail"
+          name="email"
+          placeholder="example@email.com"
+          required
+        />
+        <button class="checkout-button" type="submit">Checkout</button>
+      </div>
+
+      <!-- Ця частина з'являється, коли корзина порожня -->
+      <div
+        class="container empty-container"
+        id="emptyCartContainer"
+        style="display: none"
+      >
+        <picture>
+          <source
+            srcset="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png 1x, /project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png 2x"
+            media="
+                    (min-width: 1440px)"
+          />
+          <source
+            srcset="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png 1x, /project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png 2x"
+            media="
+                    (min-width: 768px)"
+          />
+          <source
+            srcset="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png 1x, /project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png 2x"
+            media="
+                    (min-width: 375px)"
+          />
+          <img
+            src="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png"
+            alt="Empty Cart Image"
+            class="empty-cart-image"
+          />
+        </picture>
+        <h2 class="empty-cart-title">
+          Your basket is <span class="empty-cart-title-span">empty...</span>
+        </h2>
+        <p class="empty-cart-text">
+          Go to the main page to select your favorite products and add them to
+          the cart.
+        </p>
+      </div>
     </div>
-  </div>
-  <footer class="footer">
+    <footer class="footer">
     <div class="footer-container container">
         <div class="footer-wramp">
         <div class="footer-logo-social">
@@ -176,8 +199,7 @@
 </div>
     
 </footer>
-  <script src="./js/cart_products.js"></script>
-  <script src="./js/cart_checkout.js"></script>
-</body>
-
+    <script src="./js/cart_products.js"></script>
+    <script src="./js/cart_checkout.js"></script>
+  </body>
 </html>
