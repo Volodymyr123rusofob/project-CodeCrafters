@@ -2,7 +2,9 @@ import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
 import {addEventListenersToBasketButtons} from './products_list.js';
 
+
 document.addEventListener('DOMContentLoaded', async () => {
+  localStorage.setItem('noResultsMessageDisplayed', 'false');
   const apiService = new ApiService();
 
   // Запит списку категорій та додавання "Show all"
@@ -71,20 +73,49 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // RENDERing
       if (products.totalPages === 0) {
-        renderNoResultsMessage();
+        if (localStorage.getItem('noResultsMessageDisplayed') !== 'true' || localStorage.getItem('noResultsMessageDisplayed') !== true) {
+
+          renderNoResultsMessage();
+        }
       } else {
+        
         // Передача властивостей продукту markUp()
         const productsMarkup = createMarkup(products.results);
-
+        
         // Відображення HTML-розмітки на сторінці
         const productsList = document.querySelector('.js-products-list');
         productsList.innerHTML = productsMarkup;
         addEventListenersToBasketButtons();
+        // Удаление сообщения "Nothing..."
+        removeNoResultsMessage();
+        // Устанавливаем флаг в false, так как результаты найдены
+        localStorage.setItem('noResultsMessageDisplayed', 'false');
+        
       }
     } catch (error) {
       console.error('Ошибка при получении продуктов:', error.message);
     }
   });
+
+  function removeNoResultsMessage() {
+    // const productsList = document.querySelector('.js-products-list');
+    const titleElement = document.querySelector('.filters-title');
+    const textElement = document.querySelector('.filters-text');
+// productsList.remove();
+// titleElement.remove();
+// textElement.remove();
+   if (titleElement) {
+     titleElement.remove();
+   }
+
+   if (textElement) {
+     textElement.remove();
+   }
+
+      // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
+      localStorage.setItem('noResultsMessageDisplayed', 'true');
+    
+  }
 
 
 
@@ -115,9 +146,15 @@ function addFocusStyle() {
 function removeFocusStyle() {
   inputBox.classList.remove('focus-within');
 }
+// 
+// 
 // rendering "Nothing was found for the selected"
 function renderNoResultsMessage() {
-  if (localStorage.getItem('noResultsMessageDisplayed')) {
+
+  if (
+    localStorage.getItem('noResultsMessageDisplayed') === 'true' ||
+    localStorage.getItem('noResultsMessageDisplayed') === true
+  ) {
     return; // Если да, то выходим из функции
   }
   const productsList = document.querySelector('.js-products-list');

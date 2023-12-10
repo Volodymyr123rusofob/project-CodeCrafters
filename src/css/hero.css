@@ -1,3 +1,7 @@
+.hero-container.container {
+  padding-top: 72px;
+}
+
 .hero-title {
   color: var(--text, #010101);
   text-align: center;
@@ -52,6 +56,10 @@
 
 /* ====== Tablet ====== */
 @media screen and (min-width: 768px) {
+  .hero-container.container {
+    padding-top: 116px;
+  }
+
   .hero-title {
     font-size: 80px;
     line-height: 80px;
@@ -77,6 +85,10 @@
 
 /* ====== Desktop ====== */
 @media screen and (min-width: 1440px) {
+  .hero-container.container {
+    padding-top: 77px;
+  }
+
   .hero-title {
     letter-spacing: -1.6px;
   }
