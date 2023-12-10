@@ -101,7 +101,7 @@ export function addOrRemoveProductToBasket(productDetails) {
 
   } else {
     removeProductOnClickButton(productId)
-    alertPopUp('The product has been removed from the basket!')
+    alertPopUp('The product has been removed from the basket!','info')
     addBtnText.textContent = 'Add to';
     updateBasketIconByProductId(productId,false)
   }
