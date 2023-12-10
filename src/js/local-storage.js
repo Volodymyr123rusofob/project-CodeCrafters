@@ -45,7 +45,7 @@ export class ShopStorage {
 
   removeAllProductsById(productId) {
     this.#writeToLocalStorage(
-      this.getAllProducts().filter(elem => elem._id === productId)
+      this.getAllProducts().filter(elem => elem._id !== productId)
     );
   }
 

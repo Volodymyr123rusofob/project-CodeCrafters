@@ -1,3 +1,4 @@
+import './js/local-storage-interface.js';
 import './js/header';
 import './js/filter';
 import './js/discount_products';
@@ -7,4 +8,3 @@ import './js/products_list';
 import './js/pagination.js';
 import './js/footer';
 import './js/modal';
-import './js/function.js';
