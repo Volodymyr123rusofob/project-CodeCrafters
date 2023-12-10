@@ -2,7 +2,9 @@ import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
 import {addEventListenersToBasketButtons} from './products_list.js';
 
+
 document.addEventListener('DOMContentLoaded', async () => {
+  localStorage.setItem('noResultsMessageDisplayed', 'false');
   const apiService = new ApiService();
 
   // Запит списку категорій та додавання "Show all"
@@ -71,6 +73,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // RENDERing
       if (products.totalPages === 0) {
+        // console.log('noResultsMessageDisplayed = ', noResultsMessageDisplayed);
+        // console.log('products.totalPages = ', products.totalPages);
         renderNoResultsMessage();
       } else {
         // Передача властивостей продукту markUp()
@@ -115,9 +119,12 @@ function addFocusStyle() {
 function removeFocusStyle() {
   inputBox.classList.remove('focus-within');
 }
+// 
+// 
 // rendering "Nothing was found for the selected"
 function renderNoResultsMessage() {
-  if (localStorage.getItem('noResultsMessageDisplayed')) {
+
+  if (localStorage.getItem('noResultsMessageDisplayed')==='true') {
     return; // Если да, то выходим из функции
   }
   const productsList = document.querySelector('.js-products-list');
