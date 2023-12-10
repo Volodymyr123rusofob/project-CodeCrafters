@@ -56,4 +56,11 @@ export class ShopStorage {
   #writeToLocalStorage(productArray) {
     localStorage.setItem(this.storageBasketName, JSON.stringify(productArray));
   }
+
+  //додатковий метод для видалення одного продукту (для корректної роботи кошика)
+  removeProduct(productId) {
+    const products = this.getAllProducts();
+    const updatedProducts = products.filter(product => product._id !== productId);
+    this.#writeToLocalStorage(updatedProducts);
+  }
 }

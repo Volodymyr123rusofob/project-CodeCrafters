@@ -51,12 +51,19 @@ console.log('Displaying cart markup with product details:', validProductDetails)
   updateCart();
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.addEventListener('click', (event) => {
+  document.body.addEventListener('click', async (event) => {
     const btnDeleteAll = event.target.closest('.btn-delete-all');
+    const btnDelete = event.target.closest('.cart-btn-delete');
+
     if (btnDeleteAll) {
-      console.log('Deleting all products from storage.'); // Проверка в консоли
+      console.log('Deleting all products from storage.');
       storage.removeAllProducts();
-      console.log('Updating cart after removing all products.'); // Проверка в консоли
+      console.log('Updating cart after removing all products.');
+      updateCart();
+    } else if (btnDelete) {
+      const productId = btnDelete.closest('.cart-product-item').dataset.productId;
+      console.log(`Deleting product with ID: ${productId}`);
+      storage.removeProduct(productId); // ИЗМЕНЕНИЕ
       updateCart();
     }
   });
