@@ -2,6 +2,7 @@ import icons from '../img/symbol-defs.svg'; // імпортую свг собі 
 import {getAllProducts,addProductOnClickButton,removeProductOnClickButton} from './local-storage-interface'
 import alertPopUp from './alert';
 import {updateBasketIconByProductId} from './products_list';
+import { updateCartCounter } from './header.js';
 
 const modal = document.querySelector('.modal-prod-wrapper');
 
@@ -46,7 +47,7 @@ export function renderModal(productDetails) {
   <p class="modal-prod-name">${productDetails.name}</p>
   <ul class="modal-prod-list">
     <li class="modal-prod-item">
-      <p class="modal-prod-text">Category: <span>${productDetails.category}</span></p>
+      <p class="modal-prod-text">Category: <span>${productDetails.category.replace(/_/g, ' ')}</span></p>
     </li>
     <li class="modal-prod-item">
       <p class="modal-prod-text">Size: <span>${productDetails.size}</span></p>
@@ -104,6 +105,7 @@ export function addOrRemoveProductToBasket(productDetails) {
     addBtnText.textContent = 'Add to';
     updateBasketIconByProductId(productId,false)
   }
+  updateCartCounter();
 }
 
 //! Функція закриття модалки при кліку на хрестик
