@@ -1,30 +1,26 @@
-<!DOCTYPE html>
+<!--  <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/cart.css" />
-  </head>
+ -->
 
-  <body>
+
+
+
+  <!-- <body> --> -->
     <!--Тут буде header-->
-    <load ="partials/header.html" />
+    <!-- <load ="partials/header.html" /> -->
 
     <!-- Заголовок сторінки -->
-    <div class="container cart-title">
+    <!-- <div class="container cart-title">
       <span class="cart-title-icon">
         <svg class="icon-basket" width="18" height="18">
           <use href="/img/symbol-defs.svg#icon-basket"></use>
         </svg>
       </span>
       <h1 class="cart-title-text" id="cart-counter">CART (0)</h1>
-    </div>
+    </div> -->
 
     <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
-    <div class="container cart-wrap" id="basket">
+    <!-- <div class="container cart-wrap" id="basket"> -->
       <!--Секція Тані-->
       <!-- <div class="delete-all">
         <button type="button" class="btn-delete-all">
@@ -63,22 +59,49 @@
         <picture>
           <source
             srcset="
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/fav.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthy Food</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/cart.css" />
+</head>
+
+<body>
+  <load="partials/header.html" />
+
+  <!- Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях
+  <div class="container cart-wrap">
+    <!Секція Тані-->
+
+    <!---Секція Андрія-->
+    <!-- <h2 class="checkout-title">Your order</h2>
+    <div class="checkout-total-wrap">
+      <p class="checkout-text">Total</p>
+      <p class="checkout-total">$0.00</p>
+    </div>
+
+    <div class="checkout-input-wrap">
+      <label for="checkoutEmail"></label>
+      <input class="checkout-input-email" type="email" id="checkoutEmail" name="email" placeholder="Mail:" required />
+      <button class="checkout-button" type="submit">Checkout</button>
+    </div> -->
+
+    <!-- Ця частина з'являється, коли корзина порожня -->
+    <!-- <div class="container empty-container" id="emptyCartContainer" style="display: none">
+      <picture>
+        <source srcset="
               ./img/empty_cart/empty-cart-desktop-1x.png 1x,
               ./img/empty_cart/empty-cart-desktop-2x.png 2x
-            "
-            media="
-            (min-width: 1440px)"
-          />
-          <source
-            srcset="
+            " media="
+            (min-width: 1440px)" />
+        <source srcset="
               ./img/empty_cart/empty-cart-tab-1x.png 1x,
               ./img/empty_cart/empty-cart-tab-2x.png 2x
-            "
-            media="
-            (min-width: 768px)"
-          />
-          <source
-            srcset="
+            " media="
+            (min-width: 768px)" />
+        <source srcset="
               ./img/empty_cart/empty-cart-mob-1x.png 1x,
               ./img/empty_cart/empty-cart-mob-2x.png 2x
             "
@@ -99,13 +122,33 @@
           the cart.
         </p>
       </div>
--->
-    </div>
+    </div> -->
     <!--Тут буде footer-->
 
-    <load ="partials/footer.html" />
+    <!-- <load ="partials/footer.html" /> -->
 
-    <script type="module" src="./js/cart_products.js"></script>
+    <!-- <script type="module" src="./js/cart_products.js"></script>
     <script type="module" src="./js/cart_checkout.js"></script>
   </body>
 </html>
+            " media="
+            (min-width: 375px)" />
+        <img src="./img/empty_cart/empty-cart-mob-1x.png" alt="Empty Cart Image" class="empty-cart-image" />
+      </picture>
+      <h2 class="empty-cart-title">
+        Your basket is <span class="empty-cart-title-span">empty...</span>
+      </h2>
+      <p class="empty-cart-text">
+        Go to the main page to select your favorite products and add them to
+        the cart.
+      </p>
+    </div>
+
+    
+  </div>
+  <load="partials/footer.html" />
+  <script src="./js/cart_products.js"></script>
+  <script src="./js/cart_checkout.js"></script>
+</body>
+
+</html> -->

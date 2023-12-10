@@ -59,26 +59,26 @@
   
 // Створення розмітки продукту
      // productTemplate.innerHTML = `
-       // <div>
-           // <div data-product-id="${
+       // <div class="popular-con">
+           // <div class="product-image-container" data-product-id="${
             // product._id
-            // }"> <img src="${product.img}" alt=""></div>
-           // <div>
-               // <h3">${product.name}</h3>
-              // <p>
-                   // Category: <span>${product.category.replace(
+            // }"> <img src="${product.img}" alt="" class="product-image"></div>
+           // <div class="product-text">
+               // <h3" class="product-name">${product.name}</h3>
+              // <p class="product margin">
+                   // Category: <span class="category-value">${product.category.replace(
                     //  '_',
                     //  ' '
                    // )}</span><br>
-                   // Size: <span>${product.size}</span><br>
-                   // Popularity: <span>${
+                   // Size: <span class="size-value">${product.size}</span><br>
+                   // Popularity: <span class="popularity-value">${
                    // product.popularity
                    // }</span>
                // </p>
            // </div>
        // </div>
-      // <button data-product-id="${product._id}">
-      // <svg>
+      // <button class="add-to-cart-btn cart-btn" data-product-id="${product._id}">
+      // <svg class="ico icon-on">
       // <use href="${sprite}#icon-basket"></use>
    // </svg>
        // </button>
@@ -87,13 +87,13 @@
   // Налаштування події для модалки
     // productsContainer.appendChild(productTemplate);
     // const addToCartImg = productTemplate.querySelector(
-      // 'тут селектор'
+      // '.product-image-container'
     // );
     // addToCartImg.addEventListener('click', function () {
     // OpenModal(product._id);
         // });
   
-    // const addToCartBtn = productTemplate.querySelector('тут селектор');
+    // const addToCartBtn = productTemplate.querySelector('.add-to-cart-btn');
     // addToCartBtn.onclick = function () {
     // addToCart(product);
     // };

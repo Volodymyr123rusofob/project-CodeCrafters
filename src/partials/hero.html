@@ -1,0 +1,47 @@
+<section class="hero-section">
+  <div class="hero-container container">
+    <h1 class="hero-title">
+      Welcome to the <span class="hero-span">Food</span> Boutique!
+    </h1>
+    <p class="hero-description">
+      With Food Boutique, you're not just subscribing to food, you're signing up
+      for a fresher, fitter, and happier you.
+    </p>
+    <div class="picture-icon-div">
+      <picture>
+        <source
+          srcset="
+            ./img/hero_img/org-food-desktop-1x.jpg 1x,
+            ./img/hero_img/org-food-desktop-2x.jpg 2x
+          "
+          media="(min-width:1440px)"
+        />
+        <source
+          srcset="
+            ./img/hero_img/org-food-tab-1x.jpg 1x,
+            ./img/hero_img/org-food-tab-2x.jpg 2x
+          "
+          media="(min-width:768px)"
+        />
+        <source
+          srcset="
+            ./img/hero_img/org-food-mob-1x.jpg 1x,
+            ./img/hero_img/org-food-mob-2x.jpg 2x
+          "
+          media="(min-width:320px)"
+        />
+        <img
+          class="hero-img"
+          src="./img/hero_img/org-food-desktop-1x.jpg"
+          alt="Organic food"
+          width="1240"
+        />
+      </picture>
+      <div class="icon-div">
+        <svg class="hero-icon" width="100" height="100">
+          <use href="/img/symbol-defs.svg#icon-organic-food"></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

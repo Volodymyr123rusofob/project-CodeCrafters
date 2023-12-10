@@ -3,12 +3,15 @@
 @media screen and (max-width: 767px) {
 }
 .filter-section {
+  width: 100%;
   padding-top: 100px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   padding-bottom: 40px;
+  /* margin: 0 auto; */
 }
 
 .filter-form {
+  
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -16,8 +19,9 @@
 }
 
 .input-box {
-  max-width: 334px;
-  height: 47px;
+  margin: 0 auto;
+  width: 335px;
+  height: 48px;
   border-radius: 30px;
   border: 1px solid rgba(1, 1, 1, 0.3);
 
@@ -34,7 +38,6 @@
 .input-box.focus-within {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
 
 .keyword-input {
   border: none;
@@ -70,8 +73,8 @@
 }
 /* ------------select---------- */
 .category-select option {
-  background-color: #e8e8e2; /* Фоновый цвет для каждого элемента списка */
-
+  background-color: #e8e8e2; 
+  /* Фоновый цвет для каждого элемента списка */
 }
 /* ------------------------------------ */
 .category-select:focus {
@@ -80,22 +83,22 @@
 
 .category-select,
 .category-select-letter {
-  
+  margin: 0 auto;
   outline: none;
   box-shadow: 0 0 0 transparent;
   transition: box-shadow 0.25s;
 
-  max-width: 335px;
+  width: 335px;
   height: 48px;
   border-radius: 30px;
   border: 1px solid rgba(1, 1, 1, 0.3);
 
   color: #010101;
-font-family: Neue Montreal;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 18px; /* 128.571% */
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
 
   display: flex;
   padding: 14px 20px;
@@ -107,10 +110,10 @@ line-height: 18px; /* 128.571% */
   -moz-appearance: none;
   appearance: none;
   border-radius: 30px;
-  background: #e8e8e2;
-  /* local */
-  background-image: url("./chevron-down.svg");
-  /* Project */
+  
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
+  background-color: #e8e8e2;
+ 
   background-repeat: no-repeat;
   background-position: calc(100% - 20px) center;
 }
@@ -139,62 +142,110 @@ line-height: 18px; /* 128.571% */
   -moz-appearance: none;
   appearance: none;
   border-radius: 30px;
-  background: #fafafa;
-  /* local */
-  background-image: url("./chevron-down.svg");
-  /* Project */
+  
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
+  background-color: #fafafa;
+ 
   background-repeat: no-repeat;
   background-position: calc(100% - 20px) center;
 }
 
-/* tablet --------------------------------------------------------------------------------------------*/
-@media screen and (min-width: 768px) {
-  .filter-section {
-    /* + */
-    width: 100%;
-    max-width: 768px;
-    padding-left: 32px;
-    padding-bottom: 40px;
+.filters-title{
+    width: 261px;
+    margin-bottom: 14px;
+    margin-left: 57px;
+    margin-top: 100px;
+color: #010101;
+text-align: center;
+font-family: Neue Montreal;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.2em;
   }
+
+  .filters-text{
+width: 279px;
+margin-left: 48px;
+margin-bottom: 180px;
+color: rgba(1, 1, 1, 0.70);
+text-align: center;
+font-family: Neue Montreal;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.33em;
+  }
+
+  .filters-span{
+color: #6D8434;
+font-family: Neue Montreal;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.33em;
+  }
+  
+  /* tablet --------------------------------------------------------------------------------------------*/
+  @media screen and (min-width: 768px) {
+    .filter-section {
+      /* + */
+      width: 100%;
+      width: 768px;
+      padding-left: 32px;
+      padding-bottom: 40px;
+      margin: 0 auto;
+    
+  }
+
   .filter-form {
     /* + */
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+  
+.input-box {
+  /* margin: 0 auto; */
+  width: 269px;
+  height: 52px;
   }
 
-.keyword-input {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  outline: none;
-  background: transparent;
-  width: 100%;
-  /* *************************************************************** */
-  padding: 16px 60px 12px 20px;
-  box-sizing: border-box;
-}
-
-.keyword-input::placeholder {
-  color: #010101;
-  font-family: Neue Montreal;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.33em;
-}
-
-.submit-btn {
-  display: flex;
-  cursor: pointer;
-  width: fit-content;
-  margin-right: 20px;
-  background: transparent;
-  border: none;
-  padding: 0;
-}
+  .keyword-input {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    /* *************************************************************** */
+    padding: 16px 60px 12px 20px;
+    box-sizing: border-box;
+  }
+  
+  .keyword-input::placeholder {
+    color: #010101;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33em;
+  }
+  
+  .submit-btn {
+    display: flex;
+    cursor: pointer;
+    width: fit-content;
+    margin-right: 20px;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
 
   .category-select,
   .category-select-letter {
@@ -205,9 +256,9 @@ line-height: 18px; /* 128.571% */
     border: 1px solid rgba(1, 1, 1, 0.3);
 
     display: flex;
-    padding: 14px 20px;
-    justify-content: center;
-    /* align-items: center; */
+padding: 12px 20px 16px 20px; 
+   justify-content: center;
+    align-items: center;
     gap: 44px;
 
     color: #010101;
@@ -220,20 +271,57 @@ line-height: 18px; /* 128.571% */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
     background-color: #e8e8e2;
-    background-image: url("./chevron-down.svg");
     background-repeat: no-repeat;
-    background-position: calc(100% - 25px) center;
+    background-position: calc(100% - 20px) center;
   }
   /* for add task */
   .category-select-letter {
-    background: #fafafa;
+    width: 200px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("./chevron-down.svg");
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
+    background-color: #fafafa;
     background-repeat: no-repeat;
-    background-position: calc(100% - 25px) center;
+    background-position: calc(100% - 20px) center;
+  }
+
+  .filters-title{
+    width: 367px;
+    margin-bottom: 14px;
+    margin-left: 201px;
+    margin-top: 150px;
+color: #010101;
+text-align: center;
+font-family: Neue Montreal;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.2em;
+  }
+
+  .filters-text{
+width: 371px;
+margin-left: 199px;
+margin-bottom: 300px;
+color: rgba(1, 1, 1, 0.70);
+text-align: center;
+font-family: Neue Montreal;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.33em;
+  }
+
+  .filters-span{
+color: #6D8434;
+font-family: Neue Montreal;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.33em;
   }
 }
 /* desktop ------------------------------------------------------------------------------------------*/
@@ -287,7 +375,7 @@ line-height: 18px; /* 128.571% */
     /* + */
     cursor: pointer;
     width: fit-content;
-    background: transparent; 
+    background: transparent;
     border: none;
     padding: 0;
     margin-right: 20px;
@@ -305,37 +393,74 @@ line-height: 18px; /* 128.571% */
     width: 189px;
     height: 52px;
     border-radius: 30px;
-  border: 1px solid rgba(1, 1, 1, 0.3);
+    border: 1px solid rgba(1, 1, 1, 0.3);
 
-  display: flex;
-  padding: 14px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 44px;
+    display: flex;
+    padding: 12px 20px 16px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 44px;
 
-   color: #010101;
+    color: #010101;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
+    background-color: #e8e8e2;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
+  }
+
+  /* for add task */
+  .category-select-letter {
+    width: 200px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
+    background-color: #fafafa;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
+  }
+
+  .filters-title{
+    width: 367px;
+    margin-bottom: 14px;
+    margin-left: 347px;
+    margin-top: 200px;
+color: #010101;
+text-align: center;
+font-family: Neue Montreal;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.2em;
+  }
+
+  .filters-text{
+width: 371px;
+margin-left: 347px;
+margin-bottom: 1060px;
+color: rgba(1, 1, 1, 0.70);
+text-align: center;
 font-family: Neue Montreal;
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
-line-height: 1.33em;  
- -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: #E8E8E2;
-  background-image: url("./chevron-down.svg");
-  background-repeat: no-repeat;
-  background-position: calc(100% - 25px) center; 
+line-height: 1.33em;
   }
-  
-  /* for add task */
-  .category-select-letter {
-    background: #fafafa;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url("./chevron-down.svg");
-    background-repeat: no-repeat;
-    background-position: calc(100% - 25px) center;
+
+  .filters-span{
+color: #6D8434;
+font-family: Neue Montreal;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px;
   }
 }
