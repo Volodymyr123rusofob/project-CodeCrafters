@@ -30,10 +30,12 @@
 
 .footer-logo-link:hover {
 background: rgba(232, 232, 226, 0.20);
+border-radius: 30px;
 }
 .footer-logo-link:focus {
-
-box-shadow: rgba(232, 232, 226, 0.70)
+outline: none;
+box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
+border-radius: 30px;
 }
 .logo-span {
   color: #e8e8e2;
@@ -73,6 +75,10 @@ box-shadow: rgba(232, 232, 226, 0.70)
 }
 
 .footer-social-link {
+  outline: none;
+}
+.footer-social-link:focus {
+  /* box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70); */
 }
 
 .link {
@@ -89,8 +95,10 @@ background: rgba(232, 232, 226, 0.20);
 }
 
 .footer-img-icons:focus {
+  outline: none;
   background: rgba(232, 232, 226, 0.20);
-  box-shadow: rgba(232, 232, 226, 0.70)
+  box-shadow: 0 0 0 3px rgba(226, 232, 226, 0.8);
+  
 }
 .footer-reklam {
 }
