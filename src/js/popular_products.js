@@ -126,7 +126,7 @@ function createMarkup(arr) {
                     Popularity: <span class="popularity-value">${popularity}</span>
                 </p>
             </h3>
-            <button class="cart-button-pop" type="button" data-product-id="${_id}" data-in-cart="false">
+            <button class="cart-button-pop cart-button" type="button" data-product-id="${_id}" data-in-cart="false">
                 <svg class="cart-icon-pop" width="18" height="18">
                     <use href="${icons}#icon-basket"></use>
                 </svg>
