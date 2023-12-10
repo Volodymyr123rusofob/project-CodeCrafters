@@ -1,85 +1,69 @@
-let cartItems = [];
+// Імпорт
+import {
+  getEmptyCartMarkup,
+  getCartMarkup,
+  getcheckoutMarkup,
+} from './markup_cart';
 
-// Референси
-const refs = {
-  //   cartList: document.querySelector(".cart-product-list"),
-  totalPriceElement: document.getElementById('totalPrice'),
-  emailInput: document.querySelector('.checkout-input-email'),
-  inputWrap: document.querySelector('.checkout-input-wrap'),
-  checkoutTitle: document.querySelector('.checkout-title'),
-  checkoutTotalWrap: document.querySelector('.checkout-total-wrap'),
-  emptyCartContainer: document.querySelector('.empty-cart-container'),
-  checkoutButton: document.querySelector('.checkout-button'),
-};
+document.addEventListener('DOMContentLoaded', function () {
+  // Референси
+  const refs = {
+    totalPriceElement: document.querySelector('.checkout-total'),
+    emailInput: document.querySelector('.checkout-input-email'),
+    checkoutButton: document.querySelector('.checkout-button'),
+    cartContainer: document.querySelector('.cart-container'),
+  };
 
-// Function to handle the checkout button click
-function checkout() {
-  const emailValue = refs.emailInput.value;
+  // EventListener oна чекаут кнопку
+  refs.checkoutButton.addEventListener('click', handleCheckout);
 
-  // Check if the total amount is greater than 0 and the cart is not empty
-  if (cartItems.length === 0 || getTotalPrice() === 0) {
-    alert('Cannot proceed with checkout. Cart is empty or total amount is 0.');
-    return;
+  function handleCheckout(event) {
+    event.preventDefault();
+
+    checkout();
   }
 
-  // Validate email input
-  if (!emailValue || !isValidEmail(emailValue)) {
-    alert('Please enter a valid email address.');
-    return;
+  // Функція чекаута
+  function checkout() {
+    const emailValue = refs.emailInput.value;
+
+    // Валідація в інпуті
+    if (!emailValue || !isValidEmail(emailValue)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    // Завантажує правильну розмітку: або порожню корзину, або товари й ціну
+    const cartMarkup =
+      products.length > 0 ? getCartMarkup(products) : getEmptyCartMarkup();
+
+    refs.cartContainer.innerHTML = cartMarkup;
+
+    // Повідомлення про успішний чекаут
+    alert(`Checkout completed! Total Price: $${getTotalPrice(products)}.`);
+
+    // Скидає в нуль
+    refs.totalPriceElement.textContent = '0.00';
+
+    updateTotalPrice(0);
+
+    // Чистить сховище
+    localStorage.clear();
   }
 
-  // Perform checkout process (customize this part based on your needs)
-  alert(
-    `Checkout completed! Total Price: $${getTotalPrice()}. Email: ${emailValue}`
-  );
-
-  // Reset the total price to 0
-  refs.totalPriceElement.textContent = '0.00';
-
-  // Clear the cartItems array
-  cartItems = [];
-
-  // Hide the checkout container
-  if (refs.inputWrap) {
-    refs.inputWrap.style.display = 'none';
+  // Оновлює числа ціни
+  function updateTotalPrice(price) {
+    refs.totalPriceElement.textContent = price.toFixed(2);
   }
 
-  // Hide checkout title and total-wrap
-  if (refs.checkoutTitle && refs.checkoutTotalWrap) {
-    refs.checkoutTitle.style.display = 'none';
-    refs.checkoutTotalWrap.style.display = 'none';
+  // Валідація пошти
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 
-  // Show the empty cart message
-  if (refs.emptyCartContainer) {
-    refs.emptyCartContainer.style.display = 'block';
+  // Обчислює загальну суму
+  function getTotalPrice(products) {
+    return products.reduce((total, { price }) => total + price, 0).toFixed(2);
   }
-
-  // Clear local storage
-  localStorage.clear();
-}
-
-// Function to update the total price
-function updateTotalPrice() {
-  refs.totalPriceElement.textContent = getTotalPrice();
-}
-
-// Function to check if the email is valid
-function isValidEmail(email) {
-  // Regular expression for simple email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-// Function to get the total price of items in the cart
-function getTotalPrice() {
-  return cartItems.reduce((total, item) => total + item.price, 0).toFixed(2);
-}
-
-// EventListener на кнопку Checkout
-refs.checkoutButton.addEventListener('click', handleCheckout);
-function handleCheckout(event) {
-  event.preventDefault();
-
-  checkout();
-}
+});
