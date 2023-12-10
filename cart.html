@@ -7,8 +7,12 @@
     <title>Healthy Food</title>
     
     
+    <script type="module" crossorigin src="/project-CodeCrafters/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/vendor-c5b37fd0.js">
+    <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/local-storage-2f52ffaf.js">
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/vendor-a0b14d8a.css">
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/local-storage-ca80e627.css">
     <link rel="stylesheet" href="/project-CodeCrafters/assets/cart-cac2bd5c.css">
-    <link rel="stylesheet" href="/project-CodeCrafters/assets/styles-ca80e627.css">
   </head>
 
   <body>
@@ -105,83 +109,11 @@
           <use href="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg#icon-basket"></use>
         </svg>
       </span>
-      <h1 class="cart-title-text" id="cart-counter">CART (0)</h1>
+      <h1 class="cart-title-text" id="cart-counter-page">CART (0)</h1>
     </div>
 
     <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
-    <div class="container cart-wrap" id="basket">
-      <!--Секція Тані-->
-
-      <div class="delete-all">
-        <button type="button" class="btn-delete-all">
-          Delete All
-          <span class="icon-close-sharp">
-            <svg class="icon-basket" width="24" height="24">
-              <use href="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg#icon-ion_close-sharp"></use>
-            </svg>
-          </span>
-        </button>
-      </div>
-      <div class="cart-products"></div>
-
-      <!---Секція Андрія-->
-
-      <h2 class="checkout-title">Your order</h2>
-      <div class="checkout-total-wrap">
-        <p class="checkout-text">Total</p>
-        <p class="checkout-total">$0.00</p>
-      </div>
-
-      <div class="checkout-input-wrap">
-        <label class="checkout-input-label" for="checkoutEmail"></label>
-        <input
-          class="checkout-input-email"
-          type="email"
-          id="checkoutEmail"
-          name="email"
-          placeholder="example@email.com"
-          required
-        />
-        <button class="checkout-button" type="submit">Checkout</button>
-      </div>
-
-      <!-- Ця частина з'являється, коли корзина порожня -->
-      <div
-        class="container empty-container"
-        id="emptyCartContainer"
-        style="display: none"
-      >
-        <picture>
-          <source
-            srcset="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png 1x, /project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png 2x"
-            media="
-                    (min-width: 1440px)"
-          />
-          <source
-            srcset="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png 1x, /project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png 2x"
-            media="
-                    (min-width: 768px)"
-          />
-          <source
-            srcset="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png 1x, /project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png 2x"
-            media="
-                    (min-width: 375px)"
-          />
-          <img
-            src="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png"
-            alt="Empty Cart Image"
-            class="empty-cart-image"
-          />
-        </picture>
-        <h2 class="empty-cart-title">
-          Your basket is <span class="empty-cart-title-span">empty...</span>
-        </h2>
-        <p class="empty-cart-text">
-          Go to the main page to select your favorite products and add them to
-          the cart.
-        </p>
-      </div>
-    </div>
+    <div class="container cart-wrap" id="basket"></div>
     <footer class="footer">
     <div class="footer-container container">
         <div class="footer-wramp">
@@ -252,7 +184,7 @@
 </div>
     
 </footer>
-    <script src="./js/cart_products.js"></script>
-    <script src="./js/cart_checkout.js"></script>
+    
+    
   </body>
 </html>
