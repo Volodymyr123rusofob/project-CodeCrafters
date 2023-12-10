@@ -76,6 +76,10 @@
   transition: fill var(--transition-duration) ease-in-out;
 }
 
+.header-logo-icon {
+;
+}
+
 .header-logo-span {
   color: black;
 }
