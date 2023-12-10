@@ -1,7 +1,6 @@
-
 import ApiService from './requests';
 import { ShopStorage } from './local-storage';
-import { getEmptyCartMarkup, getCartMarkup, getcheckoutMarkup } from './markup_cart';
+// import { getEmptyCartMarkup, getCartMarkup, getcheckoutMarkup } from './markup_cart';
 
 document.addEventListener('DOMContentLoaded', () => {
   const basket = document.getElementById('basket');
@@ -47,16 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCart();
   });
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
