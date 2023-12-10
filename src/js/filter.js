@@ -117,6 +117,9 @@ function removeFocusStyle() {
 }
 // rendering "Nothing was found for the selected"
 function renderNoResultsMessage() {
+  if (localStorage.getItem('noResultsMessageDisplayed')) {
+    return; // Если да, то выходим из функции
+  }
   const productsList = document.querySelector('.js-products-list');
 
   // Создаем заголовок H2
@@ -142,4 +145,7 @@ function renderNoResultsMessage() {
   productsList.innerHTML = ''; // Очищаем содержимое productsList
   productsList.insertAdjacentElement('afterend', titleElement);
   titleElement.insertAdjacentElement('afterend', textElement);
+
+  // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
+  localStorage.setItem('noResultsMessageDisplayed', 'true');
 }
