@@ -6,7 +6,7 @@ import { getEmptyCartMarkup, getCartMarkup, getcheckoutMarkup } from './markup_c
 
   const basket = document.getElementById('basket');
   const cartTitle = document.getElementById('cart-counter-page');
-  const storage = new ShopStorage('cart');
+  const storage = new ShopStorage('productsBasket');
   const api = new ApiService();
 
   async function updateCart() {
@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
 
 
 
