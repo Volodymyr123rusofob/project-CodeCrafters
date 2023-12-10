@@ -1,35 +1,24 @@
-import ApiService from './requests';
 import icons from '../img/symbol-defs.svg'; // імпортую свг собі в проект
-import { ShopStorage } from './local-storage';
-// import createMarkupProducts from './markup_products_list'
-import { handleBasketClick } from './products_list';
-// import {addProductOnClickButton, removeProductOnClickButton} from './function.js'
+import {getAllProducts,addProductOnClickButton,removeProductOnClickButton} from './local-storage-interface'
+import alertPopUp from './alert';
+import {updateBasketIconByProductId} from './products_list';
 
 const modal = document.querySelector('.modal-prod-wrapper');
 
-// const SHOP_STORAGE = 'shop-storage';
-const SHOP_STORAGE = 'cart';
-const shopStorage = new ShopStorage(SHOP_STORAGE);
-const api = new ApiService();
-
-export async function openModal(productId) {
+export async function openModal(product) {
   modal.classList.add('modal-active');
   modal.classList.add('loader'); // тут создам cпинер через css
-  const productDetails = await api.getProductById(productId);
-
-  // console.log(productDetails);
   modal.classList.remove('loader'); // тут ,буду очищать cпинер через css
-  renderModal(productDetails);
-
-  isCurrentCart(productDetails);
+  renderModal(product);
+  syncAddProductButtonStatus(product);
 }
 
 //! Функція яка зберігає стан кнопки залежно від стану корзини
-function isCurrentCart(productDetails) {
+function syncAddProductButtonStatus(productDetails) {
   const addBtnText = document.querySelector('.modal-prod-add-text');
   const productId = productDetails._id;
-  const currentCart = shopStorage.getAllProducts();
-  if (currentCart.some(item => item.productId === productId)) {
+  const currentCart = getAllProducts();
+  if (currentCart.some(item => item._id === productId)) {
     addBtnText.textContent = 'Remove from';
   } else {
     addBtnText.textContent = 'Add to';
@@ -82,7 +71,7 @@ export function renderModal(productDetails) {
   `;
 
     const addBtn = document.querySelector('.modal-prod-add-btn');
-    addBtn.addEventListener('click', () => addProductToBasket(productDetails));
+    addBtn.addEventListener('click', () => addOrRemoveProductToBasket(productDetails));
 
     const closeBtn = document.querySelector('.modal-prod-close-btn');
     closeBtn.addEventListener('click', () => closeModal());
@@ -95,26 +84,28 @@ export function renderModal(productDetails) {
   }
 }
 
-// //! Функція додавання в корзину и зміни стану кнопки
-
-export function addProductToBasket(productDetails) {
+export function addOrRemoveProductToBasket(productDetails) {
   const productId = productDetails._id;
   //
-  const currentCart = shopStorage.getAllProducts();
-  const isProductInCart = currentCart.some(
-    item => item.productId === productId
+  const allProducts = getAllProducts();
+  const isProductInBasket = allProducts.some(
+    item => item._id=== productId
   );
   const addBtnText = document.querySelector('.modal-prod-add-text');
-
-  if (isProductInCart) {
-    addBtnText.textContent = 'Add to';
-    // removeProductOnClickButton(productId)
-  } else {
+  if (!isProductInBasket) {
+    addProductOnClickButton({ _id: productId, amount: 1 })
+    alertPopUp()
     addBtnText.textContent = 'Remove from';
-    handleBasketClick(addBtnText, productId);
-    // addProductOnClickButton(productId)
+    updateBasketIconByProductId(productId,true)
+
+  } else {
+    removeProductOnClickButton(productId)
+    alertPopUp('The product has been removed from the basket!')
+    addBtnText.textContent = 'Add to';
+    updateBasketIconByProductId(productId,false)
   }
 }
+
 //! Функція закриття модалки при кліку на хрестик
 
 function closeModal() {
@@ -142,23 +133,3 @@ function closeModalOnEsc(e) {
     closeModal();
   }
 }
-
-// ________________________откриваю модалку _____________________________
-
-// const list = document.querySelector('.js-products-list');
-// list.addEventListener('click', onClickCart);
-
-//  function onClickCart(e) {
-//   e.preventDefault();
-//   const clickedEl = e.target;
-//   if (
-//     clickedEl.closest('a') &&
-//     clickedEl.closest('.products-card-link')
-//   ) {
-//     const id = clickedEl.closest('li').dataset.productId;
-//     openModal(id)
-//       .catch((error)=>{
-//       console.error('Помилка при отриманні продукта за айді:', error.message);
-//       });
-//   }
-// }
