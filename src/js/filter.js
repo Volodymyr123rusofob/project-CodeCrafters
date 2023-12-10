@@ -78,8 +78,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           renderNoResultsMessage();
         }
       } else {
-        // Устанавливаем флаг в false, так как результаты найдены
-        localStorage.setItem('noResultsMessageDisplayed', 'false');
         
         // Передача властивостей продукту markUp()
         const productsMarkup = createMarkup(products.results);
@@ -89,7 +87,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         productsList.innerHTML = productsMarkup;
         addEventListenersToBasketButtons();
         // Удаление сообщения "Nothing..."
-removeNoResultsMessage();
+        removeNoResultsMessage();
+        // Устанавливаем флаг в false, так как результаты найдены
+        localStorage.setItem('noResultsMessageDisplayed', 'false');
         
       }
     } catch (error) {
@@ -98,13 +98,19 @@ removeNoResultsMessage();
   });
 
   function removeNoResultsMessage() {
-    const productsList = document.querySelector('.js-products-list');
+    // const productsList = document.querySelector('.js-products-list');
     const titleElement = document.querySelector('.filters-title');
     const textElement = document.querySelector('.filters-text');
 // productsList.remove();
-titleElement.remove();
-textElement.remove();
-   
+// titleElement.remove();
+// textElement.remove();
+   if (titleElement) {
+     titleElement.remove();
+   }
+
+   if (textElement) {
+     textElement.remove();
+   }
 
       // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
       localStorage.setItem('noResultsMessageDisplayed', 'true');
