@@ -137,10 +137,18 @@ class ApiService {
 
       return response.data;
     } catch (error) {
-      console.error('Помилка при створенні підписки:', error.message);
+      // console.error('Помилка при створенні підписки:', error.message);
+      // throw error;
+      if (error.response && error.response.status === 409) {
+        // Возвращаем информацию о конфликте (если email уже существует)
+        return { conflict: true };
+      }
+
+      console.error('Error during subscription:', error.message);
       throw error;
     }
+    }
   }
-}
+
 
 export default ApiService;
