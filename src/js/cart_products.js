@@ -1,52 +1,66 @@
+
 import ApiService from './requests';
 import { ShopStorage } from './local-storage';
-// import { getEmptyCartMarkup, getCartMarkup, getcheckoutMarkup } from './markup_cart';
+import { getEmptyCartMarkup, getCartMarkup, getcheckoutMarkup } from './markup_cart';
 
-document.addEventListener('DOMContentLoaded', () => {
+
   const basket = document.getElementById('basket');
-  const cartTitle = document.getElementById('cart-counter');
+  const cartTitle = document.getElementById('cart-counter-page');
   const storage = new ShopStorage('cart');
   const api = new ApiService();
 
   async function updateCart() {
     const products = storage.getAllProducts();
-    console.log(products);
+  console.log('Current products in storage:', products); //проверка
 // Формування розмітки контейнерів. якщо кошик порожній відмальовується Empty, у іншову випадку відмальовується розмітка CART
     if (products.length === 0) {
+      console.log('Basket is empty. Displaying empty cart markup.'); //проверка
       basket.innerHTML = '';
       basket.insertAdjacentHTML('beforeend', getEmptyCartMarkup());
     } else {
-      const productDetailsPromises = products.map(async ({ productId, quantity }) => {
+        console.log('Fetching product details for each product in the cart.'); //проверка
+      const productDetailsPromises = products.map(async ({ _id, quantity }) => {
         try {
-          const productDetails = await api.getProductById(productId);
-          return { ...productDetails, quantity };
-        } catch (error) {
-          console.error(`Error fetching product details for productId: ${productId}`, error);
-          return null;
-        }
-      });
+          if (_id) {
+      const productDetails = await api.getProductById(_id);
+      return { ...productDetails, quantity };
+    } else {
+      console.error('_id is undefined or empty for a product in the cart');
+      return null;
+    }
+  } catch (error) {
+    console.error(`Error fetching product details for _id: ${_id}`, error);
+    return null;
+  }
+        
+        });
 
       const productDetailsArray = await Promise.all(productDetailsPromises);
       const validProductDetails = productDetailsArray.filter(details => details !== null);
-
+console.log('Displaying cart markup with product details:', validProductDetails); //проверка
       basket.innerHTML = '';
       basket.insertAdjacentHTML('beforeend', getCartMarkup(validProductDetails));
       basket.insertAdjacentHTML('beforeend', getcheckoutMarkup());
     }
 
     const productCount = products.length;
+    console.log('Updating cart counter with product count:', productCount); //проверка
     cartTitle.textContent = `CART (${productCount})`;
   }
 
   updateCart();
 
- const btnDeleteAll = document.querySelector('.btn-delete-all');
-  btnDeleteAll.addEventListener('click', () => {
-    storage.removeAllProducts();
-    updateCart();
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.addEventListener('click', (event) => {
+    const btnDeleteAll = event.target.closest('.btn-delete-all');
+    if (btnDeleteAll) {
+      console.log('Deleting all products from storage.'); // Проверка в консоли
+      storage.removeAllProducts();
+      console.log('Updating cart after removing all products.'); // Проверка в консоли
+      updateCart();
+    }
   });
 });
-
 
 
 
