@@ -1,5 +1,4 @@
 
-
 export const getEmptyCartMarkup = () =>
     `
       <picture>
@@ -41,6 +40,7 @@ export const getEmptyCartMarkup = () =>
           the cart.
         </p>
     `;
+
 
 
 export const getCartMarkup = (products) =>
