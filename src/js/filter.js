@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Обробка події відправлення форми
   const filterForm = document.querySelector('.filter-form');
+
   filterForm.addEventListener('submit', async event => {
     event.preventDefault();
 
@@ -69,13 +70,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.log('Полученные продукты:', products);
 
       // RENDERing
-      // Передача властивостей продукту markUp()
-      const productsMarkup = createMarkup(products.results);
+      if (products.totalPages === 0) {
+        renderNoResultsMessage();
+      } else {
+        // Передача властивостей продукту markUp()
+        const productsMarkup = createMarkup(products.results);
 
-      // Відображення HTML-розмітки на сторінці
-      const productsList = document.querySelector('.js-products-list');
-      productsList.innerHTML = productsMarkup;
-      addEventListenersToBasketButtons();
+        // Відображення HTML-розмітки на сторінці
+        const productsList = document.querySelector('.js-products-list');
+        productsList.innerHTML = productsMarkup;
+        addEventListenersToBasketButtons();
+      }
     } catch (error) {
       console.error('Ошибка при получении продуктов:', error.message);
     }
@@ -109,4 +114,32 @@ function addFocusStyle() {
 
 function removeFocusStyle() {
   inputBox.classList.remove('focus-within');
+}
+// rendering "Nothing was found for the selected"
+function renderNoResultsMessage() {
+  const productsList = document.querySelector('.js-products-list');
+
+  // Создаем заголовок H2
+  const titleElement = document.createElement('h2');
+  titleElement.textContent = 'Nothing was found for the selected ';
+  titleElement.classList.add('filters-title');
+
+  // Создаем span
+  const filtersSpan = document.createElement('span');
+  filtersSpan.textContent = 'filters';
+  filtersSpan.classList.add('filters-span');
+
+  // Присоединяем span к заголовку
+  titleElement.appendChild(filtersSpan);
+
+  // Создаем параграф
+  const textElement = document.createElement('p');
+  textElement.textContent =
+    'Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.';
+  textElement.classList.add('filters-text');
+
+  // Вставляем элементы в DOM
+  productsList.innerHTML = ''; // Очищаем содержимое productsList
+  productsList.insertAdjacentElement('afterend', titleElement);
+  titleElement.insertAdjacentElement('afterend', textElement);
 }
