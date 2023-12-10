@@ -1,4 +1,4 @@
-import{S as g,A as h}from"./assets/local-storage-2f52ffaf.js";import"./assets/vendor-c5b37fd0.js";const y=()=>`
+import{S as g,A as h}from"./assets/local-storage-db2ac8e7.js";import"./assets/vendor-c5b37fd0.js";const y=()=>`
       <picture>
           <source
             srcset="

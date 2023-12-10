@@ -1,4 +1,4 @@
-import{S as L,A as m}from"./assets/local-storage-2f52ffaf.js";import{S as $,P as j,N as v}from"./assets/vendor-c5b37fd0.js";const H="productsBasket",y=new L(H);function f(){return y.getAllProducts()}function P(t){y.addProduct(t)}function F(t){y.removeAllProductsById(t)}const z="productsBasket",D=t=>{try{const e=localStorage.getItem(t);return e===null?void 0:JSON.parse(e)}catch(e){console.error("Get state error: ",e.message)}},h=()=>{const t=document.querySelector("#cart-counter"),e=D(z)??[];t.textContent=`(${e.length})`};h();const u="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg";function C(t){return t.map(({_id:e,name:s,img:o,category:a,price:n,size:r,popularity:i})=>`
+import{S as L,A as m}from"./assets/local-storage-db2ac8e7.js";import{S as $,P as j,N as v}from"./assets/vendor-c5b37fd0.js";const H="productsBasket",y=new L(H);function f(){return y.getAllProducts()}function P(t){y.addProduct(t)}function F(t){y.removeAllProductsById(t)}const z="productsBasket",D=t=>{try{const e=localStorage.getItem(t);return e===null?void 0:JSON.parse(e)}catch(e){console.error("Get state error: ",e.message)}},h=()=>{const t=document.querySelector("#cart-counter"),e=D(z)??[];t.textContent=`(${e.length})`};h();const u="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg";function C(t){return t.map(({_id:e,name:s,img:o,category:a,price:n,size:r,popularity:i})=>`
             <li class="product-item" data-product-id='${e}'>
               <div class="product-img-container">
                 <a class="products-card-link" href="">
@@ -15,7 +15,7 @@ import{S as L,A as m}from"./assets/local-storage-2f52ffaf.js";import{S as $,P as
                 </div>
               <div class="price-card-container">
                 <p class="price">$${n}</p>
-                <button class="cart-button" type="button" data-item-id="${e}" data-in-cart="false">
+                <button class="cart-button cart-button-css" type="button" data-item-id="${e}" data-in-cart="false">
                   <svg class="cart-icon" width="18" height="18">
                     <use href="${u}#icon-basket"></use>
                   </svg>
@@ -79,7 +79,7 @@ import{S as L,A as m}from"./assets/local-storage-2f52ffaf.js";import{S as $,P as
                     Popularity: <span class="popularity-value">${r}</span>
                 </p>
             </h3>
-            <button class="cart-button-pop" type="button" data-product-id="${e}" data-in-cart="false">
+            <button class="cart-button-pop cart-button" type="button" data-product-id="${e}" data-in-cart="false">
                 <svg class="cart-icon-pop" width="18" height="18">
                     <use href="${u}#icon-basket"></use>
                 </svg>
