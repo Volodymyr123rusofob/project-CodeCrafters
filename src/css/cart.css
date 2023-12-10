@@ -4,6 +4,7 @@
 .cart-title {
   display: flex;
   align-items: center;
+  padding-top: 100px;
 }
 
 .cart-title-icon {
@@ -60,12 +61,27 @@
   display: flex;
   width: 335px;
   height: 160px;
+  border-bottom: 1 px;
+}
+.cart-product-item:not(:last-child) {
+  border-bottom: 1px solid rgba(1, 1, 1, 0.1);
 }
 .cart-delete {
+  position: absolute;
+  display: flex;
+
+  top: 22px;
+  right: 7px;
+  width: 18px;
+  height: 18px;
 }
 .cart-btn-delete {
+  background-color: transparent;
 }
 .cart-icon-close-sharp {
+  display: flex;
+  width: 18px;
+  height: 18px;
 }
 .cart-product-container {
   display: flex;
@@ -73,8 +89,13 @@
   align-items: center;
   width: 335px;
   height: 160px;
+  position: relative;
 }
 .cart-product-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
   width: 100px;
   height: 100px;
   flex-shrink: 0;
@@ -82,13 +103,21 @@
   background: var(--third-bg);
 }
 .cart-product-img {
+  flex-shrink: 0;
   width: 64px;
   height: 64px;
-  flex-shrink: 0;
 }
 .cart-product-parameter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 215px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 .cart-product-title {
+  padding-bottom: 10px;
+
   color: var(--text);
   font-size: 18px;
   font-style: normal;
@@ -116,6 +145,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 111.111% */
+  padding-top: 36px;
 }
 /* ==========================================================================
    Media for products
