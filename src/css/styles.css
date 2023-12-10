@@ -7,8 +7,10 @@
 @import url('./popular_products.css');
 @import url('./discount_products.css');
 @import url('./products_list.css');
+@import url('./pagination.css');
 @import url('./footer.css');
 @import url('./modal.css');
+
 :root {
   --main-bg: #e8e8e2;
   --second-bg: #6d8434;
@@ -25,6 +27,7 @@
 }
 body {
   font-family: 'Neue Montreal', sans-serif;
+  background-color: var(--third-bg);
 }
 
 section {

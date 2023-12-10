@@ -1,0 +1,365 @@
+
+.footer {
+  background-color: #6d8434;
+  /* height: 652px; */
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  /* height: 652px; */
+  
+}
+
+.footer-logo {
+  display: inline-flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.footer-logo-link {
+  display: flex;
+  color: #e8e8e2;
+  text-decoration: none;
+  align-items: center;
+  gap: 8px;
+  
+}
+
+.footer-logo-link:hover {
+background: rgba(232, 232, 226, 0.20);
+border-radius: 30px;
+}
+.footer-logo-link:focus {
+outline: none;
+box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
+border-radius: 30px;
+}
+.logo-span {
+  color: #e8e8e2;
+  align-items: center;
+  width: 118px;
+  height: 20px;
+  font-family: QuincyCF-black;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1.1em;
+  /* 111.111% */
+  letter-spacing: -0.36px;
+}
+
+.footer-logo-icon {
+  fill: #6d8434;
+
+  background-color: #e8e8e2;
+  /* padding: 6px; */
+  border-radius: 50%;
+}
+
+.footer-social {
+
+}
+
+.footer-social-list {
+  display: flex;
+  gap: 12px;
+}
+
+.list {
+}
+
+.footer-social-item {
+}
+
+.footer-social-link {
+  outline: none;
+}
+.footer-social-link:focus {
+  /* box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70); */
+}
+
+.link {
+}
+
+.footer-img-icons {
+  color: #e8e8e2;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 232, 226, 0.3);
+}
+
+.footer-img-icons:hover {
+background: rgba(232, 232, 226, 0.20);
+}
+
+.footer-img-icons:focus {
+  outline: none;
+  background: rgba(232, 232, 226, 0.20);
+  box-shadow: 0 0 0 3px rgba(226, 232, 226, 0.8);
+  
+}
+.footer-reklam {
+}
+
+.footer-reklam-title {
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2em;
+  /* 116.667% */
+  letter-spacing: -0.48px;
+  margin-top: 40px;
+  margin-bottom: 14px;
+  /* width: 335px; */
+}
+
+.footer-text {
+  color: rgba(232, 232, 226, 0.7);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2em;
+  /* 128.571% */
+}
+
+.footer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-form-text {
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2em;
+  /* 128.571% */
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.footer-form-label {
+}
+
+.footer-form-input {
+  width: 285px;
+  height: 42px;
+  border-radius: 30px;
+  border: 1px solid #e8e8e2;
+  background-color: transparent;
+  color: rgba(232, 232, 226, 0.6);
+  /* margin-bottom: 14px; */
+
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3em;
+  /* 128.571% */
+  padding-left: 12px;
+  outline: none;
+  
+}
+.footer-form-input:focus {
+/* background-color: #e8e8e2;
+color: #6d8434; */
+box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
+}
+.footer-form-input::placeholder {
+  color: rgba(232, 232, 226, 0.6);
+}
+
+.footer-form-button {
+  width: 285px;
+  height: 42px;
+  border-radius: 30px;
+  background: #e8e8e2;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: #010101;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3em;
+  /* 128.571% */
+  margin-bottom: 80px;
+  /* padding: 12px 149px; */
+  outline: none;
+   
+}
+
+.footer-form-button:hover {
+  color:#6d8434;
+}
+
+.footer-form-button:focus {
+  color: #6d8434;
+  box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
+}
+
+.footer-privacy {
+  /* margin-bottom: 20px; */
+}
+
+.footer-privacy-text {
+  margin-bottom: 8px;
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3em;
+  /* 128.571% */
+  opacity: 0.9;
+}
+
+.footer-privacy-polisy {
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3em;
+  /* 128.571% */
+}
+
+.footer-span {
+  color: #e8e8e2;
+  font-size: 14px;
+}
+
+/* ! ! ! ! ! ---mobile 375--- ! ! ! ! !*/ 
+@media screen and (min-width: 375px) {
+  .footer {
+    /* height: 652px; */
+  }
+
+  .footer-logo {
+    margin-top: 20px;
+  }
+
+    .footer-reklam-title {
+      font-size: 24px;
+  }
+  .footer-form-input {
+    width: 335px;
+    height: 42px;
+  }
+
+  .footer-form-button {
+    width: 335px;
+    height: 42px;
+  }
+}
+
+
+
+/*!!!!!-----tablet 768-------!!!!!!!!!!!!*/
+
+@media screen and (min-width: 768px) {
+  .footer {
+    /* height: 602px; */
+  }
+.footer-wramp {
+  display: flex; 
+  align-items: flex-start;
+  
+   
+}
+.footer-logo {
+  margin-top: 0px;
+}
+.footer-logo-icon {
+  width: 32px;
+  height: 32px;
+}
+.logo-span {
+  font-size: 24px;
+  line-height: 1em;
+  letter-spacing: -0.48px;
+  width: 157px;
+  height: 24px;
+}
+.footer-logo-social {
+  margin-right: 78px;
+}
+.footer-reklam-title {
+  font-size: 40px;
+  margin-top: 0px;
+}
+.footer-text {
+  font-size: 18px;
+  line-height: 1.3em;
+}
+.footer-form-text {
+  font-size: 18px;
+  line-height: 1.3em;
+}
+.footer-form-input {
+  width: 336px;
+  height: 48px;
+  font-size: 14px;
+  line-height: 1.5em;
+}
+.footer-form-button {
+  width: 336px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 1.5em;
+    /* 150% */
+}
+.footer-privacy {
+  display: flex;
+  justify-content: space-between;
+}
+
+}
+
+
+/*!!!!!!----desktop---!!!!!!*/
+
+@media screen and (min-width: 1440px) {
+  .footer-wramp {
+    /* margin-bottom: 128px; */
+  }
+  .footer-logo-social {
+    margin-right: 149px;
+  }
+  .footer-reklam-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 148px;
+  }
+  .footer-reklam {
+    width: 410px;
+    margin-right: ;
+  }
+  .footer-reklam-title {
+    line-height: 1.2em;
+    margin-bottom: 20px;
+  }
+  .footer-text {
+    margin-bottom: 128px;
+  }
+  .footer-form-text {
+    margin-top: 0px;
+
+  }
+  .footer-form-input {
+    font-size: 16px;
+  }
+    .footer-form-button {
+      font-size: 16px;
+      margin-bottom: 148px;
+      
+    }
+}

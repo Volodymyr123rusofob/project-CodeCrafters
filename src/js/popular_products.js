@@ -1,155 +1,139 @@
-// import {  } from './filter';
-// import { OpenModal } from './modal';
-// import sprite from '../img/symbol-defs.svg';
-// import {  } from './header';
+import { openModal } from './modal';
+import ApiService from './requests';
+// import createMarkup from './markup_products_list';
+import icons from '../img/symbol-defs.svg';
+import Swal from 'sweetalert2';
+import alertSuccess from './alert';
+import { ShopStorage } from './local-storage';
 
-// Робота з продуктами при завантаженні сторінки
+const popularList = document.querySelector('.js-popular-list');
+popularList.addEventListener('click', handleClick);
 
-// function fetchProductsFromServer() {
-   // const request = new RequestToTheServer('products/popular', '', 1, 5);
-  
-    // return request.fetchBreeds()
-     // .then(fetchedData => {
-      //  saveProductsToLocalStorage(fetchedData);
-  
-       // const productsToDisplay = fetchedData.slice(0, 5);
-  
-       // createAndAppendProductElements(productsToDisplay);
-  
-       // addFunctionalityToElements();
-     // })
-     // .catch(error => {
-      //  console.error('Error:', error);
-     // });
- // }
+const apiReq = new ApiService();
+const imgPerPage = 5;
 
-// // Збереження продуктів в локальне сховище
+const shopStorage = new ShopStorage('cart');
 
-// function saveProductsToLocalStorage(products) {
-//   localStorage.setItem('popularProducts', JSON.stringify(products));
-// }
+const markupSvgCheck = `<svg class="ico">
+<use href="${icons}#icon-check"></use>
+</svg>`;
 
-// function createAndAppendProductElements(products) {
-//   products.forEach(product => {
-//     // Контейнер для продукту
+const markupSvgCart = `<svg class="ico">
+<use href="${icons}#icon-basket"></use>
+</svg>`;
 
-//     const productTemplate = document.createElement('div');
-//     productTemplate.classList.add('product-template');
+async function elemFromApi() {
+  const products = await apiReq.getPopularProducts();
+  const productFirst = products.filter(({ popularity }) => popularity > 3);
+  displayProducts(productFirst, popularList);
+  addEventListenerToCardButton();
+}
 
-//     // Розмітка для продукту
+function displayProducts(products, container) {
+  container.innerHTML = createMarkup(products);
+}
 
-//     productTemplate.innerHTML = `
-//         <div class="popular-con">
-//             <div class="product-image-container" data-product-id="${
-//               product._id
-//             }"> <img src="${product.img}" alt="" class="product-image"></div>
-//             <div class="product-text">
-//                 <h3 class="product-name">${product.name}</h3>
-//                 <p class="product margin">
-//                     Category: <span class="category-value">${product.category.replace(
-//                       '_',
-//                       ' '
-//                     )}</span><br>
-//                     Size: <span class="size-value">${product.size}</span><br>
-//                     Popularity: <span class="popularity-value">${
-//                       product.popularity
-//                     }</span>
-//                 </p>
-//             </div>
-//         </div>
-//         <button class="add-to-cart-btn cart-btn" data-product-id="${
-//           product._id
-//         }">
-//         <svg class="ico icon-on">
-//         <use href="${sprite}#icon-basket"></use>
-//     </svg>
+const cartState = shopStorage.getAllProducts();
 
-//     <svg class="ico icon-off" style="display: none;">
-//     <use href="${sprite}#icon-check"></use>
-//   </svg>
-//         </button>
-//       `;
+function addEventListenerToCardButton() {
+  addEventListenersToBasketButtons();
+}
 
-//     // Налаштування події для кнопки "Додати в кошик"
+function addEventListenersToBasketButtons() {
+  const basketButtons = document.querySelectorAll('.popular-cart-button');
 
-//     productsContainer.appendChild(productTemplate);
-//     const addToCartImg = productTemplate.querySelector(
-//       '.product-image-container'
-//     );
-//     addToCartImg.addEventListener('click', function () {
-//       onOpenModal(product._id);
-//     });
+  if (basketButtons) {
+    basketButtons.forEach(basketButton => {
+      basketButton.addEventListener('click', handleBasketButtonClick);
+    });
+  }
+}
 
-//     const addToCartBtn = productTemplate.querySelector('.add-to-cart-btn');
-//     addToCartBtn.onclick = function () {
-//       addToCart(product);
-//     };
-//   });
-// }
+function handleBasketButtonClick(event) {
+  const basketButton = event.target.closest('.popular-cart-button');
 
-// // Налаштування додавання або видалення товару з кошика
+  if (basketButton) {
+    const itemId = basketButton.dataset.itemId;
+    handleBasketClick(basketButton, itemId);
+    alertSuccess();
+  }
+}
 
-// function addToCart(product) {
-//   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function handleBasketClick(cartButton, itemId, markupSvgCheck, markupSvgCart) {
+  const cartItemIndex = cartState.findIndex(item => item._id === itemId);
+  if (cartItemIndex !== -1) {
+    Swal.fire({
+      title: '',
+      text: 'This product has already been added to the cart!',
+      icon: 'warning',
+      confirmButtonColor: '#6d8434',
+    });
+  } else {
+    shopStorage.addProduct({ _id: itemId, amount: 1 }); // Додаємо товар до локального сховища
+  }
+  updateBasketIcon(cartButton, true, markupSvgCheck, markupSvgCart);
+}
 
-//   const existingProductIndex = cart.findIndex(
-//     item => item && item._id === product._id
-//   );
-//   if (existingProductIndex !== -1) {
-//   } else {
-//     cart.push(product);
-//   }
+function updateBasketIcon(cartButton, inCart) {
+  if (inCart) {
+    cartButton.innerHTML = markupSvgCheck;
+    const button = document.querySelector('.popular-cart-button');
+    button.disabled = true;
+  } else {
+    cartButton.innerHTML = markupSvgCart;
+  }
+}
 
-//   localStorage.setItem('cart', JSON.stringify(cart));
-//   localStorageCheckCart();
-//   cartButtonStyle();
-// }
+elemFromApi();
 
-// // Оновлення стилю кнопок
+function handleClick(e) {
+  e.preventDefault();
+  const clickedEl = e.target;
+  console.log(clickedEl);
+  if (
+    clickedEl.closest('a') &&
+    clickedEl.closest('.popular-products-card-link')
+  ) {
+    const id = clickedEl.closest('li').dataset.productId;
+    openModal(id).catch(error => {
+      console.error('Помилка при отриманні продукта за айді:', error.message);
+    });
+  }
+}
 
-// export function cartButtonStyle() {
-//   const cart = JSON.parse(localStorage.getItem('cart')) || [];
-//   const addToCartButtons = document.querySelectorAll('.cart-btn');
-
-//   addToCartButtons.forEach(btn => {
-//     const productId = btn.getAttribute('data-product-id');
-//     const iconInCart = btn.querySelector('.icon-off');
-//     const iconAddToCart = btn.querySelector('.icon-on');
-//     const isProductInCart = cart.some(item => item && item._id === productId);
-
-//     if (iconInCart && iconAddToCart) {
-//       if (isProductInCart) {
-//         btn.classList.add('added-to-cart');
-//         iconInCart.style.display = 'block';
-//         iconAddToCart.style.display = 'none';
-//       } else {
-//         btn.classList.remove('added-to-cart');
-//         iconInCart.style.display = 'none';
-//         iconAddToCart.style.display = 'block';
-//       }
-//     }
-//   });
-// }
-
-// // Для скролу
-
-// const scrollUpButton = document.getElementById('scroll-up');
-
-// function checkScroll() {
-//   const totalPageHeight = document.documentElement.scrollHeight;
-//   const viewportHeight = window.innerHeight;
-//   const scrollRemaining = totalPageHeight - window.scrollY - viewportHeight;
-//   if (scrollRemaining < 600) {
-//     scrollUpButton.style.display = 'flex';
-//   } else {
-//     scrollUpButton.style.display = 'none';
-//   }
-// }
-// window.addEventListener('scroll', checkScroll);
-
-// scrollUpButton.addEventListener('click', function () {
-//   window.scrollTo({
-//     top: 0,
-//     behavior: 'smooth',
-//   });
-// });
+function createMarkup(arr) {
+  return arr
+    .map(
+      ({
+        _id,
+        name,
+        img,
+        category,
+        size,
+        popularity,
+      }) => `<li class="popular-product-item" data-product-id='${_id}'>
+    <div class="popular-con">
+        <div class="product-image-container" data-product-id="${_id}"> <img src="${img}" alt="" class="product-image">
+        </div>
+        <div class="product-text-pop">
+            <h3 class="product-name">${name}
+                <p class="product margin">
+                    Category: <span class="category-value">${category.replace(
+                      '_',
+                      ' '
+                    )}</span><br>
+                    Size: <span class="size-value">${size}</span><br>
+                    Popularity: <span class="popularity-value">${popularity}</span>
+                </p>
+            </h3>
+            <button class="cart-button-pop cart-button" type="button" data-product-id="${_id}" data-in-cart="false">
+                <svg class="cart-icon-pop" width="18" height="18">
+                    <use href="${icons}#icon-basket"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</li>`
+    )
+    .join('');
+}
