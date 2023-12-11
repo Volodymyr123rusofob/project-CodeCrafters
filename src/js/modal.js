@@ -10,8 +10,9 @@ const api = new ApiService()
 export async function openModal(product) {
   modal.classList.add('modal-active');
   modal.classList.add('loader');
-  modal.classList.remove('loader');
+
   const productWithDescription = await api.getProductById(product._id);
+  modal.classList.remove('loader');
   renderModal( productWithDescription);
   syncAddProductButtonStatus( productWithDescription);
 }
