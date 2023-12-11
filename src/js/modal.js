@@ -1,17 +1,21 @@
-import icons from '../img/symbol-defs.svg'; // імпортую свг собі в проект
-import {getAllProducts,addProductOnClickButton,removeProductOnClickButton} from './local-storage-interface'
+import icons from '../img/symbol-defs.svg';
+import { getAllProducts, addProductOnClickButton, removeProductOnClickButton } from './local-storage-interface';
 import alertPopUp from './alert';
-import {updateBasketIconByProductId} from './products_list';
+import { updateBasketIconByProductId } from './products_list';
 import { updateCartCounter } from './header.js';
+import ApiService from './requests';
 
+const api = new ApiService();
 const modal = document.querySelector('.modal-prod-wrapper');
 
-export async function openModal(product) {
+export async function openModal(productId) {
   modal.classList.add('modal-active');
-  modal.classList.add('loader'); // тут создам cпинер через css
-  modal.classList.remove('loader'); // тут ,буду очищать cпинер через css
-  renderModal(product);
-  syncAddProductButtonStatus(product);
+  modal.classList.add('loader');
+  const productDetails = await api.getProductById(productId);
+  modal.classList.remove('loader');
+
+  renderModal(productDetails);
+  syncAddProductButtonStatus(productDetails);
 }
 
 //! Функція яка зберігає стан кнопки залежно від стану корзини
@@ -33,38 +37,38 @@ export function renderModal(productDetails) {
     document.body.classList.add('stop-scroll');
 
     modal.innerHTML = `
-  <div class="modal-prod-card">
-  <button type="button" class="modal-prod-close-btn">
-    <svg class="modal-prod-close-icon" width="22" height="22">
-      <use href="${icons}#icon-ion_close-sharp"></use>
+  <div class='modal-prod-card'>
+  <button type='button' class='modal-prod-close-btn'>
+    <svg class='modal-prod-close-icon' width='22' height='22'>
+      <use href='${icons}#icon-ion_close-sharp'></use>
     </svg>
   </button>
-  <div class="modal-prod-information-wrap">
-  <div class="modal-prod-img-wrap">
-      <img class="modal-prod-img" src="${productDetails.img}" alt="${productDetails.name}" />
+  <div class='modal-prod-information-wrap'>
+  <div class='modal-prod-img-wrap'>
+      <img class='modal-prod-img' src='${productDetails.img}' alt='${productDetails.name}' />
   </div>
-  <div class="modal-prod-name-wrap">
-  <p class="modal-prod-name">${productDetails.name}</p>
-  <ul class="modal-prod-list">
-    <li class="modal-prod-item">
-      <p class="modal-prod-text">Category: <span>${productDetails.category.replace(/_/g, ' ')}</span></p>
+  <div class='modal-prod-name-wrap'>
+  <p class='modal-prod-name'>${productDetails.name}</p>
+  <ul class='modal-prod-list'>
+    <li class='modal-prod-item'>
+      <p class='modal-prod-text'>Category: <span>${productDetails.category.replace(/_/g, ' ')}</span></p>
     </li>
-    <li class="modal-prod-item">
-      <p class="modal-prod-text">Size: <span>${productDetails.size}</span></p>
+    <li class='modal-prod-item'>
+      <p class='modal-prod-text'>Size: <span>${productDetails.size}</span></p>
     </li>
-    <li class="modal-prod-item">
-      <p class="modal-prod-text">Popularity: <span>${productDetails.popularity}</span></p>
+    <li class='modal-prod-item'>
+      <p class='modal-prod-text'>Popularity: <span>${productDetails.popularity}</span></p>
     </li>
   </ul>
-  <p class="modal-prod-desc">${productDetails.desc}</p>
+  <p class='modal-prod-desc'>${productDetails.desc}</p>
   </div>
   </div>
-  <div class="modal-prod-price-elem">
-  <p class="modal-prod-price">&#36;${productDetails.price}</p>
-  <button class="modal-prod-add-btn" >
-      <p class="modal-prod-add-text">Add to</p>
-      <svg class="modal-prod-basket-icon" >
-        <use href="${icons}#icon-basket"></use>
+  <div class='modal-prod-price-elem'>
+  <p class='modal-prod-price'>&#36;${productDetails.price}</p>
+  <button class='modal-prod-add-btn' >
+      <p class='modal-prod-add-text'>Add to</p>
+      <svg class='modal-prod-basket-icon' >
+        <use href='${icons}#icon-basket'></use>
       </svg>
   </button>
   </div>
@@ -90,20 +94,20 @@ export function addOrRemoveProductToBasket(productDetails) {
   //
   const allProducts = getAllProducts();
   const isProductInBasket = allProducts.some(
-    item => item._id=== productId
+    item => item._id === productId,
   );
   const addBtnText = document.querySelector('.modal-prod-add-text');
   if (!isProductInBasket) {
-    addProductOnClickButton({ _id: productId, amount: 1 })
-    alertPopUp()
+    addProductOnClickButton({ _id: productId, amount: 1 });
+    alertPopUp();
     addBtnText.textContent = 'Remove from';
-    updateBasketIconByProductId(productId,true)
+    updateBasketIconByProductId(productId, true);
 
   } else {
-    removeProductOnClickButton(productId)
-    alertPopUp('The product has been removed from the basket!','info')
+    removeProductOnClickButton(productId);
+    alertPopUp('The product has been removed from the basket!', 'info');
     addBtnText.textContent = 'Add to';
-    updateBasketIconByProductId(productId,false)
+    updateBasketIconByProductId(productId, false);
   }
   updateCartCounter();
 }

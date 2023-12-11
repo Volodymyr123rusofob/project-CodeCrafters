@@ -230,6 +230,7 @@
 @media only screen and (min-width: 768px) {
   .modal-prod-add-btn {
     min-width: 130px;
+    padding: 10px 28px;
   }
 }
 

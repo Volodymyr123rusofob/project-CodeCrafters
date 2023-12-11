@@ -110,8 +110,7 @@ function onClickCart(e) {
   console.log(clickedEl);
   if (clickedEl.closest('a') && clickedEl.closest('.products-card-link')) {
     const id = clickedEl.closest('li').dataset.productId;
-    const product = productsOnePage.find(item => item._id === id);
-    openModal(product).catch(error => {
+    openModal(id).catch(error => {
       console.error('Помилка при отриманні продукта за айді:', error.message);
     });
   }
