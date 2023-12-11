@@ -13,7 +13,7 @@ const productsList = document.querySelector('.js-products-list');
 productsList.addEventListener('click', onClickCart);
 
 const apiService = new ApiService();
-const itemsPerPage = 6;
+const itemsPerPage = 9;
 let productsOnePage;
 let basketButtons;
 
