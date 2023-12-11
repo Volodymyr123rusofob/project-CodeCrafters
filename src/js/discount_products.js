@@ -1,103 +1,130 @@
-// import { openModal } from './modal';
-// import ApiService from './requests'; 
-// import icons from '../img/symbol-defs.svg'; 
-// import Swal from 'sweetalert2'; 
-// import alertSuccess from './alert'; 
-// import { ShopStorage } from './local-storage'; 
-// import axios from 'axios'; 
+import { openModal } from './modal';
+import ApiService from './requests';
+import icons from '../img/symbol-defs.svg';
+import Swal from 'sweetalert2';
+import alertSuccess from './alert';
+import { ShopStorage } from './local-storage';
 
-// const discountEl = document.querySelector('.discount-container');
-// const CART_KEY = 'cart';
+const popularList = document.querySelector('.js-discount-list');
+popularList.addEventListener('click', handleClick);
 
-// let products = [];
-// let addedProducts = [];
+const apiReq = new ApiService();
+const imgPerPage = 2;
 
-// // Перевірка чи клікнуто на зображення для відкривання модального вікна
-// discountEl.addEventListener('click', event => {
-//   const imageEl = event.target.closest('.discount-card-image img');
-//   if (imageEl !== null) {
-//     const productId = imageEl.dataset.id;
-//     openModal(productId); // Виклик функції openModal з параметром productId
-//   } else {
-//     return;
-//   }
-// });
+const shopStorage = new ShopStorage('cart');
 
-// // Функція для додавання продукту до кошика при кліку
-// function addToCart(product) {
-//   addedProducts = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+const markupSvgCheck = `<svg class="ico">
+<use href="${icons}#icon-check"></use>
+</svg>`;
 
-//   const existingProduct = addedProducts.find(p => p._id === product._id);
+const markupSvgCart = `<svg class="ico">
+<use href="${icons}#icon-basket"></use>
+</svg>`;
 
-//   if (!existingProduct) {
-//     addedProducts.push(product);
-//     localStorage.setItem(CART_KEY, JSON.stringify(addedProducts));
-//     renderProducts();
-//   }
-// }
+async function elemFromApi() {
+  const products = await apiReq.getDiscountedProducts();
+  displayProducts(products, popularList);
+  addEventListenerToCardButton();
+}
 
-// // Функція відображення продуктів на сторінці
-// function renderProducts() {
-//   discountEl.innerHTML = productsTemplate(products);
-//   attachButtonClickHandlers();
-// }
+function displayProducts(products, container) {
+  container.innerHTML = createMarkup(products);
+}
 
-// // Функція створення розмітки для продуктів
-// function productsTemplate(products) {
-//   return products.map(({ _id, name, img, price }) => `
-//     <div class="discount-card" data-product-id="${_id}">
-//       <div class="discount-logo">
-//         <span class="logo">
-//           <span class="icon-discount" width="60" height="60"></span>
-//         </span>
-//       </div>
-//       <div class="discount-card-image">
-//         <img src="${img}" alt="${name}" data-id="${_id}" width="114" height="114" />
-//       </div>
-//       <div class="discount-card-info">
-//         <div class="discount-card-name">
-//           <p class="discount-card-text">${name}</p>
-//         </div>
-//         <div class="discount-card-price">
-//           <p class="discount-card-text">$${price}</p>
-//           <button class="discount-card-button" type="button" data-id="${_id}">
-//             <span class="icon-discount"></span>
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   `).join('');
-// }
+const cartState = shopStorage.getAllProducts();
 
-// // Для прикріплення обробника подій до кнопки
-// function attachButtonClickHandlers() {
-//   const cartButtons = document.querySelectorAll('.discount-card-button');
-//   cartButtons.forEach(button => {
-//     button.addEventListener('click', handleButtonClick);
-//   });
-// }
+function addEventListenerToCardButton() {
+  addEventListenersToBasketButtons();
+}
 
-// // Функція обробника події при кліку на кнопку
-// export function handleButtonClick(ev) {
-//   const productId = ev.currentTarget.dataset.id || ev.currentTarget.getAttribute('id');
-//   const selectedProduct = products.find(p => p._id === productId);
-//   if (selectedProduct) {
-//     addToCart(selectedProduct);
-//   } else {
-//     return;
-//   }
-// }
+function addEventListenersToBasketButtons() {
+  const basketButtons = document.querySelectorAll('.discount-cart-js');
 
-// // Запит для отримання продуктів зі знижками
-// async function init() {
-//   try {
-//     const res = await axios.get('https://food-boutique.b.goit.study/api/products/discount');
-//     products = res.data;
-//     addedProducts = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-//     renderProducts();
-//   } catch (error) {
-//     console.error('Error fetching discount products:', error.message);
-//   }
-// }
+  if (basketButtons) {
+    basketButtons.forEach(basketButton => {
+      basketButton.addEventListener('click', handleBasketButtonClick);
+    });
+  }
+}
 
-// init(); 
+function handleBasketButtonClick(event) {
+  const basketButton = event.target.closest('.discount-cart-js');
+
+  if (basketButton) {
+    const itemId = basketButton.dataset.itemId;
+    handleBasketClick(basketButton, itemId);
+    alertSuccess();
+  }
+}
+
+function handleBasketClick(cartButton, itemId, markupSvgCheck, markupSvgCart) {
+  const cartItemIndex = cartState.findIndex(item => item._id === itemId);
+  if (cartItemIndex !== -1) {
+    Swal.fire({
+      title: '',
+      text: 'This product has already been added to the cart!',
+      icon: 'warning',
+      confirmButtonColor: '#6d8434',
+    });
+  } else {
+    shopStorage.addProduct({ _id: itemId, amount: 1 }); // Додаємо товар до локального сховища
+  }
+  updateBasketIcon(cartButton, true, markupSvgCheck, markupSvgCart);
+}
+
+function updateBasketIcon(cartButton, inCart) {
+  if (inCart) {
+    cartButton.innerHTML = markupSvgCheck;
+    const button = document.querySelector('.discount-cart-js');
+    button.disabled = true;
+  } else {
+    cartButton.innerHTML = markupSvgCart;
+  }
+}
+
+elemFromApi();
+
+function handleClick(e) {
+  e.preventDefault();
+  const clickedEl = e.target;
+  console.log(clickedEl);
+  if (
+    clickedEl.closest('a') &&
+    clickedEl.closest('.popular-products-card-link')
+  ) {
+    const id = clickedEl.closest('li').dataset.productId;
+    openModal(id).catch(error => {
+      console.error('Помилка при отриманні продукта за айді:', error.message);
+    });
+  }
+}
+
+function createMarkup(arr) {
+  return arr
+    .map(
+      ({
+        _id,
+        name,
+        img,
+        price,
+      }) => `<li class="popular-product-item" data-product-id='${_id}'>
+    <div class="popular-con">
+        <div class="product-image-container" data-product-id="${_id}"> <img src="${img}" alt="" class="product-image">
+        </div>
+        <div class="product-text-pop">
+            <h3 class="product-name">${name}
+                <p class="product margin">
+                    <p class="price">$${price}</p>
+                </p>
+            </h3>
+            <button class="cart-button-pop cart-button" type="button" data-product-id="${_id}" data-in-cart="false">
+                <svg class="cart-icon-pop" width="18" height="18">
+                    <use href="${icons}#icon-basket"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</li>`
+    )
+    .join('');
+}
