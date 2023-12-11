@@ -22,10 +22,12 @@ document.addEventListener('DOMContentLoaded', async () => {
      // Получение значений из формы и локального хранилища
      const keywordInput = document.querySelector('.keyword-input');
      const selectedCategory = categorySelect.value;
-
      const filters = {
        keyword: keywordInput.value || null,
-       category: selectedCategory === 'Show all' ? null : selectedCategory,
+       category:
+         selectedCategory === 'Show all'
+           ? categorySelect.selectedCategory=""
+           : selectedCategory,
        page: 1,
        limit: 6,
      };
