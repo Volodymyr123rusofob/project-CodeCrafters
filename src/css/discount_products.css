@@ -1,4 +1,4 @@
-.discount-container {
+/*.discount-container {
     max-width: 335px;
     display: flex;
     flex-direction: column;
@@ -144,4 +144,99 @@
   .discount-card {
     width: 100%;
   }
+}*/
+.discount-products{
+  margin-bottom: 80px;
 }
+
+.js-discount-list{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media screen and (min-width: 768px){
+  .js-discount-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .js-discount-list {
+    flex-direction: column;
+  }
+}
+
+.discount-product-item {
+  border-radius: 15px;
+  background-color: var(--third-bg);
+  padding: 16px;
+}
+
+@media screen and (min-width: 768px){
+  .discount-product-item{
+    width: calc((100% - 32px) / 2);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .discount-product-item {
+    width: 100%;
+  }
+}
+.discount-con{
+  /*position: relative;*/
+ /* padding: 16px;*/
+}
+
+.discount-image-container{
+  border-radius: 10px;
+  background: var(--main-bg);
+  margin-bottom: 23px;
+}
+
+@media screen and (min-width: 1440px){
+  .discount-image-container {
+    margin-bottom: 21px;
+  }
+}
+
+.discount-image{
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.discount-text-container {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 87px;
+  gap: 8px;
+}
+
+.cart-button-disk {
+ /* position: absolute;
+  bottom: 0px;
+  right: 0px; */
+  border-radius: 30px;
+  background: var(--second-bg);
+  padding: 8px;
+  align-items: center;
+  display: flex;
+  
+}
+
+.discount-info-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*.price-disc{
+  position: absolute;
+  bottom: 0;
+  right: 42px;
+}*/

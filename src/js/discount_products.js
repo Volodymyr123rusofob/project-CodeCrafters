@@ -107,22 +107,21 @@ function createMarkup(arr) {
         name,
         img,
         price,
-      }) => `<li class="popular-product-item" data-product-id='${_id}'>
-    <div class="popular-con">
-        <div class="product-image-container" data-product-id="${_id}"> <img src="${img}" alt="" class="product-image">
+      }) => `<li class="discount-product-item" data-product-id='${_id}'>
+    <div class="discount-con">
+        <div class="discount-image-container" data-product-id="${_id}"> <img src="${img}" alt="${name}" class="discount-image" width="114" height="114">
         </div>
-        <div class="product-text-pop">
-            <h3 class="product-name">${name}
-                <p class="product margin">
-                    <p class="price">$${price}</p>
-                </p>
-            </h3>
-            <button class="cart-button-pop cart-button" type="button" data-product-id="${_id}" data-in-cart="false">
-                <svg class="cart-icon-pop" width="18" height="18">
+        <div class="discount-info-container">
+          <h3 class="product-name product-name-disc">${name} </h3>
+          <div class="discount-text-container">  
+            <p class="price price-disc">$${price}</p>
+            <button class="cart-button-disk cart-button" type="button" data-product-id="${_id}" data-in-cart="false">
+                <svg class="cart-icon-disk" width="18" height="18">
                     <use href="${icons}#icon-basket"></use>
                 </svg>
             </button>
-        </div>
+          </div>
+        </div> 
     </div>
 </li>`
     )
