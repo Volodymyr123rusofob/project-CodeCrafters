@@ -1,4 +1,4 @@
-import{S as g,A as h}from"./assets/footer-a2cf7b97.js";import"./assets/vendor-c5b37fd0.js";const u=()=>`
+import{S as g,A as h}from"./assets/footer-f4efaf65.js";import"./assets/vendor-c5b37fd0.js";const u=()=>`
       <picture>
           <source
             srcset="
