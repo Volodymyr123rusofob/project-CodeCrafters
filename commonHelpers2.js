@@ -1,4 +1,4 @@
-import{S as y,A as m}from"./assets/local-storage-3f1f4934.js";import{S as h,P as F,N as C}from"./assets/vendor-c5b37fd0.js";const D="productsBasket",k=new y(D);function f(){return k.getAllProducts()}function B(e){k.addProduct(e)}function z(e){k.removeAllProductsById(e)}const b=()=>{const e=document.querySelector("#cart-counter"),t=f();e.textContent=`(${t.length})`};b();const l="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg";function I(e){return e.map(({_id:t,name:s,img:o,category:a,price:r,size:c,popularity:i})=>`
+import{S as y,A as m}from"./assets/local-storage-3cef5635.js";import{S as h,P as F,N as C}from"./assets/vendor-c5b37fd0.js";const D="productsBasket",k=new y(D);function f(){return k.getAllProducts()}function B(e){k.addProduct(e)}function z(e){k.removeAllProductsById(e)}const b=()=>{const e=document.querySelector("#cart-counter"),t=f();e.textContent=`(${t.length})`};b();const l="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg";function I(e){return e.map(({_id:t,name:s,img:o,category:a,price:r,size:c,popularity:i})=>`
             <li class="product-item" data-product-id='${t}'>
               <div class="product-img-container">
                 <a class="products-card-link" href="">
@@ -6,7 +6,7 @@ import{S as y,A as m}from"./assets/local-storage-3f1f4934.js";import{S as h,P as
                 </a>
               </div>
                 <a class="products-card-link" href="">
-                  <h3 class="product-title">${s}</h3>
+                  <h3 class="product-title-mark">${s}</h3>
                 </a>
               <div class="product-parameter-container">
                 <p class="product-parameter">Category: <span class="span-parameter-value"> ${a.replace(/_/g," ")}</span></p>
@@ -90,22 +90,23 @@ import{S as y,A as m}from"./assets/local-storage-3f1f4934.js";import{S as h,P as
 <use href="${l}#icon-basket"></use>
 </svg>`;async function $t(){const t=(await kt.getPopularProducts()).filter(({popularity:s})=>s>3);wt(t,O),Ct()}function wt(e,t){t.innerHTML=Mt(e)}const Lt=_.getAllProducts();function Ct(){Pt()}function Pt(){const e=document.querySelectorAll(".popular-cart-button");e&&e.forEach(t=>{t.addEventListener("click",Bt)})}function Bt(e){const t=e.target.closest(".popular-cart-button");if(t){const s=t.dataset.itemId;It(t,s),p()}}function It(e,t,s,o){Lt.findIndex(r=>r._id===t)!==-1?h.fire({title:"",text:"This product has already been added to the cart!",icon:"warning",confirmButtonColor:"#6d8434"}):_.addProduct({_id:t,amount:1}),Et(e,!0)}function Et(e,t){if(t){e.innerHTML=bt;const s=document.querySelector(".popular-cart-button");s.disabled=!0}else e.innerHTML=St}$t();function xt(e){e.preventDefault();const t=e.target;if(console.log(t),t.closest("a")&&t.closest(".popular-products-card-link")){const s=t.closest("li").dataset.productId;S(s).catch(o=>{console.error("Помилка при отриманні продукта за айді:",o.message)})}}function Mt(e){return e.map(({_id:t,name:s,img:o,category:a,size:r,popularity:c})=>`<li class="popular-product-item" data-product-id='${t}'>
     <div class="popular-con">
-        <div class="product-image-container" data-product-id="${t}"> <img src="${o}" alt="" class="product-image">
+        <div class="product-image-container" data-product-id="${t}"> <img src="${o}" alt="" class="product-image" width="56" height="56">
         </div>
-        <div class="product-text-pop">
-            <h3 class="product-name">${s}
+        <div class="popular-left">
+          <div class="product-text-pop">      
+            <h3 class="product-name">${s}</h3>
+          </div>  
                 <p class="product margin">
                     Category: <span class="category-value">${a.replace("_"," ")}</span><br>
-                    Size: <span class="size-value">${r}</span><br>
-                    Popularity: <span class="popularity-value">${c}</span>
+                    Size: <span class="size-value">${r}</span>
+                    Popularity: <span class="popularity-value"> ${c}</span>
                 </p>
-            </h3>
-            <button class="cart-button-pop cart-button" type="button" data-product-id="${t}" data-in-cart="false">
-                <svg class="cart-icon-pop" width="18" height="18">
+        </div>
+                    <button class="cart-button-pop cart-button" type="button" data-product-id="${t}" data-in-cart="false">
+                <svg class="cart-icon-pop" width="12" height="12">
                     <use href="${l}#icon-basket"></use>
                 </svg>
             </button>
-        </div>
     </div>
 </li>`).join("")}const Tt=document.querySelector(".js-products-list"),qt=new m,At=document.getElementById("pagination"),Rt={totalItems:540,itemsPerPage:6,visiblePages:4,page:1,centerAlign:!0,template:{prev:'<a href="#" class="tui-page-btn tui-prev"><svg class="icon-svg"><use href="prev.svg#prev"></use></svg></a>',firstPageLink:'<a href="#" class="tui-page-btn tui-first">{{page}}</a>',page:'<a href="#" class="tui-page-btn tui-{{type}}">{{page}}</a>',currentPage:'<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',moveButton:'<a href="#" class="tui-page-btn tui-{{type}}"><span class="tui-ico-{{type}}">{{type}}</span></a>',disabledMoveButton:'<span class="tui-page-btn tui-is-disabled tui-{{type}}"><span class="tui-ico-{{type}}">{{type}}</span></span>',moreButton:'<a href="#" class="tui-page-btn tui-{{type}}-is-ellip"><span class="tui-ico-ellip">...</span></a>',lastPageLink:'<a href="#" class="tui-page-btn tui-last">{{page}}</a>',next:'<a href="#" class="tui-page-btn tui-next"><svg class="icon-svg"><use href="next.svg#next"></use></svg></a>'}},jt=new F(At,Rt);jt.on("beforeMove",async e=>{const t=e.page,s=await qt.getAllProducts(t,6);q(s.results,Tt),w()});const Ht=new m,Ot=document.getElementById("subscriptionForm"),_t=document.querySelector(".footer-form-input");function Nt(e){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}async function Ft(e){e.preventDefault();const t=_t.value;if(Nt(t))try{const s=await Ht.createSubscription(t);s.conflict?p("This email address has already been entered. You have already subscribed to our new products. Watch for offers at the mailing address."):(console.log("Success:",s),p("Subscription completed successfully"))}catch(s){console.error("Error:",s),C.Notify.failure("Error during subscription")}else C.Notify.warning("Please enter a valid email address.");e.target.reset()}Ot.addEventListener("submit",Ft);
 //# sourceMappingURL=commonHelpers2.js.map
