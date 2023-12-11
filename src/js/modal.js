@@ -2,7 +2,7 @@ import icons from '../img/symbol-defs.svg';
 import {getAllProducts,addProductOnClickButton,removeProductOnClickButton} from './local-storage-interface'
 import alertPopUp from './alert';
 import {updateBasketIconByProductId} from './products_list';
-import { updateCartCounter } from './header.js';
+import { updateCartCounter } from './header';
 import ApiService from './requests'
 
 const modal = document.querySelector('.modal-prod-wrapper');
@@ -106,6 +106,7 @@ export function addOrRemoveProductToBasket(productDetails) {
     removeProductOnClickButton(productId)
     addBtnText.textContent = 'Add to';
     updateBasketIconByProductId(productId,false)
+    alertPopUp("The product has been removed the basket!",'info')
   }
   updateCartCounter();
 }
