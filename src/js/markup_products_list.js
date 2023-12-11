@@ -6,13 +6,9 @@ export default function createMarkup(arr) {
       ({ _id, name, img, category, price, size, popularity }) => `
             <li class="product-item" data-product-id='${_id}'>
               <div class="product-img-container">
-                <a class="products-card-link" href="">
                   <img src="${img}" alt="${name}" width="140" height="140" class="product-img">
-                </a>
               </div>
-                <a class="products-card-link" href="">
                   <h3 class="product-title-mark">${name}</h3>
-                </a>
               <div class="product-parameter-container">
                 <p class="product-parameter">Category: <span class="span-parameter-value"> ${category.replace(
                   /_/g,

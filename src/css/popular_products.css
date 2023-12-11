@@ -38,7 +38,7 @@
   .js-popular-list {
     flex-direction: column;
     margin-bottom: 40px;
-    width: 275px
+    width: 100%;
   }
 }
 
