@@ -1,4 +1,4 @@
-import{S as g,A as h}from"./assets/header-4a368c47.js";import"./assets/vendor-ab16d78c.js";const u=()=>`
+import{S as g,A as h}from"./assets/header-4a368c47.js";import"./assets/vendor-ab16d78c.js";const d=()=>`
       <picture>
           <source
             srcset="
@@ -37,7 +37,7 @@ import{S as g,A as h}from"./assets/header-4a368c47.js";import"./assets/vendor-ab
           Go to the main page to select your favorite products and add them to
           the cart.
         </p>
-    `,d=t=>`
+    `,m=t=>`
      <div class="delete-all">
     <button type="button" class="btn-delete-all"> Delete All 
       <span class="icon-close-sharp">
@@ -48,17 +48,17 @@ import{S as g,A as h}from"./assets/header-4a368c47.js";import"./assets/vendor-ab
     </button>
   </div>
   <ul class="cart-products-list">
-    ${t.map(({_id:o,name:c,img:r,category:s,size:a,price:e})=>`
-      <li class="cart-product-item" data-product-id="${o}">
+    ${t.map(({_id:e,name:c,img:r,category:o,size:a,price:l})=>`
+      <li class="cart-product-item" data-product-id="${e}">
         <div class="cart-product-container">
           <div class="cart-product-img-container">
             <img src="${r}" alt="${c}" width="64" height="64" class="cart-product-img">
           </div>
           <div class="cart-product-parameter-container">
             <h2 class="cart-product-title">${c}</h2>
-            <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${s?s.replace(/_/g," "):""}</span></p>
+            <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${o?o.replace(/_/g," "):""}</span></p>
             <p class="cart-product-parameter">Size: <span class="cart-span-parameter-value">${a}</span></p>
-            <p class="price">$${e}</p>
+            <p class="price">$${l}</p>
           </div>
           <div class="cart-delete">
             <button type="button" class="cart-btn-delete">
@@ -90,5 +90,5 @@ import{S as g,A as h}from"./assets/header-4a368c47.js";import"./assets/vendor-ab
           required
         />
         <button class="checkout-button" type="submit">Checkout</button>
-        `,l=document.getElementById("basket"),k=document.getElementById("cart-counter-page"),i=new g("productsBasket"),b=new h;async function p(){const t=i.getAllProducts();if(console.log("Current products in storage:",t),t.length===0)console.log("Basket is empty. Displaying empty cart markup."),l.innerHTML="",l.insertAdjacentHTML("beforeend",u());else{console.log("Fetching product details for each product in the cart.");const c=t.map(async({_id:a,quantity:e})=>{try{return a?{...await b.getProductById(a),quantity:e}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(n){return console.error(`Error fetching product details for _id: ${a}`,n),null}}),s=(await Promise.all(c)).filter(a=>a!==null);console.log("Displaying cart markup with product details:",s),l.innerHTML="",l.insertAdjacentHTML("beforeend",d(s)),l.insertAdjacentHTML("beforeend",y())}const o=t.length;console.log("Updating cart counter with product count:",o),k.textContent=`CART (${o})`}p();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async t=>{const o=t.target.closest(".btn-delete-all"),c=t.target.closest(".cart-btn-delete");if(o)console.log("Deleting all products from storage."),i.removeAllProducts(),console.log("Updating cart after removing all products."),p();else if(c){const r=c.closest(".cart-product-item").dataset.productId;console.log(`Deleting product with ID: ${r}`),i.removeProduct(r),p()}})});document.addEventListener("DOMContentLoaded",function(){const t={totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-container")};t.checkoutButton.addEventListener("click",o);function o(e){e.preventDefault(),c()}function c(){const e=t.emailInput.value;if(!e||!s(e)){alert("Please enter a valid email address.");return}const n=products.length>0?d(products):u();t.cartContainer.innerHTML=n,alert(`Checkout completed! Total Price: $${a(products)}.`),t.totalPriceElement.textContent="0.00",r(0),localStorage.clear()}function r(e){t.totalPriceElement.textContent=e.toFixed(2)}function s(e){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}function a(e){return e.reduce((n,{price:m})=>n+m,0).toFixed(2)}});
+        `,s=document.getElementById("basket"),k=document.getElementById("cart-counter-page"),i=new g("productsBasket"),b=new h;async function p(){const t=i.getAllProducts();if(console.log("Current products in storage:",t),t.length===0)console.log("Basket is empty. Displaying empty cart markup."),s.innerHTML="",s.insertAdjacentHTML("beforeend",d());else{console.log("Fetching product details for each product in the cart.");const c=t.map(async({_id:a,quantity:l})=>{try{return a?{...await b.getProductById(a),quantity:l}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(u){return console.error(`Error fetching product details for _id: ${a}`,u),null}}),o=(await Promise.all(c)).filter(a=>a!==null);console.log("Displaying cart markup with product details:",o),s.innerHTML="",s.insertAdjacentHTML("beforeend",m(o)),s.insertAdjacentHTML("beforeend",y())}const e=t.length;console.log("Updating cart counter with product count:",e),k.textContent=`CART (${e})`}p();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async t=>{const e=t.target.closest(".btn-delete-all"),c=t.target.closest(".cart-btn-delete");if(e)console.log("Deleting all products from storage."),i.removeAllProducts(),console.log("Updating cart after removing all products."),p();else if(c){const r=c.closest(".cart-product-item").dataset.productId;console.log(`Deleting product with ID: ${r}`),i.removeProduct(r),p()}})});const n={totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-container")};n.checkoutButton.addEventListener("click",v);function v(t){t.preventDefault(),f()}function f(){const t=n.emailInput.value;if(!t||!C(t)){alert("Please enter a valid email address.");return}const e=products.length>0?m(products):d();n.cartContainer.innerHTML=e,alert(`Checkout completed! Total Price: $${D(products)}.`),n.totalPriceElement.textContent="0.00",x(0),localStorage.clear()}function x(t){n.totalPriceElement.textContent=t.toFixed(2)}function C(t){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)}function D(t){return t.reduce((e,{price:c})=>e+c,0).toFixed(2)}
 //# sourceMappingURL=commonHelpers.js.map
