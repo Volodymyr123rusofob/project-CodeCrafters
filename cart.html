@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/project-CodeCrafters/fav.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthy Food</title>
+    
+    
+    <script type="module" crossorigin src="/project-CodeCrafters/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/vendor-c5b37fd0.js">
+    <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/footer-49ea948d.js">
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/vendor-a0b14d8a.css">
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/footer-e75eded6.css">
+    <link rel="stylesheet" href="/project-CodeCrafters/assets/cart-e242dc00.css">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/project-CodeCrafters/fav.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Healthy Food</title>
-  
-  
-  <script type="module" crossorigin src="/project-CodeCrafters/commonHelpers.js"></script>
-  <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/vendor-c5b37fd0.js">
-  <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/local-storage-90e48462.js">
-  <link rel="stylesheet" href="/project-CodeCrafters/assets/vendor-a0b14d8a.css">
-  <link rel="stylesheet" href="/project-CodeCrafters/assets/local-storage-587443aa.css">
-  <link rel="stylesheet" href="/project-CodeCrafters/assets/cart-e242dc00.css">
-</head>
-
-<body>
-  <header class="header" role="banner">
+  <body>
+    <header class="header" role="banner">
   <div class="container">
     <div class="header-container">
       <a href="./index.html" class="header-logo">
@@ -89,14 +88,14 @@
         <a class="home-link" href="./index.html"> Home </a>
 
         <a class="cart-link" href="./cart.html" aria-label="cart">
-          <svg class="cart-icon">
+          <svg class="cart-icon-header">
             <use href="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg#icon-cart"></use>
           </svg>
         </a>
 
         <p class="cart-text">
           Cart
-          <span id="cart-counter">(0)</span>
+          <span id="cart-counter-header">(0)</span>
         </p>
       </nav>
     </div>
@@ -104,18 +103,18 @@
 </header>
 
 
-  <div class="container cart-title">
-    <span class="cart-title-icon">
-      <svg class="icon-basket" width="18" height="18">
-        <use href="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg#icon-basket"></use>
-      </svg>
-    </span>
-    <h1 class="cart-title-text" id="cart-counter-page">CART (0)</h1>
-  </div>
+    <div class="container cart-title">
+      <span class="cart-title-icon">
+        <svg class="icon-basket" width="18" height="18">
+          <use href="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg#icon-basket"></use>
+        </svg>
+      </span>
+      <h1 class="cart-title-text" id="cart-counter-page">CART (0)</h1>
+    </div>
 
-  <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
-  <div class="container cart-wrap" id="basket"></div>
-  <footer class="footer">
+    <!--Загальний контейнер для наших частин. Стилі контейнера прописані у загальному css файлі///// cart-wrap - контейнер для розташування наших обох частин у планшетній та десктопній версіях-->
+    <div class="container cart-wrap" id="basket"></div>
+    <footer class="footer">
     <div class="footer-container container">
         <div class="footer-wramp">
         <div class="footer-logo-social">
@@ -185,8 +184,8 @@
 </div>
     
 </footer>
-  
-  
-</body>
-
+    
+    
+    
+  </body>
 </html>
