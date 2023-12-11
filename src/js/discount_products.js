@@ -122,8 +122,12 @@ function createMarkup(arr) {
             </button>
           </div>
         </div> 
+        <div class="div-icon-discount">
+          <svg class="icon-discount" width="60" height="60">
+            <use href="${icons}#icon-discount"></use>
+          </svg>
+        </div>
     </div>
-</li>`
-    )
+</li>`)
     .join('');
 }
