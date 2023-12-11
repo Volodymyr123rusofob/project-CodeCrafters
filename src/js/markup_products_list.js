@@ -11,7 +11,7 @@ export default function createMarkup(arr) {
                 </a>
               </div>
                 <a class="products-card-link" href="">
-                  <h3 class="product-title">${name}</h3>
+                  <h3 class="product-title-mark">${name}</h3>
                 </a>
               <div class="product-parameter-container">
                 <p class="product-parameter">Category: <span class="span-parameter-value"> ${category.replace(

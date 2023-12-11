@@ -52,6 +52,7 @@
   border-radius: 20px;
   background: var(--third-bg);
   padding: 20px;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
@@ -84,7 +85,7 @@
     height: 140px;*/
 }
 
-.product-title {
+.product-title-mark {
   color: var(--text);
   font-size: 18px;
   /*font-style: normal;*/
@@ -97,7 +98,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .product-title {
+  .product-title-mark {
     font-size: 20px;
     line-height: 1.2;
   }
@@ -146,7 +147,7 @@
   line-height: 1.2;
 }
 
-.cart-button {
+.cart-button-css {
   /* fill: var(--second-bg);*/
   background-color: var(--second-bg);
   border-radius: 50%;
@@ -159,6 +160,8 @@
 
 .cart-icon {
   fill: var(--main-bg);
+  width: 18px;
+  height: 18px;
 }
 
 element.style {

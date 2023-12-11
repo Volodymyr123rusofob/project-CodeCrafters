@@ -1,6 +1,5 @@
-
 export const getEmptyCartMarkup = () =>
-    `
+  `
       <picture>
           <source
             srcset="
@@ -41,10 +40,8 @@ export const getEmptyCartMarkup = () =>
         </p>
     `;
 
-
-
-export const getCartMarkup = (products) =>
-    `
+export const getCartMarkup = products =>
+  `
      <div class="delete-all">
     <button type="button" class="btn-delete-all"> Delete All 
       <span class="icon-close-sharp">
@@ -55,7 +52,9 @@ export const getCartMarkup = (products) =>
     </button>
   </div>
   <ul class="cart-products-list">
-    ${products.map(({ _id, name, img, category, size, price }) => `
+    ${products
+      .map(
+        ({ _id, name, img, category, size, price }) => `
       <li class="cart-product-item" data-product-id="${_id}">
         <div class="cart-product-container">
           <div class="cart-product-img-container">
@@ -63,7 +62,9 @@ export const getCartMarkup = (products) =>
           </div>
           <div class="cart-product-parameter-container">
             <h2 class="cart-product-title">${name}</h2>
-            <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${category ? category.replace(/_/g, ' ') : ''}</span></p>
+            <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${
+              category ? category.replace(/_/g, ' ') : ''
+            }</span></p>
             <p class="cart-product-parameter">Size: <span class="cart-span-parameter-value">${size}</span></p>
             <p class="price">$${price}</p>
           </div>
@@ -77,11 +78,13 @@ export const getCartMarkup = (products) =>
             </button>
           </div>
         </div>
-      </li>`).join('')}
+      </li>`
+      )
+      .join('')}
   </ul>
 `;
 
-export const getcheckoutMarkup = () =>`
+export const getcheckoutMarkup = () => `
      <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
@@ -89,13 +92,13 @@ export const getcheckoutMarkup = () =>`
       </div>
 
       <div class="checkout-input-wrap">
-        <label for="checkoutEmail"></label>
+        <label class="checkout-input-label" for="checkoutEmail"></label>
         <input
           class="checkout-input-email"
           type="email"
           id="checkoutEmail"
           name="email"
-          placeholder="Mail:"
+          placeholder="example@mail.com:"
           required
         />
         <button class="checkout-button" type="submit">Checkout</button>
