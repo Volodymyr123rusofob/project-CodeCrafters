@@ -1,6 +1,5 @@
 import { openModal } from './modal';
 import ApiService from './requests';
-// import createMarkup from './markup_products_list';
 import icons from '../img/symbol-defs.svg';
 import Swal from 'sweetalert2';
 import alertSuccess from './alert';

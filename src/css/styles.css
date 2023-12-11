@@ -27,7 +27,7 @@
 }
 body {
   font-family: 'Neue Montreal', sans-serif;
-  background-color: var(--third-bg);
+  background-color: var(--main-bg);
 }
 
 section {
