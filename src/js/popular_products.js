@@ -6,12 +6,13 @@ import alertSuccess from './alert';
 import { ShopStorage } from './local-storage';
 
 const popularList = document.querySelector('.js-popular-list');
-popularList.addEventListener('click', handleClick);
+popularList.addEventListener('click', onClickCart);
 
 const apiReq = new ApiService();
 const imgPerPage = 5;
 
 const shopStorage = new ShopStorage('cart');
+let productsOnePage;
 
 const markupSvgCheck = `<svg class="ico">
 <use href="${icons}#icon-check"></use>
@@ -29,6 +30,7 @@ async function elemFromApi() {
 }
 
 function displayProducts(products, container) {
+  productsOnePage = products;
   container.innerHTML = createMarkup(products);
 }
 
@@ -85,20 +87,20 @@ function updateBasketIcon(cartButton, inCart) {
 
 elemFromApi();
 
-function handleClick(e) {
-  e.preventDefault();
-  const clickedEl = e.target;
-  console.log(clickedEl);
-  if (
-    clickedEl.closest('a') &&
-    clickedEl.closest('.popular-products-card-link')
-  ) {
-    const id = clickedEl.closest('li').dataset.productId;
-    openModal(id).catch(error => {
-      console.error('Помилка при отриманні продукта за айді:', error.message);
-    });
-  }
-}
+// function handleClick(e) {
+//   e.preventDefault();
+//   const clickedEl = e.target;
+//   console.log(clickedEl);
+//   if (
+//     clickedEl.closest('li') &&
+//     clickedEl.closest('.popular-product-item')
+//   ) {
+//     const id = clickedEl.closest('li').dataset.productId;
+//     openModal(id).catch(error => {
+//       console.error('Помилка при отриманні продукта за айді:', error.message);
+//     });
+//   }
+// }
 
 function createMarkup(arr) {
   return arr
@@ -136,4 +138,17 @@ function createMarkup(arr) {
 </li>`
     )
     .join('');
+}
+
+function onClickCart(e) {
+  e.preventDefault();
+  const clickedEl = e.target;
+  console.log(clickedEl);
+  if (clickedEl.closest('li') && clickedEl.closest('.popular-product-item')) {
+    const id = clickedEl.closest('li').dataset.productId;
+    const product = productsOnePage.find(item => item._id === id);
+    openModal(product).catch(error => {
+      console.error('Помилка при отриманні продукта за айді:', error.message);
+    });
+  }
 }
