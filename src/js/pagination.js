@@ -1,14 +1,17 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import ApiService from './requests';
-import { displayProducts, addEventListenersToBasketButtons } from './products_list';
+import {
+  displayProducts,
+  addEventListenersToBasketButtons,
+} from './products_list';
 const productsList = document.querySelector('.js-products-list');
 const apiService = new ApiService();
 const container = document.getElementById('pagination');
 const options = {
   totalItems: 540,
   itemsPerPage: 6,
-  visiblePages: 4,
+  visiblePages: 3,
   page: 1,
   centerAlign: true,
   template: {
