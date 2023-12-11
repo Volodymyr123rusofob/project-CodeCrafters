@@ -1,14 +1,94 @@
 import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
 import {addEventListenersToBasketButtons} from './products_list.js';
+// import {alertPopUp} from './alert';
+// alertPopUp('The product has been removed from the basket!');
+
 
 
 document.addEventListener('DOMContentLoaded', async () => {
+
   localStorage.setItem('noResultsMessageDisplayed', 'false');
   const apiService = new ApiService();
 
   // Запит списку категорій та додавання "Show all"
   const categorySelect = document.querySelector('.category-select');
+
+   categorySelect.addEventListener('change', async () => {
+    await filterProducts();
+   });
+  
+   async function filterProducts() {
+     // Получение значений из формы и локального хранилища
+     const keywordInput = document.querySelector('.keyword-input');
+     const selectedCategory = categorySelect.value;
+
+     const filters = {
+       keyword: keywordInput.value || null,
+       category: selectedCategory === 'Show all' ? null : selectedCategory,
+       page: 1,
+       limit: 6,
+     };
+     localStorage.setItem('filters', JSON.stringify(filters));
+
+     // Надсилання запиту на сервер з урахуванням фільтрів
+     try {
+       let products;
+
+       // Перевіряємо, чи є ключове слово
+       if (!filters.keyword && filters.category === null) {
+         // Якщо і ключове слово, і категорія відсутні,
+         // Запит на отримання всіх продуктів
+         products = await apiService.getAllProducts(
+           filters.page,
+           filters.limit
+         );
+       } else if (!filters.keyword) {
+         // Якщо немає ключового слова, запит на отримання всіх продуктів у вибраній категорії
+         products = await apiService.getProductsInCategories(
+           filters.category,
+           filters.page,
+           filters.limit
+         );
+       } else {
+         // Інакше запит на сервер з урахуванням ключового слова
+         products = await apiService.getProductsByName(
+           filters.keyword,
+           filters.category,
+           filters.page,
+           filters.limit
+         );
+       }
+
+       // Обробка даних (наприклад, відображення на сторінці)
+       console.log('Полученные продукты:', products);
+
+       // RENDERing
+       if (products.totalPages === 0) {
+         if (
+           localStorage.getItem('noResultsMessageDisplayed') !== 'true' ||
+           localStorage.getItem('noResultsMessageDisplayed') !== true
+         ) {
+           renderNoResultsMessage();
+         }
+       } else {
+         // Передача властивостей продукту markUp()
+         const productsMarkup = createMarkup(products.results);
+
+         // Відображення HTML-розмітки на сторінці
+         const productsList = document.querySelector('.js-products-list');
+         productsList.innerHTML = productsMarkup;
+         addEventListenersToBasketButtons();
+         // Удаление сообщения "Nothing..."
+         removeNoResultsMessage();
+         // Устанавливаем флаг в false, так как результаты найдены
+         localStorage.setItem('noResultsMessageDisplayed', 'false');
+       }
+     } catch (error) {
+       console.error('Ошибка при получении продуктов:', error.message);
+     }
+   }
+  
   try {
     const categories = await apiService.getProductsByCategory();
     categories.push('Show all');
@@ -42,82 +122,37 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     localStorage.setItem('filters', JSON.stringify(filters));
 
-    // Надсилання запиту на сервер з урахуванням фільтрів
-    try {
-      let products;
+   
+    const defaultFilters = {
+    keyword: null,
+    category: null,
+    page: 1,
+    limit: 6,
+  };
+  localStorage.setItem('filters', JSON.stringify(defaultFilters));
 
-      // Перевіряємо, чи є ключове слово
-      if (!filters.keyword && filters.category === null) {
-        // Якщо і ключове слово, і категорія відсутні,
-        // Запит на отримання всіх продуктів
-        products = await apiService.getAllProducts(filters.page, filters.limit);
-      } else if (!filters.keyword) {
-        // Якщо немає ключового слова, запит на отримання всіх продуктів у вибраній категорії
-        products = await apiService.getProductsInCategories(
-          filters.category,
-          filters.page,
-          filters.limit
-        );
-      } else {
-        // Інакше запит на сервер з урахуванням ключового слова
-        products = await apiService.getProductsByName(
-          filters.keyword,
-          filters.category,
-          filters.page,
-          filters.limit
-        );
-      }
-
-      // Обробка даних (наприклад, відображення на сторінці)
-      console.log('Полученные продукты:', products);
-
-      // RENDERing
-      if (products.totalPages === 0) {
-        if (localStorage.getItem('noResultsMessageDisplayed') !== 'true' || localStorage.getItem('noResultsMessageDisplayed') !== true) {
-
-          renderNoResultsMessage();
-        }
-      } else {
-        
-        // Передача властивостей продукту markUp()
-        const productsMarkup = createMarkup(products.results);
-        
-        // Відображення HTML-розмітки на сторінці
-        const productsList = document.querySelector('.js-products-list');
-        productsList.innerHTML = productsMarkup;
-        addEventListenersToBasketButtons();
-        // Удаление сообщения "Nothing..."
-        removeNoResultsMessage();
-        // Устанавливаем флаг в false, так как результаты найдены
-        localStorage.setItem('noResultsMessageDisplayed', 'false');
-        
-      }
-    } catch (error) {
-      console.error('Ошибка при получении продуктов:', error.message);
-    }
+  // Вызов функции фильтрации при загрузке страницы
+  await filterProducts();
   });
 
   function removeNoResultsMessage() {
     // const productsList = document.querySelector('.js-products-list');
     const titleElement = document.querySelector('.filters-title');
     const textElement = document.querySelector('.filters-text');
-// productsList.remove();
-// titleElement.remove();
-// textElement.remove();
-   if (titleElement) {
-     titleElement.remove();
-   }
+    // productsList.remove();
+    // titleElement.remove();
+    // textElement.remove();
+    if (titleElement) {
+      titleElement.remove();
+    }
 
-   if (textElement) {
-     textElement.remove();
-   }
+    if (textElement) {
+      textElement.remove();
+    }
 
-      // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
-      localStorage.setItem('noResultsMessageDisplayed', 'true');
-    
+    // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
+    localStorage.setItem('noResultsMessageDisplayed', 'true');
   }
-
-
 
   // Ініціалізація значень за замовчуванням під час завантаження сторінки
   const defaultFilters = {
@@ -127,6 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     limit: 6,
   };
   localStorage.setItem('filters', JSON.stringify(defaultFilters));
+  await filterProducts();
 });
 
 //    onFocus & onBlur on <input-box> from input
