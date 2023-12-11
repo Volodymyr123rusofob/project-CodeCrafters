@@ -129,25 +129,15 @@ class ApiService {
     }
   }
 
-  async createSubscription(email) {
-    try {
-      const response = await axios.post(`${this.BASE_URL}/subscriptions`, {
-        email,
-      });
-
-      return response.data;
-    } catch (error) {
-      // console.error('Помилка при створенні підписки:', error.message);
-      // throw error;
-      if (error.response && error.response.status === 409) {
-        // Возвращаем информацию о конфликте (если email уже существует)
-        return { conflict: true };
-      }
-
-      console.error('Error during subscription:', error.message);
-      throw error;
-    }
-    }
+  async  createSubscription(email) {
+   const response = await axios.post(this.BASE_URL+'/subscription', email, {
+     headers: {
+       'Content-Type': 'application/json',
+     },
+   });
+ 
+   return response;
+ }
   }
 
 
