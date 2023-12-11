@@ -19,7 +19,7 @@
 // updateCartCounter();
 import { getAllProducts } from './local-storage-interface.js';
 export const updateCartCounter = () => {
-  const cartCounter = document.querySelector('#cart-counter');
+  const cartCounter = document.querySelector('#cart-counter-header');
   const items = getAllProducts();
   cartCounter.textContent = `(${items.length})`;
 };
