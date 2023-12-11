@@ -8,8 +8,8 @@
     
     
     <script type="module" crossorigin src="/project-CodeCrafters/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/vendor-c5b37fd0.js">
-    <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/header-033ea397.js">
+    <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/vendor-ab16d78c.js">
+    <link rel="modulepreload" crossorigin href="/project-CodeCrafters/assets/header-ebefab6f.js">
     <link rel="stylesheet" href="/project-CodeCrafters/assets/vendor-a0b14d8a.css">
     <link rel="stylesheet" href="/project-CodeCrafters/assets/header-27506180.css">
     <link rel="stylesheet" href="/project-CodeCrafters/assets/cart-e242dc00.css">
@@ -167,7 +167,15 @@
             <p class="footer-form-text">Subscribe and learn about new products!</p>
             <form class="footer-form" id="subscriptionForm">
                 <label class="footer-form-label">
-                    <input class="footer-form-input" name="email" type="email" placeholder="E-mail" required>
+                    <input class="footer-form-input"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+        maxlength="200"
+        pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
+        title="Use the format: test@gmail.com"
+        aria-label="Subscribe to our newsletter. Enter your email address here."
+        required>
                 </label>
                 <button class="footer-form-button" type="submit">Send
                 </button>
@@ -178,8 +186,7 @@
         <div class="footer-privacy">
             <p class="footer-privacy-text">Food Boutique. All rights reserved.</p>
             <p class="footer-privacy-polisy">Privacy Policy / Terms of Service</p>
-            <!-- <a href="#" onclick="return false;" class="footer-privacy-polisy link">Privacy Policy</a><span class="footer-span"> / </span><a
-               href="#!" onclick="return false;" class="footer-privacy-polisy link">Terms of Service</a> -->
+            
         </div>
 </div>
     
