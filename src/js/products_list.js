@@ -108,7 +108,7 @@ function onClickCart(e) {
   e.preventDefault();
   const clickedEl = e.target;
   console.log(clickedEl);
-  if (clickedEl.closest('li') && clickedEl.closest('.products-card-link')) {
+  if (clickedEl.closest('li') && clickedEl.closest('.product-item')) {
     const id = clickedEl.closest('li').dataset.productId;
     const product = productsOnePage.find(item => item._id === id);
     openModal(product).catch(error => {
