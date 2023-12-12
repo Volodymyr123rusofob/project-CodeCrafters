@@ -66,3 +66,18 @@
     margin: 40px auto 61px;
   }
 }
+
+.tui-pagination .tui-last {
+  display: none;
+}
+
+.tui-pagination .tui-first {
+  display: none;
+}
+
+/* ****************** */
+
+.tui-last,
+.tui-first {
+  display: none;
+}

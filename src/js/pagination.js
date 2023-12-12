@@ -1,10 +1,21 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.min.css';
+import '../css/pagination.css';
 import ApiService from './requests';
+import icons from '../img/symbol-defs.svg';
 import {
   displayProducts,
   addEventListenersToBasketButtons,
 } from './products_list';
+
+const head = document.head || document.getElementsByTagName('head')[0];
+const style = document.createElement('link');
+style.type = 'text/css';
+style.rel = 'stylesheet';
+style.href = '../css/pagination.css';  
+head.appendChild(style);
+
 const productsList = document.querySelector('.js-products-list');
 const apiService = new ApiService();
 const container = document.getElementById('pagination');
@@ -16,30 +27,29 @@ const options = {
   centerAlign: true,
   template: {
     prev:
-      '<a href="#" class="tui-page-btn tui-prev">' +
-      '<svg class="icon-svg"><use href="prev.svg#prev"></use></svg>' +
-      '</a>',
-    firstPageLink: '<a href="#" class="tui-page-btn tui-first">{{page}}</a>',
-    page: '<a href="#" class="tui-page-btn tui-{{type}}">{{page}}</a>',
-    currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+      `<a href="#" class="tui-page-btn tui-next">` +
+      `<svg class="icon-svg"><use href="next.svg#next"></use></svg>` +
+      `</a>`,
+    firstPageLink: `<a href="#" class="tui-page-btn tui-first">{{page}}</a>`,
+    page: `<a href="#" class="tui-page-btn tui-{{type}}">{{page}}</a>`,
+    currentPage: `<strong class="tui-page-btn tui-is-selected">{{page}}</strong>`,
     moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
+      `<a href="#" class="tui-page-btn tui-{{type}}">` +
+      `<span class="tui-ico-{{type}}">>{{}}</span>` +
+      `</a>`,
     disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
+      `<span class="tui-page-btn tui-is-disabled tui-{{type}}">` +
+      `<span class="tui-ico-{{type}}"><<{{type}}</span>` +
+      `</span>`,
     moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
-    lastPageLink: '<a href="#" class="tui-page-btn tui-last">{{page}}</a>',
+      `<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">` +
+      `<span class="tui-ico-ellip">...</span>` +
+      `</a>`,
+    lastPageLink: `<a href="#" class="tui-page-btn tui-last">{{page}}</a>`,
     next:
-      '<a href="#" class="tui-page-btn tui-next">' +
-      '<svg class="icon-svg"><use href="next.svg#next"></use></svg>' +
-      '</a>',
+      `<a href="#" class="tui-page-btn tui-next">` +
+      `<svg class="icon-svg"><use href="next.svg#next"></use></svg>` +
+      `</a>`,
   },
 };
 const pagination = new Pagination(container, options);
