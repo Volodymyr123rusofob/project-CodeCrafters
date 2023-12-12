@@ -1,26 +1,26 @@
-import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab16d78c.js";const y=()=>`<div class="empty-cart">
+import{i as x,S as g,A as h}from"./assets/header-42f365c0.js";import"./assets/vendor-ab16d78c.js";const C="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",b="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",$="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",D="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",w="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png",P="/project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png",y=()=>`<div class="empty-cart">
       <div class="empty-picture">
       <picture>
           <source
             srcset="
-              /img/empty_cart/empty-cart-desktop-1x.png 1x,
-              /img/empty_cart/empty-cart-desktop-2x.png 2x
+              ${C} 1x,
+              ${b} 2x
             "
             media="
             (min-width: 1440px)"
           />
           <source
             srcset="
-              /img/empty_cart/empty-cart-tab-1x.png 1x,
-              /img/empty_cart/empty-cart-tab-2x.png 2x
+              ${$} 1x,
+              ${D} 2x
             "
             media="
             (min-width: 768px)"
           />
           <source
             srcset="
-              /img/empty_cart/empty-cart-mob-1x.png 1x,
-              /img/empty_cart/empty-cart-mob-2x.png 2x
+             ${w} 1x,
+              ${P} 2x
             "
             media="
             (min-width: 375px)"
@@ -40,7 +40,7 @@ import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab
           Go to the main page to select your favorite products and add them to
           the cart.
         </p></div></div>
-    `,b=e=>`
+    `,E=e=>`
   <div>
      <div class="delete-all">
     <button type="button" class="btn-delete-all"> Delete All 
@@ -69,7 +69,7 @@ import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab
           <div class="cart-delete">
             <button type="button" class="cart-btn-delete">
               <span class="cart-icon-close">
-                <svg class="icon-close" width="18" height="18">
+                <svg class="=${x}#icon-close" width="18" height="18">
                   <use href="/img/symbol-defs.svg#icon-ion_close-sharp"></use>
                 </svg>
               </span>
@@ -79,7 +79,7 @@ import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab
       </li>`).join("")}
   </ul>
   </div>
-`,x=()=>`
+`,S=()=>`
     <div>
 <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
@@ -99,5 +99,5 @@ import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab
         />
         <button class="checkout-button" type="submit">Checkout</button>
         </div>
-        `,i=document.getElementById("basket"),C=document.getElementById("cart-counter-page"),d=new g("productsBasket"),D=new h;async function m(){const e=d.getAllProducts();if(console.log("Current products in storage:",e),e.length===0)console.log("Basket is empty. Displaying empty cart markup."),i.innerHTML="",i.insertAdjacentHTML("beforeend",y());else{console.log("Fetching product details for each product in the cart.");const a=e.map(async({_id:r,quantity:l})=>{try{return r?{...await D.getProductById(r),quantity:l}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(u){return console.error(`Error fetching product details for _id: ${r}`,u),null}}),c=(await Promise.all(a)).filter(r=>r!==null);console.log("Displaying cart markup with product details:",c),i.innerHTML="",i.insertAdjacentHTML("beforeend",b(c)),i.insertAdjacentHTML("beforeend",x())}const o=e.length;console.log("Updating cart counter with product count:",o),C.textContent=`CART (${o})`}async function v(){return await m(),{totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")}}v();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async e=>{const o=e.target.closest(".btn-delete-all"),a=e.target.closest(".cart-btn-delete");if(o)console.log("Deleting all products from storage."),d.removeAllProducts(),console.log("Updating cart after removing all products."),m();else if(a){const s=a.closest(".cart-product-item").dataset.productId;console.log(`Deleting product with ID: ${s}`),d.removeProduct(s),m()}updateCartCounter()})});const w=new h,P=new g("productsBasket");document.addEventListener("DOMContentLoaded",async function(){const e=P.getAllProducts(),o=e.map(async({_id:t,quantity:n})=>{try{return t?{...await w.getProductById(t),quantity:n}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(p){return console.error(`Error fetching product details for _id: ${t}`,p),null}}),s=(await Promise.all(o)).filter(t=>t!==null);await v();const c={totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")};function r(){let t=0;s.map(({price:n})=>t+=n),c.totalPriceElement.textContent=`${t.toFixed(2)}`}r(),c.checkoutButton.addEventListener("click",l);function l(t){t.preventDefault(),u()}function u(){const t=c.emailInput.value;if(!t||!k(t)){alert("Please enter a valid email address.");return}function n(){const p=y();c.cartContainer.innerHTML=p}e.length>0&&n(),alert(`Checkout completed! Total Price: ${c.price.textContent}.`),c.totalPriceElement.textContent="0.00",f(0),localStorage.clear()}function f(t){c.totalPriceElement.textContent=t.toFixed(2)}function k(t){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)}});
+        `,i=document.getElementById("basket"),A=document.getElementById("cart-counter-page"),p=new g("productsBasket"),M=new h;async function m(){const e=p.getAllProducts();if(console.log("Current products in storage:",e),e.length===0)console.log("Basket is empty. Displaying empty cart markup."),i.innerHTML="",i.insertAdjacentHTML("beforeend",y());else{console.log("Fetching product details for each product in the cart.");const a=e.map(async({_id:r,quantity:l})=>{try{return r?{...await M.getProductById(r),quantity:l}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(u){return console.error(`Error fetching product details for _id: ${r}`,u),null}}),c=(await Promise.all(a)).filter(r=>r!==null);console.log("Displaying cart markup with product details:",c),i.innerHTML="",i.insertAdjacentHTML("beforeend",E(c)),i.insertAdjacentHTML("beforeend",S())}const o=e.length;console.log("Updating cart counter with product count:",o),A.textContent=`CART (${o})`}async function f(){return await m(),{totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")}}f();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async e=>{const o=e.target.closest(".btn-delete-all"),a=e.target.closest(".cart-btn-delete");if(o)console.log("Deleting all products from storage."),p.removeAllProducts(),console.log("Updating cart after removing all products."),m();else if(a){const s=a.closest(".cart-product-item").dataset.productId;console.log(`Deleting product with ID: ${s}`),p.removeProduct(s),m()}updateCartCounter()})});const L=new h,q=new g("productsBasket");document.addEventListener("DOMContentLoaded",async function(){const e=q.getAllProducts(),o=e.map(async({_id:t,quantity:n})=>{try{return t?{...await L.getProductById(t),quantity:n}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(d){return console.error(`Error fetching product details for _id: ${t}`,d),null}}),s=(await Promise.all(o)).filter(t=>t!==null);await f();const c={totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")};function r(){let t=0;s.map(({price:n})=>t+=n),c.totalPriceElement.textContent=`${t.toFixed(2)}`}r(),c.checkoutButton.addEventListener("click",l);function l(t){t.preventDefault(),u()}function u(){const t=c.emailInput.value;if(!t||!k(t)){alert("Please enter a valid email address.");return}function n(){const d=y();c.cartContainer.innerHTML=d}e.length>0&&n(),alert(`Checkout completed! Total Price: ${c.price.textContent}.`),c.totalPriceElement.textContent="0.00",v(0),localStorage.clear()}function v(t){c.totalPriceElement.textContent=t.toFixed(2)}function k(t){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)}});
 //# sourceMappingURL=commonHelpers.js.map

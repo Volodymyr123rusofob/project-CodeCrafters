@@ -1,4 +1,4 @@
-import{g as f,a as $,r as F,u as L,A as m,S as C}from"./assets/header-f0b91792.js";import{S as y,P as D}from"./assets/vendor-ab16d78c.js";const d="/project-CodeCrafters/assets/symbol-defs-e77d3d30.svg";function I(e){return e.map(({_id:t,name:s,img:o,category:a,price:r,size:c,popularity:i})=>`
+import{i as d,g as f,a as $,r as F,u as L,A as m,S as C}from"./assets/header-42f365c0.js";import{S as y,P as D}from"./assets/vendor-ab16d78c.js";function I(e){return e.map(({_id:t,name:s,img:o,category:a,price:r,size:c,popularity:i})=>`
             <li class="product-item" data-product-id='${t}'>
               <div class="product-img-container">
                   <img src="${o}" alt="${s}" width="140" height="140" class="product-img">
