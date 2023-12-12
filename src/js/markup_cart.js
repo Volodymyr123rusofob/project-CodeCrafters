@@ -85,8 +85,8 @@ export const getCartMarkup = products =>
           <div class="cart-delete">
             <button type="button" class="cart-btn-delete">
               <span class="cart-icon-close">
-                <svg class="${icons}#icon-close" width="18" height="18">
-                  <use href="/img/symbol-defs.svg#icon-ion_close-sharp"></use>
+                <svg class="icon-close" width="18" height="18">
+                  <use href="${icons}#icon-ion_close-sharp"></use>
                 </svg>
               </span>
             </button>
