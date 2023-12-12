@@ -1,3 +1,9 @@
+/* Стиль для секції */
+.cart-section {
+  padding-top: 72px;
+  padding-bottom: 120px;
+}
+
 /* ==========================================================================
    Styles of products (Таня)
    ========================================================================== */
@@ -6,15 +12,15 @@
 .cart-title {
   display: flex;
   align-items: center;
-  padding-top: 72px;
+  /* padding-top: 72px; */ /* Видалив цей падінг, бо відстань до хедера задаватиме cart-section*/
 }
 .cart-title-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--second-bg);
-  width: 42px;
-  height: 42px;
+  width: 38px; /* У макеті на моб версії 38 а не 42 px*/
+  height: 38px;
   border-radius: 90px;
   border: 0;
 }
@@ -24,10 +30,9 @@
   height: 18px;
 }
 .cart-title-text {
-  padding-left: 14px;
+  margin-left: 14px;
   color: var(--text);
-  font-size: 32px;
-  font-style: normal;
+  font-size: 24px; /* У макеті було 24 а не 32*/
   font-weight: 500;
   line-height: 32px; /* 100% */
   text-transform: uppercase;
@@ -47,7 +52,6 @@
   background-color: transparent;
   color: var(--text);
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 18px; /* 128.571% */
   cursor: pointer;
@@ -186,7 +190,7 @@
 @media screen and (min-width: 768px) {
   /* CART Заголовок */
   .cart-title {
-    margin-top: 104px;
+    /* margin-top: 104px; */ /* Видалив цей марджин, бо відстань до хедера задає section*/
   }
   /* кнопка Delete All */
   .btn-delete-all {
@@ -199,7 +203,6 @@
   .cart-products-list {
     max-height: 600px;
     width: 768px;
-    margin-bottom: 60px;
   }
   .cart-product-item {
     max-width: 672px;
@@ -254,10 +257,10 @@
     display: flex;
   }
 
-  /* CART Заголовок */
-  .cart-title {
+  /* CART Заголовок - прибрав. бо відстань буде через секцію задаватись */
+  /* .cart-title {
     margin-top: 86px;
-  }
+  } */
   /* кнопка Delete All */
   .btn-delete-all {
     margin-right: 144px;
@@ -285,13 +288,11 @@
    Styles of checkout (Андрій)
    ========================================================================== */
 .cart-wrap {
-  padding-bottom: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 105px;
 }
 
 .checkout-title {
@@ -300,6 +301,7 @@
   line-height: 28px;
   margin-bottom: 40px;
   text-transform: uppercase;
+  margin-top: 80px;
 }
 
 .checkout-total-wrap {
@@ -364,49 +366,10 @@
   color: #e8e8e2;
   font-size: 14px;
   line-height: 18px;
-  padding: 12px 20px; /* Adjusted for better consistency */
+  padding: 12px 20px;
   border-radius: 30px;
   background: #6d8434;
   box-shadow: none;
-}
-
-.empty-cart-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100vh;
-}
-
-.empty-cart-image {
-  width: 132px;
-  height: 114px;
-  margin-bottom: 28px;
-}
-
-.empty-cart-title {
-  color: #010101;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 20px;
-  margin-bottom: 14px;
-}
-
-.empty-cart-title-span {
-  color: #6d8434;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 20px;
-}
-
-.empty-cart-text {
-  color: rgba(1, 1, 1, 0.7);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
-  margin: 0 auto;
-  width: 279px;
 }
 
 /* ==========================================================================
@@ -420,6 +383,11 @@
 }
 
 @media screen and (min-width: 768px) {
+  .cart-section {
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
+
   .container {
     max-width: 768px;
     padding: 0 32px;
@@ -431,6 +399,7 @@
   }
 
   .checkout-title {
+    margin-top: 100px;
     font-size: 32px;
     line-height: 32px;
   }
@@ -480,9 +449,22 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .cart-section {
+    padding-top: 81px;
+    padding-bottom: 150px;
+  }
+
   .container {
     max-width: 1440px;
     padding: 0 100px;
+  }
+
+  .cart-desktop-wrap {
+    display: flex;
+  }
+
+  .checkout-title {
+    margin-top: 80px;
   }
 
   .checkout-input-email {
@@ -497,51 +479,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 105px;
-  padding-bottom: 28px;
-}
-
-.empty-cart-image {
-  width: 164px;
-  height: 140px;
+  margin-top: 100px;
+  margin-bottom: 28px;
 }
 
 .empty-text {
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
+}
+
+.empty-cart-image {
+  width: 132px;
+  height: 114px;
 }
 
 .empty-cart-title {
-  color: var(--text);
+  color: #010101;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 111.111% */
+  line-height: 20px;
+  margin-bottom: 14px;
 }
 
 .empty-cart-title-span {
-  color: var(--second-bg);
+  color: #6d8434;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 20px;
 }
 
 .empty-cart-text {
   color: rgba(1, 1, 1, 0.7);
-
-  text-align: center;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 18px; /* 128.571% */
+  line-height: 18px;
+  margin: 0 auto;
+  width: 279px;
 }
 
 @media screen and (min-width: 768px) {
   .empty-picture {
-    padding-top: 135px;
-    padding-bottom: 40px;
+    margin-top: 130px;
+    margin-bottom: 40px;
+  }
+
+  .empty-cart-image {
+    width: 164px;
+    height: 140px;
   }
 
   .empty-cart-title {
@@ -558,7 +544,6 @@
     font-size: 18px;
     line-height: 24px;
     width: 387px;
-    margin: 0;
   }
 }
 
@@ -567,12 +552,6 @@
     margin: auto;
   }
   .empty-picture {
-    padding-top: 155px;
-  }
-  .empty-text {
-    margin: 0;
-  }
-  .empty-text {
-    margin-bottom: 150px;
+    margin-top: 150px;
   }
 }

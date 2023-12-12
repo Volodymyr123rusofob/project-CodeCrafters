@@ -101,7 +101,7 @@ export const getCartMarkup = products =>
 
 export const getcheckoutMarkup = () => `
     <div>
-<h2 class="checkout-title">Your order</h2>
+      <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
         <p class="checkout-total">$0.00</p>
