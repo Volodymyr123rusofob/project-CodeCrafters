@@ -69,7 +69,7 @@ import{i as x,S as g,A as h}from"./assets/header-42f365c0.js";import"./assets/ve
           <div class="cart-delete">
             <button type="button" class="cart-btn-delete">
               <span class="cart-icon-close">
-                <svg class="=${x}#icon-close" width="18" height="18">
+                <svg class="${x}#icon-close" width="18" height="18">
                   <use href="/img/symbol-defs.svg#icon-ion_close-sharp"></use>
                 </svg>
               </span>
