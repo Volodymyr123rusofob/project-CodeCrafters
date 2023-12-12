@@ -1,12 +1,13 @@
 /* ==========================================================================
    Styles of products (Таня)
    ========================================================================== */
+
+/* CART Заголовок */
 .cart-title {
   display: flex;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 72px;
 }
-
 .cart-title-icon {
   display: flex;
   justify-content: center;
@@ -17,7 +18,11 @@
   border-radius: 90px;
   border: 0;
 }
-
+.icon-basket {
+  fill: var(--main-bg);
+  width: 18px;
+  height: 18px;
+}
 .cart-title-text {
   padding-left: 14px;
   color: var(--text);
@@ -27,6 +32,7 @@
   line-height: 32px; /* 100% */
   text-transform: uppercase;
 }
+/* кнопка Delete All */
 .delete-all {
   display: flex;
   justify-content: flex-end;
@@ -50,39 +56,41 @@
   height: 24px;
   width: 24px;
 }
-
+/* список карток продуктів */
 .cart-products-list {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   max-height: 480px;
+  max-width: 100%;
+  padding-bottom: 50px;
 }
 .cart-product-item {
   display: flex;
-  width: 335px;
+  max-width: 335px;
   height: 160px;
   border-bottom: 1 px;
 }
 .cart-product-item:not(:last-child) {
   border-bottom: 1px solid rgba(1, 1, 1, 0.1);
 }
+/* кнопка видалення картки */
 .cart-delete {
   position: absolute;
   display: flex;
 
   top: 22px;
   right: 7px;
-  width: 18px;
-  height: 18px;
 }
 .cart-btn-delete {
   background-color: transparent;
 }
-.cart-icon-close-sharp {
+.cart-icon-close {
   display: flex;
   width: 18px;
   height: 18px;
 }
+/* загальний контайнер продуктової картки */
 .cart-product-container {
   display: flex;
   justify-content: flex-start;
@@ -91,6 +99,7 @@
   height: 160px;
   position: relative;
 }
+/* контейнер зображення */
 .cart-product-img-container {
   display: flex;
   align-items: center;
@@ -107,11 +116,12 @@
   width: 64px;
   height: 64px;
 }
+/* контейнер параметрів */
 .cart-product-parameter-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
-  width: 215px;
+  width: 100%;
   gap: 6px;
   flex-wrap: wrap;
 }
@@ -124,12 +134,16 @@
   font-weight: 500;
   line-height: 20px; /* 111.111% */
 }
+.cart-product-parameter-text {
+  display: flex;
+}
 .cart-product-parameter {
   color: rgba(1, 1, 1, 0.3);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 14px; /* 116.667% */
+  padding-right: 4px;
 }
 .cart-span-parameter-value {
   color: var(--text);
@@ -138,6 +152,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 14px; /* 116.667% */
+  padding-right: 8px;
 }
 .price {
   color: var(--text);
@@ -147,9 +162,124 @@
   line-height: 20px; /* 111.111% */
   padding-top: 36px;
 }
+/* стилі скролу */
+.cart-products-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.cart-products-list::-webkit-scrollbar-thumb {
+  background-color: var(--second-bg);
+  border-radius: 2px;
+}
+
+.cart-products-list::-webkit-scrollbar-track {
+  background-color: var(--second-text); /* цвет трека */
+}
+
+.cart-product-item:not(:last-child) {
+  border-bottom: 1px solid rgba(1, 1, 1, 0.1);
+}
+
 /* ==========================================================================
    Media for products
    ========================================================================== */
+@media screen and (min-width: 768px) {
+  /* CART Заголовок */
+  .cart-title {
+    margin-top: 104px;
+  }
+  /* кнопка Delete All */
+  .btn-delete-all {
+    font-size: 16px;
+    line-height: 20px;
+    margin-right: 64px;
+    margin-top: 29px;
+  }
+  /* список карток продуктів */
+  .cart-products-list {
+    max-height: 600px;
+    width: 768px;
+    margin-bottom: 60px;
+  }
+  .cart-product-item {
+    max-width: 672px;
+    height: 200px;
+  }
+
+  /* кнопка видалення картки */
+  .cart-delete {
+    top: 40px;
+    right: 0px;
+  }
+  .cart-product-container {
+    width: 100%;
+    height: 100%;
+  }
+  /* контейнер зображення */
+  .cart-product-img-container {
+    margin-right: 40px;
+    width: 120px;
+    height: 120px;
+  }
+  .cart-product-img {
+    width: 72px;
+    height: 72px;
+  }
+  /* контейнер параметрів  */
+
+  .cart-product-title {
+    padding-bottom: 12px;
+    padding-top: 40px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .cart-product-parameter-text {
+    display: flex;
+  }
+
+  .cart-span-parameter-value {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .price {
+    font-size: 20px;
+    line-height: 24px;
+    padding-top: 46px;
+    padding-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cart-wrap {
+    display: flex;
+  }
+
+  /* CART Заголовок */
+  .cart-title {
+    margin-top: 86px;
+  }
+  /* кнопка Delete All */
+  .btn-delete-all {
+    margin-right: 144px;
+    margin-top: 21px;
+  }
+  /* список карток продуктів */
+  .cart-products-list {
+    width: 540px;
+    margin-right: 100px;
+  }
+  .cart-product-item {
+    max-width: 500px;
+    height: 200px;
+  }
+
+  /* кнопка видалення картки */
+
+  .cart-icon-close {
+    width: 20px;
+    height: 20px;
+  }
+}
 
 /* ==========================================================================
    Styles of checkout (Андрій)
@@ -347,11 +477,71 @@
     line-height: 24px;
     padding: 15px 65px;
   }
+}
 
-  .empty-cart-image {
-    width: 164px;
-    height: 140px;
-    margin-bottom: 40px;
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 100px;
+  }
+
+  .checkout-input-email {
+    margin-right: 16px;
+  }
+}
+
+/* ==========================================================================
+   Styles of EmptyCart 
+   ========================================================================== */
+.empty-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 105px;
+  padding-bottom: 28px;
+}
+
+.empty-cart-image {
+  width: 164px;
+  height: 140px;
+}
+
+.empty-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.empty-cart-title {
+  color: var(--text);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 111.111% */
+}
+
+.empty-cart-title-span {
+  color: var(--second-bg);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.empty-cart-text {
+  color: rgba(1, 1, 1, 0.7);
+
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+@media screen and (min-width: 768px) {
+  .empty-picture {
+    padding-top: 135px;
+    padding-bottom: 40px;
   }
 
   .empty-cart-title {
@@ -368,16 +558,21 @@
     font-size: 18px;
     line-height: 24px;
     width: 387px;
+    margin: 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding: 0 100px;
+  .empty-cart {
+    margin: auto;
   }
-
-  .checkout-input-email {
-    margin-right: 16px;
+  .empty-picture {
+    padding-top: 155px;
+  }
+  .empty-text {
+    margin: 0;
+  }
+  .empty-text {
+    margin-bottom: 150px;
   }
 }
