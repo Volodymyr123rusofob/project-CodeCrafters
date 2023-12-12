@@ -8,3 +8,4 @@ import './js/products_list';
 import './js/pagination.js';
 import './js/footer';
 import './js/modal';
+import './js/filter_helpers.js'

@@ -1,9 +1,10 @@
+
 import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
-import {addEventListenersToBasketButtons} from './products_list.js';
+import { addEventListenersToBasketButtons } from './products_list.js';
+import {FilterStorage} from './filter_helpers.js'
 // import {alertPopUp} from './alert';
 // alertPopUp('The product has been removed from the basket!');
-
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -63,7 +64,27 @@ document.addEventListener('DOMContentLoaded', async () => {
        }
 
        // Обробка даних (наприклад, відображення на сторінці)
-       console.log('Полученные продукты:', products);
+       console.log('Полученные продукты:(products)', products);
+       console.log('Сразу-products.results=', products.results);
+       // Сохранение products.results в локальное хранилище для пагинации
+       //  localStorage.setItem(
+       //    'productsResults',
+       //    JSON.stringify(products.results)
+       //  );
+       //  Создаем экземпляр  FilterStorage:
+       const storageKey = 'filterOfProducts';
+       const filterStorageInstance = new FilterStorage(storageKey);
+
+       const filterOfProducts = products.results;
+//  сохраняем массив в локальное хранилище
+       filterStorageInstance.writeToLocalStorage(filterOfProducts);
+
+      //  filterStorageInstance.initStorageForFilter(filterOfProducts);
+
+       //  const newFilterStorage =  FilterStorage.initStorageForFilter(products);
+       // console.log('newFilterStorage=', newFilterStorage);
+
+       //  const newProducts = await apiService.getFilterProducts(currentPage, 6);
 
        // RENDERing
        if (products.totalPages === 0) {
@@ -224,3 +245,5 @@ function renderNoResultsMessage() {
   // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
   localStorage.setItem('noResultsMessageDisplayed', 'true');
 }
+
+
