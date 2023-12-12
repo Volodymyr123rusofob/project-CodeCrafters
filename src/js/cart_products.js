@@ -5,6 +5,7 @@ import {
   getCartMarkup,
   getcheckoutMarkup,
 } from './markup_cart';
+import { updateCartCounter} from './header';
 
 const basket = document.getElementById('basket');
 const cartTitle = document.getElementById('cart-counter-page');
