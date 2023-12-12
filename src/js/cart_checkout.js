@@ -1,67 +1,105 @@
 // Імпорт
+import {renCart} from './cart_products'
+import ApiService from './requests';
 import {
   getEmptyCartMarkup,
   getCartMarkup,
   getcheckoutMarkup,
 } from './markup_cart';
+import { ShopStorage } from './local-storage';
+const api = new ApiService();
+const storage = new ShopStorage('productsBasket');
 
-// Референси
-const refs = {
-  totalPriceElement: document.querySelector('.checkout-total'),
-  emailInput: document.querySelector('.checkout-input-email'),
-  checkoutButton: document.querySelector('.checkout-button'),
-  cartContainer: document.querySelector('.cart-container'),
-};
+document.addEventListener('DOMContentLoaded', async function () {
+  const products = storage.getAllProducts();
+const productDetailsPromises = products.map(async ({ _id, quantity }) => {
+  try {
+    if (_id) {
+      const productDetails = await api.getProductById(_id);
+      return { ...productDetails, quantity };
+    } else {
+      console.error('_id is undefined or empty for a product in the cart');
+      return null;
+    }
+  } catch (error) {
+    console.error(`Error fetching product details for _id: ${_id}`, error);
+    return null;
+  }
+});
 
-// EventListener на чекаут кнопку
-refs.checkoutButton.addEventListener('click', handleCheckout);
+const productDetailsArray = await Promise.all(productDetailsPromises);
+const validProductDetails = productDetailsArray.filter(
+  details => details !== null
+);
 
-function handleCheckout(event) {
-  event.preventDefault();
+ await renCart();
+  // Референси
+  const refs = {
+    totalPriceElement: document.querySelector('.checkout-total'),
+    emailInput: document.querySelector('.checkout-input-email'),
+    checkoutButton: document.querySelector('.checkout-button'),
+    cartContainer: document.querySelector('.cart-products-list'),
+    price: document.querySelector('.price'),
+  };
+  function summ() {
+    let sum = 0;
+    validProductDetails.map(({price}) => sum += price)
+    refs.totalPriceElement.textContent = `${sum.toFixed(2)}`;
+  }
+  summ()
+  
 
-  checkout();
-}
+  refs.checkoutButton.addEventListener('click', handleCheckout);
+  function handleCheckout(event) {
+    event.preventDefault();
+    checkout();
+  }
+ 
+  // Функція чекаута
+  function checkout() {
+    const emailValue = refs.emailInput.value;
 
-// Функція чекаута
-function checkout() {
-  const emailValue = refs.emailInput.value;
+    // Валідація в інпуті
+    if (!emailValue || !isValidEmail(emailValue)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    function carMar() {
+      const cartMarkup = getEmptyCartMarkup();
+      refs.cartContainer.innerHTML = cartMarkup;
 
-  // Валідація в інпуті
-  if (!emailValue || !isValidEmail(emailValue)) {
-    alert('Please enter a valid email address.');
-    return;
+      }
+    // Завантажує правильну розмітку: або порожню корзину, або товари й ціну
+    if( products.length > 0) carMar();
+   
+    
+
+    // Повідомлення про успішний чекаут
+    alert(`Checkout completed! Total Price: ${refs.price.textContent}.`);
+
+    // Скидає в нуль
+    refs.totalPriceElement.textContent = '0.00';
+
+    updateTotalPrice(0);
+
+    // Чистить сховище
+    localStorage.clear();
   }
 
-  // Завантажує правильну розмітку: або порожню корзину, або товари й ціну
-  const cartMarkup =
-    products.length > 0 ? getCartMarkup(products) : getEmptyCartMarkup();
+  // Оновлює числа ціни
+  function updateTotalPrice(price) {
+    refs.totalPriceElement.textContent = price.toFixed(2);
+  }
 
-  refs.cartContainer.innerHTML = cartMarkup;
+  // Валідація пошти
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
-  // Повідомлення про успішний чекаут
-  alert(`Checkout completed! Total Price: $${getTotalPrice(products)}.`);
-
-  // Скидає в нуль
-  refs.totalPriceElement.textContent = '0.00';
-
-  updateTotalPrice(0);
-
-  // Чистить сховище
-  localStorage.clear();
-}
-
-// Оновлює числа ціни
-function updateTotalPrice(price) {
-  refs.totalPriceElement.textContent = price.toFixed(2);
-}
-
-// Валідація пошти
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-// Обчислює загальну суму
-function getTotalPrice(products) {
-  return products.reduce((total, { price }) => total + price, 0).toFixed(2);
-}
+  // Обчислює загальну суму
+  function getTotalPrice(products) {
+    return products.reduce((total, { price }) => total + price, 0).toFixed(2);
+  }
+});
+// !================================================================

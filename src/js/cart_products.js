@@ -37,7 +37,7 @@ async function updateCart() {
     });
 
     const productDetailsArray = await Promise.all(productDetailsPromises);
-    const validProductDetails = productDetailsArray.filter(
+     const validProductDetails = productDetailsArray.filter(
       details => details !== null
     );
     console.log(
@@ -48,14 +48,26 @@ async function updateCart() {
     basket.insertAdjacentHTML('beforeend', getCartMarkup(validProductDetails));
     basket.insertAdjacentHTML('beforeend', getcheckoutMarkup());
   }
-
+ 
   const productCount = products.length;
   console.log('Updating cart counter with product count:', productCount); //проверка
   cartTitle.textContent = `CART (${productCount})`;
 }
 
-updateCart();
-
+// !=================================================
+export async function renCart() {
+   await updateCart();
+  const refs = {
+    totalPriceElement: document.querySelector('.checkout-total'),
+    emailInput: document.querySelector('.checkout-input-email'),
+    checkoutButton: document.querySelector('.checkout-button'),
+    cartContainer: document.querySelector('.cart-products-list'),
+    price: document.querySelector('.price'),
+  };
+  return refs
+}
+renCart()
+// !=================================================
 document.addEventListener('DOMContentLoaded', () => {
   document.body.addEventListener('click', async event => {
     const btnDeleteAll = event.target.closest('.btn-delete-all');
