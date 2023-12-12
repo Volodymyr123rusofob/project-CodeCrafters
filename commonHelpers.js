@@ -81,7 +81,7 @@ import{i as x,S as g,u as C,A as h}from"./assets/header-42f365c0.js";import"./as
   </div>
 `,A=()=>`
     <div>
-<h2 class="checkout-title">Your order</h2>
+      <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
         <p class="checkout-total">$0.00</p>
