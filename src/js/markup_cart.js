@@ -1,27 +1,35 @@
+import icons from '../img/symbol-defs.svg';
+import imgecd_1x from '../img/empty_cart/empty-cart-desktop-1x.png';
+import imgecd_2x from '../img/empty_cart/empty-cart-desktop-2x.png';
+import imgect_1x from '../img/empty_cart/empty-cart-tab-1x.png';
+import imgect_2x from '../img/empty_cart/empty-cart-tab-2x.png';
+import imgecm_1x from '../img/empty_cart/empty-cart-mob-1x.png';
+import imgecm_2x from '../img/empty_cart/empty-cart-mob-2x.png';
+
 export const getEmptyCartMarkup = () =>
   `<div class="empty-cart">
       <div class="empty-picture">
       <picture>
           <source
             srcset="
-              /img/empty_cart/empty-cart-desktop-1x.png 1x,
-              /img/empty_cart/empty-cart-desktop-2x.png 2x
+              ${imgecd_1x} 1x,
+              ${imgecd_2x} 2x
             "
             media="
             (min-width: 1440px)"
           />
           <source
             srcset="
-              /img/empty_cart/empty-cart-tab-1x.png 1x,
-              /img/empty_cart/empty-cart-tab-2x.png 2x
+              ${imgect_1x} 1x,
+              ${imgect_2x} 2x
             "
             media="
             (min-width: 768px)"
           />
           <source
             srcset="
-              /img/empty_cart/empty-cart-mob-1x.png 1x,
-              /img/empty_cart/empty-cart-mob-2x.png 2x
+             ${imgecm_1x} 1x,
+              ${imgecm_2x} 2x
             "
             media="
             (min-width: 375px)"
@@ -77,7 +85,7 @@ export const getCartMarkup = products =>
           <div class="cart-delete">
             <button type="button" class="cart-btn-delete">
               <span class="cart-icon-close">
-                <svg class="icon-close" width="18" height="18">
+                <svg class="=${icons}#icon-close" width="18" height="18">
                   <use href="/img/symbol-defs.svg#icon-ion_close-sharp"></use>
                 </svg>
               </span>
