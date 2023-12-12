@@ -49,6 +49,13 @@ pagination.on('beforeMove', async event => {
   const newProducts = await apiService.getAllProducts(currentPage, 6);
   displayProducts(newProducts.results, productsList);
   addEventListenersToBasketButtons();
+
+  // После обновления контента прокрутите страницу вверх
+  window.scrollTo({
+    top: 200,
+    behavior: 'smooth',
+   });
+ 
 });
 // // Показуємо або приховуємо пагінацію відповідно до умови
 // // if (totalPages > 1) {
