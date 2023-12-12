@@ -85,5 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
       storage.removeProduct(productId); // ИЗМЕНЕНИЕ
       updateCart();
     }
+	 updateCartCounter ();
   });
 });
