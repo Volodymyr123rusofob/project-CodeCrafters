@@ -1,4 +1,4 @@
-import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab16d78c.js";const d=()=>`
+import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab16d78c.js";const y=()=>`
       <picture>
           <source
             srcset="
@@ -37,7 +37,7 @@ import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab
           Go to the main page to select your favorite products and add them to
           the cart.
         </p>
-    `,m=t=>`
+    `,v=e=>`
      <div class="delete-all">
     <button type="button" class="btn-delete-all"> Delete All 
       <span class="icon-close-sharp">
@@ -48,16 +48,16 @@ import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab
     </button>
   </div>
   <ul class="cart-products-list">
-    ${t.map(({_id:e,name:c,img:r,category:o,size:a,price:l})=>`
-      <li class="cart-product-item" data-product-id="${e}">
+    ${e.map(({_id:o,name:a,img:s,category:c,size:r,price:l})=>`
+      <li class="cart-product-item" data-product-id="${o}">
         <div class="cart-product-container">
           <div class="cart-product-img-container">
-            <img src="${r}" alt="${c}" width="64" height="64" class="cart-product-img">
+            <img src="${s}" alt="${a}" width="64" height="64" class="cart-product-img">
           </div>
           <div class="cart-product-parameter-container">
-            <h2 class="cart-product-title">${c}</h2>
-            <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${o?o.replace(/_/g," "):""}</span></p>
-            <p class="cart-product-parameter">Size: <span class="cart-span-parameter-value">${a}</span></p>
+            <h2 class="cart-product-title">${a}</h2>
+            <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${c?c.replace(/_/g," "):""}</span></p>
+            <p class="cart-product-parameter">Size: <span class="cart-span-parameter-value">${r}</span></p>
             <p class="price">$${l}</p>
           </div>
           <div class="cart-delete">
@@ -72,7 +72,7 @@ import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab
         </div>
       </li>`).join("")}
   </ul>
-`,y=()=>`
+`,x=()=>`
      <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
@@ -90,5 +90,5 @@ import{S as g,A as h}from"./assets/header-f0b91792.js";import"./assets/vendor-ab
           required
         />
         <button class="checkout-button" type="submit">Checkout</button>
-        `,s=document.getElementById("basket"),k=document.getElementById("cart-counter-page"),i=new g("productsBasket"),b=new h;async function p(){const t=i.getAllProducts();if(console.log("Current products in storage:",t),t.length===0)console.log("Basket is empty. Displaying empty cart markup."),s.innerHTML="",s.insertAdjacentHTML("beforeend",d());else{console.log("Fetching product details for each product in the cart.");const c=t.map(async({_id:a,quantity:l})=>{try{return a?{...await b.getProductById(a),quantity:l}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(u){return console.error(`Error fetching product details for _id: ${a}`,u),null}}),o=(await Promise.all(c)).filter(a=>a!==null);console.log("Displaying cart markup with product details:",o),s.innerHTML="",s.insertAdjacentHTML("beforeend",m(o)),s.insertAdjacentHTML("beforeend",y())}const e=t.length;console.log("Updating cart counter with product count:",e),k.textContent=`CART (${e})`}p();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async t=>{const e=t.target.closest(".btn-delete-all"),c=t.target.closest(".cart-btn-delete");if(e)console.log("Deleting all products from storage."),i.removeAllProducts(),console.log("Updating cart after removing all products."),p();else if(c){const r=c.closest(".cart-product-item").dataset.productId;console.log(`Deleting product with ID: ${r}`),i.removeProduct(r),p()}})});const n={totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-container")};n.checkoutButton.addEventListener("click",v);function v(t){t.preventDefault(),f()}function f(){const t=n.emailInput.value;if(!t||!C(t)){alert("Please enter a valid email address.");return}const e=products.length>0?m(products):d();n.cartContainer.innerHTML=e,alert(`Checkout completed! Total Price: $${D(products)}.`),n.totalPriceElement.textContent="0.00",x(0),localStorage.clear()}function x(t){n.totalPriceElement.textContent=t.toFixed(2)}function C(t){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)}function D(t){return t.reduce((e,{price:c})=>e+c,0).toFixed(2)}
+        `,i=document.getElementById("basket"),D=document.getElementById("cart-counter-page"),d=new g("productsBasket"),C=new h;async function m(){const e=d.getAllProducts();if(console.log("Current products in storage:",e),e.length===0)console.log("Basket is empty. Displaying empty cart markup."),i.innerHTML="",i.insertAdjacentHTML("beforeend",y());else{console.log("Fetching product details for each product in the cart.");const a=e.map(async({_id:r,quantity:l})=>{try{return r?{...await C.getProductById(r),quantity:l}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(u){return console.error(`Error fetching product details for _id: ${r}`,u),null}}),c=(await Promise.all(a)).filter(r=>r!==null);console.log("Displaying cart markup with product details:",c),i.innerHTML="",i.insertAdjacentHTML("beforeend",v(c)),i.insertAdjacentHTML("beforeend",x())}const o=e.length;console.log("Updating cart counter with product count:",o),D.textContent=`CART (${o})`}async function f(){return await m(),{totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")}}f();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async e=>{const o=e.target.closest(".btn-delete-all"),a=e.target.closest(".cart-btn-delete");if(o)console.log("Deleting all products from storage."),d.removeAllProducts(),console.log("Updating cart after removing all products."),m();else if(a){const s=a.closest(".cart-product-item").dataset.productId;console.log(`Deleting product with ID: ${s}`),d.removeProduct(s),m()}})});const w=new h,P=new g("productsBasket");document.addEventListener("DOMContentLoaded",async function(){const e=P.getAllProducts(),o=e.map(async({_id:t,quantity:n})=>{try{return t?{...await w.getProductById(t),quantity:n}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(p){return console.error(`Error fetching product details for _id: ${t}`,p),null}}),s=(await Promise.all(o)).filter(t=>t!==null);await f();const c={totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")};function r(){let t=0;s.map(({price:n})=>t+=n),c.totalPriceElement.textContent=`${t.toFixed(2)}`}r(),c.checkoutButton.addEventListener("click",l);function l(t){t.preventDefault(),u()}function u(){const t=c.emailInput.value;if(!t||!b(t)){alert("Please enter a valid email address.");return}function n(){const p=y();c.cartContainer.innerHTML=p}e.length>0&&n(),alert(`Checkout completed! Total Price: ${c.price.textContent}.`),c.totalPriceElement.textContent="0.00",k(0),localStorage.clear()}function k(t){c.totalPriceElement.textContent=t.toFixed(2)}function b(t){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)}});
 //# sourceMappingURL=commonHelpers.js.map
