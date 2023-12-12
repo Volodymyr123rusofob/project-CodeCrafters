@@ -1,51 +1,55 @@
 export const getEmptyCartMarkup = () =>
-  `
+  `<div class="empty-cart">
+      <div class="empty-picture">
       <picture>
           <source
             srcset="
-              ./img/empty_cart/empty-cart-desktop-1x.png 1x,
-              ./img/empty_cart/empty-cart-desktop-2x.png 2x
+              /img/empty_cart/empty-cart-desktop-1x.png 1x,
+              /img/empty_cart/empty-cart-desktop-2x.png 2x
             "
             media="
             (min-width: 1440px)"
           />
           <source
             srcset="
-              ./img/empty_cart/empty-cart-tab-1x.png 1x,
-              ./img/empty_cart/empty-cart-tab-2x.png 2x
+              /img/empty_cart/empty-cart-tab-1x.png 1x,
+              /img/empty_cart/empty-cart-tab-2x.png 2x
             "
             media="
             (min-width: 768px)"
           />
           <source
             srcset="
-              ./img/empty_cart/empty-cart-mob-1x.png 1x,
-              ./img/empty_cart/empty-cart-mob-2x.png 2x
+              /img/empty_cart/empty-cart-mob-1x.png 1x,
+              /img/empty_cart/empty-cart-mob-2x.png 2x
             "
             media="
             (min-width: 375px)"
           />
           <img
-            src="./img/empty_cart/empty-cart-mob-1x.png"
+            src="/img/empty_cart/empty-cart-mob-1x.png"
             alt="Empty Cart Image"
             class="empty-cart-image"
           />
         </picture>
+        </div>
+        <div class="empty-text">
         <h2 class="empty-cart-title">
           Your basket is <span class="empty-cart-title-span">empty...</span>
         </h2>
         <p class="empty-cart-text">
           Go to the main page to select your favorite products and add them to
           the cart.
-        </p>
+        </p></div></div>
     `;
 
 export const getCartMarkup = products =>
   `
+  <div>
      <div class="delete-all">
     <button type="button" class="btn-delete-all"> Delete All 
-      <span class="icon-close-sharp">
-        <svg class="icon-basket" width="24" height="24">
+      <span class="icon-close">
+        <svg class="icon-close" width="24" height="24">
           <use href="/img/symbol-defs.svg#icon-ion_close-sharp"></use>
         </svg>
       </span>
@@ -62,16 +66,18 @@ export const getCartMarkup = products =>
           </div>
           <div class="cart-product-parameter-container">
             <h2 class="cart-product-title">${name}</h2>
+            <div class="cart-product-parameter-text">
             <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${
               category ? category.replace(/_/g, ' ') : ''
             }</span></p>
             <p class="cart-product-parameter">Size: <span class="cart-span-parameter-value">${size}</span></p>
+            </div>
             <p class="price">$${price}</p>
           </div>
           <div class="cart-delete">
             <button type="button" class="cart-btn-delete">
-              <span class="cart-icon-close-sharp">
-                <svg class="icon-basket" width="24" height="24">
+              <span class="cart-icon-close">
+                <svg class="icon-close" width="18" height="18">
                   <use href="/img/symbol-defs.svg#icon-ion_close-sharp"></use>
                 </svg>
               </span>
@@ -82,10 +88,12 @@ export const getCartMarkup = products =>
       )
       .join('')}
   </ul>
+  </div>
 `;
 
 export const getcheckoutMarkup = () => `
-     <h2 class="checkout-title">Your order</h2>
+    <div>
+<h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
         <p class="checkout-total">$0.00</p>
@@ -102,4 +110,5 @@ export const getcheckoutMarkup = () => `
           required
         />
         <button class="checkout-button" type="submit">Checkout</button>
+        </div>
         `;
