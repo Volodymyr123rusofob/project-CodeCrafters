@@ -7,7 +7,7 @@ import imgecm_1x from '../img/empty_cart/empty-cart-mob-1x.png';
 import imgecm_2x from '../img/empty_cart/empty-cart-mob-2x.png';
 
 export const getEmptyCartMarkup = () =>
-  `<div class="empty-cart">
+  `
       <div class="empty-picture">
       <picture>
           <source
@@ -48,12 +48,12 @@ export const getEmptyCartMarkup = () =>
         <p class="empty-cart-text">
           Go to the main page to select your favorite products and add them to
           the cart.
-        </p></div></div>
+        </p></div>
     `;
 
 export const getCartMarkup = products =>
   `
-  <div>
+  
      <div class="delete-all">
     <button type="button" class="btn-delete-all"> Delete All 
       <span class="icon-close">
@@ -96,14 +96,14 @@ export const getCartMarkup = products =>
       )
       .join('')}
   </ul>
-  </div>
+ 
 `;
 
 export const getcheckoutMarkup = (products) =>{
   let prices = 0;
   products.forEach(({ price }) => (prices += price));
         return`
-    <div>
+   
       <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
@@ -121,5 +121,5 @@ export const getcheckoutMarkup = (products) =>{
           required
         />
         <button class="checkout-button" type="submit">Checkout</button>
-        </div>
+        
         `};

@@ -4,6 +4,18 @@
   padding-bottom: 120px;
 }
 
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
 /* ==========================================================================
    Styles of products (Таня)
    ========================================================================== */
@@ -12,13 +24,13 @@
 .cart-title {
   display: flex;
   align-items: center;
-  }
+}
 .cart-title-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--second-bg);
-  width: 38px; 
+  width: 38px;
   height: 38px;
   border-radius: 90px;
   border: 0;
@@ -31,9 +43,9 @@
 .cart-title-text {
   margin-left: 14px;
   color: var(--text);
-  font-size: 24px; 
+  font-size: 24px;
   font-weight: 500;
-  line-height: 32px; 
+  line-height: 32px;
   text-transform: uppercase;
 }
 /* кнопка Delete All */
@@ -52,7 +64,7 @@
   color: var(--text);
   font-size: 14px;
   font-weight: 500;
-  line-height: 18px; 
+  line-height: 18px;
   cursor: pointer;
 }
 .btn-x {
@@ -135,7 +147,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px; 
+  line-height: 20px;
 }
 .cart-product-parameter-text {
   display: flex;
@@ -145,7 +157,7 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 14px; 
+  line-height: 14px;
   padding-right: 4px;
 }
 .cart-span-parameter-value {
@@ -154,7 +166,7 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 14px; 
+  line-height: 14px;
   padding-right: 8px;
 }
 .price {
@@ -162,7 +174,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px; 
+  line-height: 20px;
   padding-top: 36px;
 }
 /* стилі скролу */
@@ -187,7 +199,6 @@
    Media for products
    ========================================================================== */
 @media screen and (min-width: 768px) {
-
   /* кнопка Delete All */
   .btn-delete-all {
     font-size: 16px;
@@ -454,6 +465,7 @@
 
   .cart-desktop-wrap {
     display: flex;
+    justify-content: center; /* додала для позиціонування по центру (для пустої корзини) */
   }
 
   .checkout-title {
