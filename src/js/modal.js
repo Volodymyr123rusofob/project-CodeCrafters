@@ -44,7 +44,7 @@ export function renderModal(productDetails) {
   </button>
   <div class="modal-prod-information-wrap">
   <div class="modal-prod-img-wrap">
-      <img class="modal-prod-img" src="${productDetails.img}" alt="${productDetails.name}" />
+      <img class="modal-prod-img" src="${productDetails.img}" alt="${productDetails.name}" loading="lazy" />
   </div>
   <div class="modal-prod-name-wrap">
   <p class="modal-prod-name">${productDetails.name}</p>
