@@ -34,7 +34,7 @@ export default function createMarkup(arr) {
               <div class="price-card-container">
                 <p class="price">$${price}</p>
 
-                <button class="cart-button cart-button-css" type="button" data-item-id="${_id}" data-in-cart="false">
+                <button class="cart-button cart-button-css" type="button" data-item-id="${_id}" data-in-cart="false" aria-label="Add to cart">
                 ${
                   dataFromLocalStorage.some(item => item._id === _id)
                     ? markupSvgCheck
