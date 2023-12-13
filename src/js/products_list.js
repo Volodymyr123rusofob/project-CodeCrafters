@@ -46,7 +46,7 @@ async function prod() {
   displayProducts(productsOnePage, productsList);
 
 
-  addEventListenerToCardButton();
+  addEventListenersToBasketButtons();
 
   basketButtons.forEach(button => {
     const isProductInBasket = getAllProducts().some(
@@ -62,10 +62,6 @@ export function displayProducts(products, container) {
 }
 
 const cartState = getAllProducts();
-
-// function addEventListenerToCardButton() {
-//   addEventListenersToBasketButtons();
-// }
 
 export function addEventListenersToBasketButtons() {
   basketButtons = document.querySelectorAll('.cart-button');
