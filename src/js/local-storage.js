@@ -1,3 +1,5 @@
+import alertPopUp from './alert';
+
 export class ShopStorage {
   constructor(storageBasketName) {
     this.storageBasketName = storageBasketName;
@@ -25,7 +27,9 @@ export class ShopStorage {
       newProduct.amount = 1;
       products.push(newProduct);
     } else {
-      searchProduct.amount += 1;
+      // searchProduct.amount += 1;
+      alertPopUp(message = 'This product has already been added to the cart!',
+      icon = 'warning');
     }
     this.#writeToLocalStorage(products);
   }
