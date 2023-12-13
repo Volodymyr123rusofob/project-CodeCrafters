@@ -54,11 +54,11 @@ const options = {
 const pagination = new Pagination(container, options);
 // Обробник події перед переміщенням на іншу сторінку
 pagination.on('beforeMove', async event => {
+  
   const currentPage = event.page;
   const newProducts = await apiService.getAllProducts(currentPage, 9);
   displayProducts(newProducts.results, productsList);
   addEventListenersToBasketButtons();
-
   // После обновления контента прокрутите страницу вверх
   window.scrollTo({
     top: 900,
@@ -66,8 +66,9 @@ pagination.on('beforeMove', async event => {
   });
 });
 // // Показуємо або приховуємо пагінацію відповідно до умови
-// // if (totalPages > 1) {
-// // paginationContainer.style.display = 'block';
-// // } else {
-// // paginationContainer.style.display = 'none';
-// // } (edited)
+// if (totalPages > 1) {
+// paginationContainer.style.display = 'block';
+// } else {
+// paginationContainer.style.display = 'none';
+// } (edited)
+// pagination.reset();
