@@ -35,7 +35,7 @@ export function createMarkupPopular(arr) {
               Popularity: <span class="popularity-value"> ${popularity}</span>
             </p>
           </div>
-          <button class="cart-button-pop cart-button" type="button" data-item-id="${_id}" data-in-cart="false">
+          <button class="cart-button-pop cart-button" type="button" data-item-id="${_id}" data-in-cart="false" aria-label="Add to cart">
           ${
             dataFromLocalStorage.some(item => item._id === _id)
               ? markupSvgCheck
