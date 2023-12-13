@@ -1,7 +1,7 @@
 
 import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
-import { addEventListenersToBasketButtons } from './products_list.js';
+import { addEventListenersToBasketButtons, displayProducts } from './products_list.js';
 import {FilterStorage} from './filter_helpers.js'
 // import {alertPopUp} from './alert';
 // alertPopUp('The product has been removed from the basket!');
@@ -93,8 +93,10 @@ document.addEventListener('DOMContentLoaded', async () => {
          const productsMarkup = createMarkup(products.results);
 
          // Відображення HTML-розмітки на сторінці
-         const productsList = document.querySelector('.js-products-list');
-         productsList.innerHTML = productsMarkup;
+         const productsListContainer = document.querySelector('.js-products-list');
+
+         displayProducts(products.results, productsListContainer);
+        //  productsList.innerHTML = productsMarkup;
          addEventListenersToBasketButtons();
          // Удаление сообщения "Nothing..."
          removeNoResultsMessage();
@@ -134,7 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       keyword: keywordInput.value || null,
       category: selectedCategory === 'Show all' ? null : selectedCategory,
       page: 1,
-      limit: 6,
+      limit: 9,
     };
 
     localStorage.setItem('filters', JSON.stringify(filters));
