@@ -5,7 +5,7 @@ import { addEventListenersToBasketButtons } from './products_list.js';
 import {FilterStorage} from './filter_helpers.js'
 // import {alertPopUp} from './alert';
 // alertPopUp('The product has been removed from the basket!');
-
+import Pagination from 'tui-pagination';
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', async () => {
        }
 
        // Обробка даних (наприклад, відображення на сторінці)
-       console.log('Полученные продукты:(products)', products);
-       console.log('Сразу-products.results=', products.results);
+       console.log('Полученные продукты:(products=>)', products);
+      
        // Сохранение products.results в локальное хранилище для пагинации
        //  localStorage.setItem(
        //    'productsResults',
@@ -79,13 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 //  сохраняем массив в локальное хранилище
        filterStorageInstance.writeToLocalStorage(filterOfProducts);
 
-      //  filterStorageInstance.initStorageForFilter(filterOfProducts);
-
-       //  const newFilterStorage =  FilterStorage.initStorageForFilter(products);
-       // console.log('newFilterStorage=', newFilterStorage);
-
-       //  const newProducts = await apiService.getFilterProducts(currentPage, 6);
-
+// pagination.reset();   
        // RENDERing
        if (products.totalPages === 0) {
          if (
