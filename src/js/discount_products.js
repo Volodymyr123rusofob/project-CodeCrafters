@@ -1,133 +1,59 @@
 import { openModal } from './modal';
 import ApiService from './requests';
-import icons from '../img/symbol-defs.svg';
-import Swal from 'sweetalert2';
-import alertSuccess from './alert';
-import { ShopStorage } from './local-storage';
-
+import createMarkupDiscount from './markup_discount';
+import { addEventListenersToBasketButtons} from './products_list';
+import { getAllProducts } from './local-storage-interface';
 const popularList = document.querySelector('.js-discount-list');
-popularList.addEventListener('click', handleClick);
+popularList.addEventListener('click', onClickCart);
 
 const apiReq = new ApiService();
 const imgPerPage = 2;
-
-const shopStorage = new ShopStorage('cart');
-
-const markupSvgCheck = `<svg class="ico">
-<use href="${icons}#icon-check"></use>
-</svg>`;
-
-const markupSvgCart = `<svg class="ico">
-<use href="${icons}#icon-basket"></use>
-</svg>`;
+let cartState = [];
+let productsOnePage;
 
 async function elemFromApi() {
   const products = await apiReq.getDiscountedProducts();
-  displayProducts(products, popularList);
-  addEventListenerToCardButton();
-}
-
-function displayProducts(products, container) {
-  container.innerHTML = createMarkup(products);
-}
-
-const cartState = shopStorage.getAllProducts();
-
-function addEventListenerToCardButton() {
+  productsOnePage = products.slice(0, imgPerPage);
+  displayProducts(productsOnePage, popularList);
   addEventListenersToBasketButtons();
+  cartState.forEach(item => {
+  updateBasketIconByProductId(item._id, getAllProducts().some(product => product._id === item._id));
+ });
 }
-
-function addEventListenersToBasketButtons() {
-  const basketButtons = document.querySelectorAll('.discount-cart-js');
-
-  if (basketButtons) {
-    basketButtons.forEach(basketButton => {
-      basketButton.addEventListener('click', handleBasketButtonClick);
-    });
+elemFromApi();
+function updateBasketIconByProductId(productId, inCart) {
+  basketButtons.forEach(button => {
+    if (button.dataset.itemId === productId) {
+      updateBasketIcon(button, inCart);
   }
+ });
 }
-
-function handleBasketButtonClick(event) {
-  const basketButton = event.target.closest('.discount-cart-js');
-
-  if (basketButton) {
-    const itemId = basketButton.dataset.itemId;
-    handleBasketClick(basketButton, itemId);
-    alertSuccess();
-  }
-}
-
-function handleBasketClick(cartButton, itemId, markupSvgCheck, markupSvgCart) {
-  const cartItemIndex = cartState.findIndex(item => item._id === itemId);
-  if (cartItemIndex !== -1) {
-    Swal.fire({
-      title: '',
-      text: 'This product has already been added to the cart!',
-      icon: 'warning',
-      confirmButtonColor: '#6d8434',
-    });
-  } else {
-    shopStorage.addProduct({ _id: itemId, amount: 1 }); // Додаємо товар до локального сховища
-  }
-  updateBasketIcon(cartButton, true, markupSvgCheck, markupSvgCart);
-}
-
 function updateBasketIcon(cartButton, inCart) {
+  const button = document.querySelector('.cart-button');
   if (inCart) {
-    cartButton.innerHTML = markupSvgCheck;
-    const button = document.querySelector('.discount-cart-js');
+    cartButton.innerHTML = `<svg class="ico">
+  <use href="${icons}#icon-check"></use>
+  </svg>`;
     button.disabled = true;
   } else {
-    cartButton.innerHTML = markupSvgCart;
+    cartButton.innerHTML = `<svg class="ico">
+  <use href="${icons}#icon-basket"></use>
+  </svg>`;
+    button.disabled = false;
   }
 }
-
-elemFromApi();
-
-function handleClick(e) {
+function displayProducts(productsOnePage, container) {
+  container.innerHTML = createMarkupDiscount(productsOnePage);
+}
+function onClickCart(e) {
   e.preventDefault();
   const clickedEl = e.target;
   console.log(clickedEl);
-  if (
-    clickedEl.closest('a') &&
-    clickedEl.closest('.popular-products-card-link')
-  ) {
+  if (clickedEl.closest('li') && clickedEl.closest('.discount-product-item')) {
     const id = clickedEl.closest('li').dataset.productId;
-    openModal(id).catch(error => {
+    const product = productsOnePage.find(item => item._id === id);
+    openModal(product).catch(error => {
       console.error('Помилка при отриманні продукта за айді:', error.message);
     });
   }
-}
-
-function createMarkup(arr) {
-  return arr
-    .map(
-      ({
-        _id,
-        name,
-        img,
-        price,
-      }) => `<li class="discount-product-item" data-product-id='${_id}'>
-    <div class="discount-con">
-        <div class="discount-image-container" data-product-id="${_id}"> <img src="${img}" alt="${name}" class="discount-image" width="114" height="114">
-        </div>
-        <div class="discount-info-container">
-          <h3 class="product-name product-name-disc">${name} </h3>
-          <div class="discount-text-container">  
-            <p class="price price-disc">$${price}</p>
-            <button class="cart-button-disk cart-button" type="button" data-product-id="${_id}" data-in-cart="false">
-                <svg class="cart-icon-disk" width="18" height="18">
-                    <use href="${icons}#icon-basket"></use>
-                </svg>
-            </button>
-          </div>
-        </div> 
-        <div class="div-icon-discount">
-          <svg class="icon-discount" width="60" height="60">
-            <use href="${icons}#icon-discount"></use>
-          </svg>
-        </div>
-    </div>
-</li>`)
-    .join('');
 }
