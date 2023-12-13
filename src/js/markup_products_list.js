@@ -17,7 +17,7 @@ export default function createMarkup(arr) {
       ({ _id, name, img, category, price, size, popularity }) => `
             <li class="product-item" data-product-id='${_id}'>
               <div class="product-img-container">
-                  <img src="${img}" alt="${name}" width="140" height="140" class="product-img">
+                  <img src="${img}" alt="${name}" width="140" height="140" class="product-img" loading="lazy">
               </div>
 
               <h3 class="product-title-mark">${name}</h3>
