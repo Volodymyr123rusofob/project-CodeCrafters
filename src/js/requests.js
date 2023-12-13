@@ -5,7 +5,7 @@ class ApiService {
     this.BASE_URL = 'https://food-boutique.b.goit.study/api';
   }
 
-  async getProductsByName(name, categories, page = 1, limit = 6) {
+  async getProductsByName(name, categories, page = 1, limit = 9) {
     const params = new URLSearchParams({
       keyword: name,
       category: categories,
@@ -21,7 +21,7 @@ class ApiService {
     }
   }
 
-  async getAllProducts(page = 1, limit = 6) {
+  async getAllProducts(page = 1, limit = 9) {
     try {
       const response = await axios.get(`${this.BASE_URL}/products`, {
         params: {

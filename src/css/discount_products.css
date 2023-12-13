@@ -1,3 +1,19 @@
+.discount-products{
+  margin-top: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  .discount-products {
+    margin-top: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .discount-products {
+     margin-top: 40px;
+  }
+}
+
 .discount-product-item {
   border-radius: 15px;
   background-color: var(--third-bg);
@@ -13,6 +29,7 @@
 @media screen and (min-width: 1440px) {
   .discount-product-item {
     width: 100%;
+    height: 232px;
   }
 }
 

@@ -15,7 +15,7 @@ let totalPages = 90;
 
 const options = {
   totalItems: totalPages,
-  itemsPerPage: 6,
+  itemsPerPage: 9,
   visiblePages: 3,
   page: 1,
   centerAlign: true,
@@ -55,7 +55,7 @@ const pagination = new Pagination(container, options);
 // Обробник події перед переміщенням на іншу сторінку
 pagination.on('beforeMove', async event => {
   const currentPage = event.page;
-  const newProducts = await apiService.getAllProducts(currentPage, 6);
+  const newProducts = await apiService.getAllProducts(currentPage, 9);
   displayProducts(newProducts.results, productsList);
   addEventListenersToBasketButtons();
 

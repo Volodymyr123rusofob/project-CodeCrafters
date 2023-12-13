@@ -24,6 +24,7 @@
   flex-direction: column;
   gap: 13px;
   margin-bottom: 80px;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -53,7 +54,7 @@
 .popular-product-item {
   border-radius: 20px;
   background: var(--third-bg);
-  padding: 20px;
+  padding: 12px;
 }
 
 @media screen and (min-width: 768px) {
@@ -64,7 +65,8 @@
 
 @media screen and (min-width: 1440px) {
   .popular-product-item {
-    width: 100%;
+    width: 275px;
+    height: 98px;
   }
 }
 /* !======================== */
