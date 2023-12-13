@@ -64,6 +64,7 @@
 @media screen and (min-width: 1440px) {
   .product-item {
     width: calc((100% - 40px) / 3);
+    height: 363px;
   }
   .popularity {
     flex-basis: 100%;

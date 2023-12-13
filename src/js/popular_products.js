@@ -9,7 +9,7 @@ const popularList = document.querySelector('.js-popular-list');
 popularList.addEventListener('click', onClickCart);
 
 const apiReq = new ApiService();
-const imgPerPage = 3;
+const imgPerPage = 5;
 let cartState = [];
 let productsOnePage;
 

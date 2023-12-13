@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
            ? categorySelect.selectedCategory=""
            : selectedCategory,
        page: 1,
-       limit: 6,
+       limit: 9,
      };
      localStorage.setItem('filters', JSON.stringify(filters));
 
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     keyword: null,
     category: null,
     page: 1,
-    limit: 6,
+    limit: 9,
   };
   localStorage.setItem('filters', JSON.stringify(defaultFilters));
 
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     keyword: null,
     category: null,
     page: 1,
-    limit: 6,
+    limit: 9,
   };
   localStorage.setItem('filters', JSON.stringify(defaultFilters));
   await filterProducts();
