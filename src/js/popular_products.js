@@ -2,7 +2,7 @@ import { openModal } from './modal';
 import ApiService from './requests';
 import icons from '../img/symbol-defs.svg';
 import { createMarkupPopular } from './markup-popular';
-import { addEventListenersToBasketButtons } from './products_list';
+import { addEventListenersToBasketButtons, updateData } from './products_list';
 import { getAllProducts } from './local-storage-interface';
 
 const popularList = document.querySelector('.js-popular-list');
@@ -13,11 +13,14 @@ const imgPerPage = 5;
 let cartState = [];
 let productsOnePage;
 
+updateData();
+
 async function elemFromApi() {
   const products = await apiReq.getPopularProducts();
   productsOnePage = products.slice(0, imgPerPage);
   displayProducts(productsOnePage, popularList);
   addEventListenersToBasketButtons();
+
   cartState.forEach(item => {
     updateBasketIconByProductId(
       item._id,
@@ -25,7 +28,9 @@ async function elemFromApi() {
     );
   });
 }
+
 elemFromApi();
+
 function updateBasketIconByProductId(productId, inCart) {
   basketButtons.forEach(button => {
     if (button.dataset.itemId === productId) {
@@ -36,6 +41,7 @@ function updateBasketIconByProductId(productId, inCart) {
 
 function updateBasketIcon(cartButton, inCart) {
   const button = document.querySelector('.cart-button');
+
   if (inCart) {
     cartButton.innerHTML = `<svg class="cart-icon-pop">
   <use href="${icons}#icon-check" width="12" height="12"></use>
@@ -52,10 +58,13 @@ function updateBasketIcon(cartButton, inCart) {
 function displayProducts(productsOnePage, container) {
   container.innerHTML = createMarkupPopular(productsOnePage);
 }
+
 function onClickCart(e) {
   e.preventDefault();
   const clickedEl = e.target;
+
   console.log(clickedEl);
+
   if (clickedEl.closest('li') && clickedEl.closest('.popular-product-item')) {
     const id = clickedEl.closest('li').dataset.productId;
     const product = productsOnePage.find(item => item._id === id);
