@@ -41,7 +41,7 @@ export function renderModal(productDetails) {
 
     modal.innerHTML = `
   <div class="modal-prod-card">
-  <button type="button" class="modal-prod-close-btn">
+  <button type="button" class="modal-prod-close-btn" aria-label="Close">
     <svg class="modal-prod-close-icon" width="22" height="22">
       <use href="${icons}#icon-ion_close-sharp"></use>
     </svg>
@@ -73,7 +73,7 @@ export function renderModal(productDetails) {
   </div>
   <div class="modal-prod-price-elem">
   <p class="modal-prod-price">&#36;${productDetails.price}</p>
-  <button class="modal-prod-add-btn" >
+  <button class="modal-prod-add-btn" aria-label="Add to cart" >
       <p class="modal-prod-add-text">Add to</p>
       <svg class="modal-prod-basket-icon" >
         <use href="${icons}#icon-basket"></use>
