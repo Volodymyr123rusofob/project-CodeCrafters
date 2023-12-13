@@ -46,7 +46,7 @@ async function updateCart() {
     ); //проверка
     basket.innerHTML = '';
     basket.insertAdjacentHTML('beforeend', getCartMarkup(validProductDetails));
-    basket.insertAdjacentHTML('beforeend', getcheckoutMarkup());
+    basket.insertAdjacentHTML('beforeend', getcheckoutMarkup(validProductDetails));
   }
  
   const productCount = products.length;

@@ -99,12 +99,15 @@ export const getCartMarkup = products =>
   </div>
 `;
 
-export const getcheckoutMarkup = () => `
+export const getcheckoutMarkup = (products) =>{
+  let prices = 0;
+  products.forEach(({ price }) => (prices += price));
+        return`
     <div>
 <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
-        <p class="checkout-total">$0.00</p>
+        <p class="checkout-total">$${prices.toFixed(2)}</p>
       </div>
 
       <div class="checkout-input-wrap">
@@ -119,4 +122,4 @@ export const getcheckoutMarkup = () => `
         />
         <button class="checkout-button" type="submit">Checkout</button>
         </div>
-        `;
+        `};
