@@ -56,7 +56,7 @@ export const getCartMarkup = products =>
   `
   <div>
      <div class="delete-all">
-    <button type="button" class="btn-delete-all"> Delete All 
+    <button type="button" class="btn-delete-all" aria-label="Delete All"> Delete All 
       <span class="icon-close">
         <svg class="btn-x" width="24" height="24">
           <use href="${icons}#icon-ion_close-sharp"></use>
@@ -84,7 +84,7 @@ export const getCartMarkup = products =>
             <p class="price">$${price}</p>
           </div>
           <div class="cart-delete">
-            <button type="button" class="cart-btn-delete">
+            <button type="button" class="cart-btn-delete" aria-label="Delete">
               <span class="cart-icon-close">
                 <svg class="icon-close" width="18" height="18">
                   <use href="${icons}#icon-ion_close-sharp"></use>
@@ -121,7 +121,7 @@ export const getcheckoutMarkup = products => {
           placeholder="example@mail.com:"
           required
         />
-        <button class="checkout-button" type="submit">Checkout</button>
+        <button class="checkout-button" type="submit" aria-label="Proceed to Checkout">Checkout</button>
         </div>
         `;
 };
