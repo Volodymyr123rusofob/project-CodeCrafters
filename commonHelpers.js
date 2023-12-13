@@ -29,6 +29,7 @@ import{i as g,S as h,u as b,A as y}from"./assets/footer-799cfcc9.js";import"./as
             src="/img/empty_cart/empty-cart-mob-1x.png"
             alt="Empty Cart Image"
             class="empty-cart-image"
+            loading="lazy"
           />
         </picture>
         </div>
@@ -56,7 +57,7 @@ import{i as g,S as h,u as b,A as y}from"./assets/footer-799cfcc9.js";import"./as
       <li class="cart-product-item" data-product-id="${r}">
         <div class="cart-product-container">
           <div class="cart-product-img-container">
-            <img src="${s}" alt="${a}" width="64" height="64" class="cart-product-img">
+            <img src="${s}" alt="${a}" width="64" height="64" class="cart-product-img" loading="lazy">
           </div>
           <div class="cart-product-parameter-container">
             <h2 class="cart-product-title">${a}</h2>

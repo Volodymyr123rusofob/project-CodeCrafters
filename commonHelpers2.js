@@ -1,6 +1,6 @@
-import{g as u,i as r,a as I,b as y,r as j,u as C,A as g}from"./assets/footer-799cfcc9.js";import{P as H}from"./assets/vendor-ab16d78c.js";const D=`<svg class="cart-icon" width="18" height="18">
+import{g as u,i as r,a as I,b as y,r as j,u as C,A as g}from"./assets/footer-799cfcc9.js";import{P as H}from"./assets/vendor-ab16d78c.js";const z=`<svg class="cart-icon" width="18" height="18">
 <use href="${r}#icon-check"></use>
-</svg>`,z=`<svg class="cart-icon" width="18" height="18">
+</svg>`,D=`<svg class="cart-icon" width="18" height="18">
 <use href="${r}#icon-basket"></use>
 </svg>`,J=u();function E(e){return e.map(({_id:t,name:s,img:a,category:o,price:d,size:n,popularity:i})=>`
             <li class="product-item" data-product-id='${t}'>
@@ -20,7 +20,7 @@ import{g as u,i as r,a as I,b as y,r as j,u as C,A as g}from"./assets/footer-799
                 <p class="price">$${d}</p>
 
                 <button class="cart-button cart-button-css" type="button" data-item-id="${t}" data-in-cart="false">
-                ${J.some(c=>c._id===t)?D:z}
+                ${J.some(c=>c._id===t)?z:D}
                 </button>
               </div>
             </li>
@@ -33,7 +33,7 @@ import{g as u,i as r,a as I,b as y,r as j,u as C,A as g}from"./assets/footer-799
   </button>
   <div class="modal-prod-information-wrap">
   <div class="modal-prod-img-wrap">
-      <img class="modal-prod-img" src="${e.img}" alt="${e.name}" />
+      <img class="modal-prod-img" src="${e.img}" alt="${e.name}" loading="lazy" />
   </div>
   <div class="modal-prod-name-wrap">
   <p class="modal-prod-name">${e.name}</p>
@@ -99,7 +99,7 @@ import{g as u,i as r,a as I,b as y,r as j,u as C,A as g}from"./assets/footer-799
         <div class="popular-con">
 
           <div class="product-image-container" data-product-id="${t}">
-            <img src="${a}" alt="" class="product-image" width="56" height="56">
+            <img src="${a}" alt="" class="product-image" width="56" height="56" loading="lazy">
 
           </div>
           <div class="popular-left">
