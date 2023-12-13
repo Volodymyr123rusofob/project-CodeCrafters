@@ -31,9 +31,10 @@
 .footer-logo-link:hover {
 background: rgba(232, 232, 226, 0.20);
 border-radius: 30px;
+border: 3px solid #e8e8e2;
 }
 .footer-logo-link:focus {
-outline: none;
+/* outline: none; */
 box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
 border-radius: 30px;
 }
@@ -75,10 +76,10 @@ border-radius: 30px;
 }
 
 .footer-social-link {
-  outline: none;
+   
 }
 .footer-social-link:focus {
-  /* box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70); */
+  
 }
 
 .link {
@@ -92,13 +93,14 @@ border-radius: 30px;
 
 .footer-img-icons:hover {
 background: rgba(232, 232, 226, 0.20);
+border: 3px solid #e8e8e2;
 }
 
 .footer-img-icons:focus {
   outline: none;
   background: rgba(232, 232, 226, 0.20);
-  box-shadow: 0 0 0 3px rgba(226, 232, 226, 0.8);
-  
+  box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.2);
+  border: 3px solid #e8e8e2;
 }
 .footer-reklam {
 }
@@ -172,10 +174,17 @@ background: rgba(232, 232, 226, 0.20);
 color: #6d8434; */
 box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
 }
+.footer-form-input:hover {
+  background-color: #e8e8e2;
+  color: #6d8434;
+}
 .footer-form-input::placeholder {
   color: rgba(232, 232, 226, 0.6);
 }
 
+.footer-form-input::placeholder:hover {
+
+}
 .footer-form-button {
   width: 285px;
   height: 42px;
@@ -341,7 +350,7 @@ box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
   }
   .footer-reklam {
     width: 410px;
-    margin-right: ;
+    
   }
   .footer-reklam-title {
     line-height: 1.2em;
