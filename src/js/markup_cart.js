@@ -38,6 +38,7 @@ export const getEmptyCartMarkup = () =>
             src="/img/empty_cart/empty-cart-mob-1x.png"
             alt="Empty Cart Image"
             class="empty-cart-image"
+            loading="lazy"
           />
         </picture>
         </div>
@@ -70,7 +71,7 @@ export const getCartMarkup = products =>
       <li class="cart-product-item" data-product-id="${_id}">
         <div class="cart-product-container">
           <div class="cart-product-img-container">
-            <img src="${img}" alt="${name}" width="64" height="64" class="cart-product-img">
+            <img src="${img}" alt="${name}" width="64" height="64" class="cart-product-img" loading="lazy">
           </div>
           <div class="cart-product-parameter-container">
             <h2 class="cart-product-title">${name}</h2>
@@ -99,10 +100,10 @@ export const getCartMarkup = products =>
   </div>
 `;
 
-export const getcheckoutMarkup = (products) =>{
+export const getcheckoutMarkup = products => {
   let prices = 0;
   products.forEach(({ price }) => (prices += price));
-        return`
+  return `
     <div>
       <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
@@ -122,4 +123,5 @@ export const getcheckoutMarkup = (products) =>{
         />
         <button class="checkout-button" type="submit">Checkout</button>
         </div>
-        `};
+        `;
+};
