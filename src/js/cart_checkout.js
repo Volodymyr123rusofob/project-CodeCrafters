@@ -41,13 +41,15 @@ const validProductDetails = productDetailsArray.filter(
     cartContainer: document.querySelector('.cart-products-list'),
     price: document.querySelector('.price'),
   };
+  let sum = 0;
   function summ() {
-    let sum = 0;
     validProductDetails.map(({price}) => sum += price)
-    refs.totalPriceElement.textContent = `${sum.toFixed(2)}`;
+    refs.totalPriceElement.textContent = `$${sum.toFixed(2)}`;
   }
   summ()
   
+
+
 
   refs.checkoutButton.addEventListener('click', handleCheckout);
   function handleCheckout(event) {
@@ -75,20 +77,13 @@ const validProductDetails = productDetailsArray.filter(
     
 
     // Повідомлення про успішний чекаут
-    alert(`Checkout completed! Total Price: ${refs.price.textContent}.`);
+    alert(`Checkout completed! Total Price: $${sum.toFixed(2)}.`);
 
     // Скидає в нуль
     refs.totalPriceElement.textContent = '0.00';
 
-    updateTotalPrice(0);
-
     // Чистить сховище
     localStorage.clear();
-  }
-
-  // Оновлює числа ціни
-  function updateTotalPrice(price) {
-    refs.totalPriceElement.textContent = price.toFixed(2);
   }
 
   // Валідація пошти
@@ -97,9 +92,5 @@ const validProductDetails = productDetailsArray.filter(
     return emailRegex.test(email);
   }
 
-  // Обчислює загальну суму
-  function getTotalPrice(products) {
-    return products.reduce((total, { price }) => total + price, 0).toFixed(2);
-  }
 });
-// !================================================================
+
