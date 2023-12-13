@@ -96,7 +96,9 @@ document.addEventListener('DOMContentLoaded', async () => {
          const productsListContainer = document.querySelector('.js-products-list');
 
          displayProducts(products.results, productsListContainer);
-        //  productsList.innerHTML = productsMarkup;
+
+         //  productsList.innerHTML = productsMarkup;
+         
          addEventListenersToBasketButtons();
          // Удаление сообщения "Nothing..."
          removeNoResultsMessage();
@@ -110,11 +112,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   try {
     const categories = await apiService.getProductsByCategory();
+
     categories.push('Show all');
+    categorySelect.innerHTML = '';
+    
     categories.forEach(category => {
+
       const option = document.createElement('option');
-      option.value = category;
-      option.textContent = category;
+
+      option.value = category; 
+      option.textContent = category.replace(/_/g, ' ');
       categorySelect.appendChild(option);
     });
   } catch (error) {
