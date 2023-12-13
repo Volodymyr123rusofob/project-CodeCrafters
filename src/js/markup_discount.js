@@ -10,7 +10,7 @@ export default function createMarkupDiscount(arr) {
         price,
       }) => `<li class="discount-product-item" data-product-id='${_id}'>
     <div class="discount-con">
-        <div class="discount-image-container" data-product-id="${_id}"> <img src="${img}" alt="${name}" class="discount-image" width="114" height="114">
+        <div class="discount-image-container" data-product-id="${_id}"> <img src="${img}" alt="${name}" class="discount-image" width="114" height="114" loading="lazy">
         </div>
         <div class="discount-info-container">
           <h3 class="product-name product-name-disc">${name} </h3>
