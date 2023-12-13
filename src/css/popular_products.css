@@ -71,12 +71,7 @@
 .cart-button-pop {
   /* fill: var(--second-bg); */
   display: flex;
-
-  background-color: var(--second-bg);
- /* background-color: var(--main-bg);*/
-
-  background-color: var(--main-bg, #e8e8e2);
-
+  background-color: var(--main-bg);
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -98,7 +93,6 @@
   width: 74px;
   height: 74px;
   display: flex;
-
   justify-content: center;
   border-radius: 10px;
   text-align: center;
@@ -130,11 +124,6 @@
   height: 12px;
 }
 
-
-.cart-button-pop .cart-icon {
-  width: 12px;
-  height: 12px;
-  
 .cart-button-pop:hover .cart-icon-pop {
   fill: var(--main-bg);
 }
