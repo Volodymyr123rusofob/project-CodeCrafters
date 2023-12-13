@@ -71,7 +71,7 @@
 .cart-button-pop {
   /* fill: var(--second-bg); */
   display: flex;
-  background-color: var(--main-bg);
+  background-color: var(--second-bg);
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -80,6 +80,13 @@
   top: 0;
   right: 0;
 }
+
+.cart-button-pop .cart-icon {
+  width: 12px;
+  height: 12px;
+}
+
+
 
 .popular-con {
   display: flex;
@@ -125,7 +132,7 @@
 }
 
 .cart-button-pop:hover .cart-icon-pop {
-  fill: var(--main-bg);
+fill: var(--main-bg);
 }
 
 .product-name {

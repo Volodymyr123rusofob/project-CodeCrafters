@@ -3,6 +3,7 @@ import ApiService from './requests';
 import createMarkupDiscount from './markup_discount';
 import { addEventListenersToBasketButtons} from './products_list';
 import { getAllProducts } from './local-storage-interface';
+
 const popularList = document.querySelector('.js-discount-list');
 popularList.addEventListener('click', onClickCart);
 

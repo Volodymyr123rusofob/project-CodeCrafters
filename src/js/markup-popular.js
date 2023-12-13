@@ -22,10 +22,11 @@ export function createMarkupPopular(arr) {
               Popularity: <span class="popularity-value"> ${popularity}</span>
             </p>
           </div>
-          <button class="cart-pr-pop cart-button-pop" type="button" data-product-id="${_id}" data-in-cart="false">
-            <svg class="cart-icon-pop" width="12" height="12">
-              <use href="${icons}#icon-basket"></use>
-            </svg>
+        <button class="cart-button-pop cart-button" type="button" data-item-id="${_id}" data-in-cart="false">
+                <svg class="cart-icon-pop" width="12" height="12">
+                    <use href="${icons}#icon-basket"></use>
+                </svg>
+            </button>
           </button>
         </div>
       </li>
