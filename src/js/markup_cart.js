@@ -39,6 +39,8 @@ export const getEmptyCartMarkup = () =>
             alt="Empty Cart Image"
             class="empty-cart-image"
             loading="lazy"
+            width="132"
+            height="114";
           />
         </picture>
         </div>
