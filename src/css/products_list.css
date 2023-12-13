@@ -12,12 +12,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .popular-discount-container{
-    width: 275px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
   .products-list-container {
     width: 925px;
   }
