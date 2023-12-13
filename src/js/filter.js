@@ -1,7 +1,5 @@
-
-import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
-import { addEventListenersToBasketButtons } from './products_list.js';
+import { addEventListenersToBasketButtons ,displayProducts} from './products_list.js';
 import {FilterStorage} from './filter_helpers.js'
 // import {alertPopUp} from './alert';
 // alertPopUp('The product has been removed from the basket!');
@@ -18,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    categorySelect.addEventListener('change', async () => {
     await filterProducts();
    });
-  
+
    async function filterProducts() {
      // Получение значений из формы и локального хранилища
      const keywordInput = document.querySelector('.keyword-input');
@@ -65,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
        // Обробка даних (наприклад, відображення на сторінці)
        console.log('Полученные продукты:(products=>)', products);
-      
+
        // Сохранение products.results в локальное хранилище для пагинации
        //  localStorage.setItem(
        //    'productsResults',
@@ -79,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 //  сохраняем массив в локальное хранилище
        filterStorageInstance.writeToLocalStorage(filterOfProducts);
 
-// pagination.reset();   
+// pagination.reset();
        // RENDERing
        if (products.totalPages === 0) {
          if (
@@ -89,12 +87,9 @@ document.addEventListener('DOMContentLoaded', async () => {
            renderNoResultsMessage();
          }
        } else {
-         // Передача властивостей продукту markUp()
-         const productsMarkup = createMarkup(products.results);
-
          // Відображення HTML-розмітки на сторінці
          const productsList = document.querySelector('.js-products-list');
-         productsList.innerHTML = productsMarkup;
+         displayProducts(products.results,productsList)
          addEventListenersToBasketButtons();
          // Удаление сообщения "Nothing..."
          removeNoResultsMessage();
@@ -105,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
        console.error('Ошибка при получении продуктов:', error.message);
      }
    }
-  
+
   try {
     const categories = await apiService.getProductsByCategory();
     categories.push('Show all');
@@ -139,7 +134,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     localStorage.setItem('filters', JSON.stringify(filters));
 
-   
+
     const defaultFilters = {
     keyword: null,
     category: null,
@@ -199,8 +194,8 @@ function addFocusStyle() {
 function removeFocusStyle() {
   inputBox.classList.remove('focus-within');
 }
-// 
-// 
+//
+//
 // rendering "Nothing was found for the selected"
 function renderNoResultsMessage() {
 
