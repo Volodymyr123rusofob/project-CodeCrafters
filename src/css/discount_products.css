@@ -42,6 +42,10 @@
     flex-direction: column;
     gap: 20px;
   }
+  .product-name-disc,
+  .product-name {
+    font-size: 16px;
+  }
 }
 
 .discount-image-container{
@@ -74,7 +78,7 @@
   justify-content: right;
   align-items: center;
   width: 87px;
-  gap: 8px;
+  gap: 6px;
 }
 
 .cart-button-disk {

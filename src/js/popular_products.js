@@ -4,12 +4,15 @@ import icons from '../img/symbol-defs.svg';
 import { createMarkupPopular } from './markup-popular';
 import { addEventListenersToBasketButtons } from './products_list';
 import { getAllProducts } from './local-storage-interface';
+
 const popularList = document.querySelector('.js-popular-list');
 popularList.addEventListener('click', onClickCart);
+
 const apiReq = new ApiService();
 const imgPerPage = 3;
 let cartState = [];
 let productsOnePage;
+
 async function elemFromApi() {
   const products = await apiReq.getPopularProducts();
   productsOnePage = products.slice(0, imgPerPage);
@@ -30,22 +33,22 @@ function updateBasketIconByProductId(productId, inCart) {
     }
   });
 }
+
 function updateBasketIcon(cartButton, inCart) {
-  const button = document.querySelector('.cart-pr-pop');
+  const button = document.querySelector('.cart-button');
   if (inCart) {
-    cartButton.innerHTML = `
-    <svg class="cart-icon-pop" width="12" height="12">
-      <use href="${icons}#icon-check"></use>
-    </svg>`;
+    cartButton.innerHTML = `<svg class="cart-icon-pop">
+  <use href="${icons}#icon-check" width="12" height="12"></use>
+  </svg>`;
     button.disabled = true;
   } else {
-    cartButton.innerHTML = `
-    <svg class="cart-icon-pop" width="12" height="12">
-      <use href="${icons}#icon-basket"></use>
-    </svg>`;
+    cartButton.innerHTML = `<svg class="cart-icon-pop">
+  <use href="${icons}#icon-basket" width="12" height="12"></use>
+  </svg>`;
     button.disabled = false;
   }
 }
+
 function displayProducts(productsOnePage, container) {
   container.innerHTML = createMarkupPopular(productsOnePage);
 }
