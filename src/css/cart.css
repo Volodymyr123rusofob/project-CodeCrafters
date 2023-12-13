@@ -12,14 +12,13 @@
 .cart-title {
   display: flex;
   align-items: center;
-  /* padding-top: 72px; */ /* Видалив цей падінг, бо відстань до хедера задаватиме cart-section*/
-}
+  }
 .cart-title-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--second-bg);
-  width: 38px; /* У макеті на моб версії 38 а не 42 px*/
+  width: 38px; 
   height: 38px;
   border-radius: 90px;
   border: 0;
@@ -32,9 +31,9 @@
 .cart-title-text {
   margin-left: 14px;
   color: var(--text);
-  font-size: 24px; /* У макеті було 24 а не 32*/
+  font-size: 24px; 
   font-weight: 500;
-  line-height: 32px; /* 100% */
+  line-height: 32px; 
   text-transform: uppercase;
 }
 /* кнопка Delete All */
@@ -53,7 +52,7 @@
   color: var(--text);
   font-size: 14px;
   font-weight: 500;
-  line-height: 18px; /* 128.571% */
+  line-height: 18px; 
   cursor: pointer;
 }
 .btn-x {
@@ -136,7 +135,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 111.111% */
+  line-height: 20px; 
 }
 .cart-product-parameter-text {
   display: flex;
@@ -146,7 +145,7 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 14px; /* 116.667% */
+  line-height: 14px; 
   padding-right: 4px;
 }
 .cart-span-parameter-value {
@@ -155,7 +154,7 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 14px; /* 116.667% */
+  line-height: 14px; 
   padding-right: 8px;
 }
 .price {
@@ -163,7 +162,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 111.111% */
+  line-height: 20px; 
   padding-top: 36px;
 }
 /* стилі скролу */
@@ -188,10 +187,7 @@
    Media for products
    ========================================================================== */
 @media screen and (min-width: 768px) {
-  /* CART Заголовок */
-  .cart-title {
-    /* margin-top: 104px; */ /* Видалив цей марджин, бо відстань до хедера задає section*/
-  }
+
   /* кнопка Delete All */
   .btn-delete-all {
     font-size: 16px;
@@ -257,10 +253,6 @@
     display: flex;
   }
 
-  /* CART Заголовок - прибрав. бо відстань буде через секцію задаватись */
-  /* .cart-title {
-    margin-top: 86px;
-  } */
   /* кнопка Delete All */
   .btn-delete-all {
     margin-right: 144px;

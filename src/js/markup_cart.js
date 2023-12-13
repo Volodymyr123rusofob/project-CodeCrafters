@@ -57,8 +57,8 @@ export const getCartMarkup = products =>
      <div class="delete-all">
     <button type="button" class="btn-delete-all"> Delete All 
       <span class="icon-close">
-        <svg class="icon-close" width="24" height="24">
-          <use href="/img/symbol-defs.svg#icon-ion_close-sharp"></use>
+        <svg class="btn-x" width="24" height="24">
+          <use href="${icons}#icon-ion_close-sharp"></use>
         </svg>
       </span>
     </button>
