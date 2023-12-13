@@ -7,7 +7,7 @@ export function createMarkupPopular(arr) {
       <li class="popular-product-item" data-product-id='${_id}'>
         <div class="popular-con">
           <div class="product-image-container" data-product-id="${_id}"> 
-            <img src="${img}" alt="" class="product-image" width="56" height="56">
+            <img src="${img}" alt="" class="product-image" width="56" height="56" loading="lazy">
           </div>
           <div class="popular-left">
             <div class="product-text-pop">
