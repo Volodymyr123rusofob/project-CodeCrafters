@@ -5,6 +5,7 @@ import {
   getCartMarkup,
   getcheckoutMarkup,
 } from './markup_cart';
+import { updateCartCounter} from './header';
 
 const basket = document.getElementById('basket');
 const cartTitle = document.getElementById('cart-counter-page');
@@ -46,7 +47,7 @@ async function updateCart() {
     ); //проверка
     basket.innerHTML = '';
     basket.insertAdjacentHTML('beforeend', getCartMarkup(validProductDetails));
-    basket.insertAdjacentHTML('beforeend', getcheckoutMarkup());
+    basket.insertAdjacentHTML('beforeend', getcheckoutMarkup(validProductDetails));
   }
  
   const productCount = products.length;
