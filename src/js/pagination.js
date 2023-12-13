@@ -11,7 +11,7 @@ import icons from '../img/symbol-defs.svg';
 const productsList = document.querySelector('.js-products-list');
 const apiService = new ApiService();
 const container = document.getElementById('pagination');
-let totalPages = 0;
+let totalPages = 90;
 
 const options = {
   totalItems: totalPages,
