@@ -61,7 +61,7 @@ pagination.on('beforeMove', async event => {
 
   // После обновления контента прокрутите страницу вверх
   window.scrollTo({
-    top: 100,
+    top: 900,
     behavior: 'smooth',
   });
 });
