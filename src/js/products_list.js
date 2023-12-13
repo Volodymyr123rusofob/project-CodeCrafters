@@ -30,7 +30,7 @@ async function prod() {
   const productsOnePage = allProducts.results.slice(0, itemsPerPage);
 
   displayProducts(productsOnePage, productsList);
-  addEventListenerToCardButton();
+  addEventListenersToBasketButtons();
   basketButtons.forEach(button => {
     const isProductInBasket = getAllProducts().some(
       item => item._id === button.dataset.itemId
@@ -46,9 +46,9 @@ export function displayProducts(products, container) {
 
 const cartState = getAllProducts();
 
-function addEventListenerToCardButton() {
-  addEventListenersToBasketButtons();
-}
+// function addEventListenerToCardButton() {
+//   addEventListenersToBasketButtons();
+// }
 
 export function addEventListenersToBasketButtons() {
   basketButtons = document.querySelectorAll('.cart-button');
