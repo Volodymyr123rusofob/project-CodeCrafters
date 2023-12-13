@@ -55,6 +55,7 @@
   border-radius: 20px;
   background: var(--third-bg);
   padding: 12px;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
@@ -87,8 +88,6 @@
   width: 12px;
   height: 12px;
 }
-
-
 
 .popular-con {
   display: flex;
@@ -134,7 +133,7 @@
 }
 
 .cart-button-pop:hover .cart-icon-pop {
-fill: var(--main-bg);
+  fill: var(--main-bg);
 }
 
 .product-name {
