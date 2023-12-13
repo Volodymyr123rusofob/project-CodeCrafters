@@ -1,4 +1,4 @@
-import{i as l,g as f,a as $,r as N,u as L,A as p,S as D}from"./assets/header-55817644.js";import{S as P,P as J}from"./assets/vendor-ab16d78c.js";function I(e){return e.map(({_id:t,name:s,img:o,category:a,price:d,size:n,popularity:r})=>`
+import{i as l,g as f,a as $,r as N,u as L,A as p,S as D}from"./assets/header-0a0c9e98.js";import{S as P,P as J}from"./assets/vendor-ab16d78c.js";function I(e){return e.map(({_id:t,name:s,img:o,category:a,price:d,size:n,popularity:r})=>`
             <li class="product-item" data-product-id='${t}'>
               <div class="product-img-container">
                   <img src="${o}" alt="${s}" width="140" height="140" class="product-img">
