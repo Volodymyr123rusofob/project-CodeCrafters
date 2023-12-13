@@ -1,7 +1,7 @@
 .pagination-container {
   display: flex;
   gap: 4px;
-  justify-content: baseline;
+  justify-content: center;
   text-align: center;
   margin-top: 40px;
   margin-bottom: 80px;
