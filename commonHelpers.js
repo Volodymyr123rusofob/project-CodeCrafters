@@ -1,26 +1,26 @@
-import{i as g,S as h,u as x,A as y}from"./assets/footer-418bf877.js";import"./assets/vendor-ab16d78c.js";const C="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",$="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",D="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",w="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",P="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png",E="/project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png",f=()=>`<div class="empty-cart">
+import{i as g,S as M,u as f,A as P}from"./assets/footer-60fa8694.js";import"./assets/vendor-ab16d78c.js";const A="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",D="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",E="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",T="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",j="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png",L="/project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png",y=()=>`<div class="empty-cart">
       <div class="empty-picture">
       <picture>
           <source
             srcset="
-              ${C} 1x,
-              ${$} 2x
+              ${A} 1x,
+              ${D} 2x
             "
             media="
             (min-width: 1440px)"
           />
           <source
             srcset="
-              ${D} 1x,
-              ${w} 2x
+              ${E} 1x,
+              ${T} 2x
             "
             media="
             (min-width: 768px)"
           />
           <source
             srcset="
-             ${P} 1x,
-              ${E} 2x
+             ${j} 1x,
+              ${L} 2x
             "
             media="
             (min-width: 375px)"
@@ -41,8 +41,8 @@ import{i as g,S as h,u as x,A as y}from"./assets/footer-418bf877.js";import"./as
           Go to the main page to select your favorite products and add them to
           the cart.
         </p></div></div>
-    `,A=t=>`
-  <div>
+    `,S=e=>`
+  
      <div class="delete-all">
     <button type="button" class="btn-delete-all" aria-label="Delete All"> Delete All 
       <span class="icon-close">
@@ -53,17 +53,17 @@ import{i as g,S as h,u as x,A as y}from"./assets/footer-418bf877.js";import"./as
     </button>
   </div>
   <ul class="cart-products-list">
-    ${t.map(({_id:r,name:o,img:s,category:c,size:a,price:n})=>`
-      <li class="cart-product-item" data-product-id="${r}">
+    ${e.map(({_id:s,name:c,img:l,category:o,size:p,price:n})=>`
+      <li class="cart-product-item" data-product-id="${s}">
         <div class="cart-product-container">
           <div class="cart-product-img-container">
-            <img src="${s}" alt="${o}" width="64" height="64" class="cart-product-img" loading="lazy">
+            <img src="${l}" alt="${c}" width="64" height="64" class="cart-product-img" loading="lazy">
           </div>
           <div class="cart-product-parameter-container">
-            <h2 class="cart-product-title">${o}</h2>
+            <h2 class="cart-product-title">${c}</h2>
             <div class="cart-product-parameter-text">
-            <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${c?c.replace(/_/g," "):""}</span></p>
-            <p class="cart-product-parameter">Size: <span class="cart-span-parameter-value">${a}</span></p>
+            <p class="cart-product-parameter">Category: <span class="cart-span-parameter-value">${o?o.replace(/_/g," "):""}</span></p>
+            <p class="cart-product-parameter">Size: <span class="cart-span-parameter-value">${p}</span></p>
             </div>
             <p class="price">$${n}</p>
           </div>
@@ -79,16 +79,16 @@ import{i as g,S as h,u as x,A as y}from"./assets/footer-418bf877.js";import"./as
         </div>
       </li>`).join("")}
   </ul>
-  </div>
-`,S=t=>{let r=0;return t.forEach(({price:o})=>r+=o),`
-    <div>
+  
+`,_=e=>`
+    
       <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
-        <p class="checkout-total">$${r.toFixed(2)}</p>
+        <p class="checkout-total">$${e.toFixed(2)}</p>
       </div>
 
-      <div class="checkout-input-wrap">
+      < class="checkout-input-wrap">
         <label class="checkout-input-label" for="checkoutEmail"></label>
         <input
           class="checkout-input-email"
@@ -99,6 +99,6 @@ import{i as g,S as h,u as x,A as y}from"./assets/footer-418bf877.js";import"./as
           required
         />
         <button class="checkout-button" type="submit" aria-label="Proceed to Checkout">Checkout</button>
-        </div>
-        `},l=document.getElementById("basket"),M=document.getElementById("cart-counter-page"),p=new h("productsBasket"),L=new y;async function m(){const t=p.getAllProducts();if(console.log("Current products in storage:",t),t.length===0)console.log("Basket is empty. Displaying empty cart markup."),l.innerHTML="",l.insertAdjacentHTML("beforeend",f());else{console.log("Fetching product details for each product in the cart.");const o=t.map(async({_id:a,quantity:n})=>{try{return a?{...await L.getProductById(a),quantity:n}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(i){return console.error(`Error fetching product details for _id: ${a}`,i),null}}),c=(await Promise.all(o)).filter(a=>a!==null);console.log("Displaying cart markup with product details:",c),l.innerHTML="",l.insertAdjacentHTML("beforeend",A(c)),l.insertAdjacentHTML("beforeend",S(c))}const r=t.length;console.log("Updating cart counter with product count:",r),M.textContent=`CART (${r})`}async function v(){return await m(),{totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")}}v();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async t=>{const r=t.target.closest(".btn-delete-all"),o=t.target.closest(".cart-btn-delete");if(r)console.log("Deleting all products from storage."),p.removeAllProducts(),console.log("Updating cart after removing all products."),m();else if(o){const s=o.closest(".cart-product-item").dataset.productId;console.log(`Deleting product with ID: ${s}`),p.removeProduct(s),m()}x()})});const q=new y,I=new h("productsBasket");document.addEventListener("DOMContentLoaded",async function(){const t=I.getAllProducts(),r=t.map(async({_id:e,quantity:u})=>{try{return e?{...await q.getProductById(e),quantity:u}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(d){return console.error(`Error fetching product details for _id: ${e}`,d),null}}),s=(await Promise.all(r)).filter(e=>e!==null);await v();const c={totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")};let a=0;function n(){s.map(({price:e})=>a+=e),c.totalPriceElement.textContent=`$${a.toFixed(2)}`}n(),c.checkoutButton.addEventListener("click",i);function i(e){e.preventDefault(),k()}function k(){const e=c.emailInput.value;if(!e||!b(e)){alert("Please enter a valid email address.");return}function u(){const d=f();c.cartContainer.innerHTML=d}t.length>0&&u(),alert(`Checkout completed! Total Price: $${a.toFixed(2)}.`),c.totalPriceElement.textContent="0.00",localStorage.clear()}function b(e){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}});
+        
+        `,i=document.querySelector(".container-div-cart-js-one"),m=document.querySelector(".container-div-cart-js-two"),q=document.getElementById("cart-counter-page"),d=new M("productsBasket"),H=new P;async function u(){const e=d.getAllProducts();if(e.length===0)i.innerHTML="",m.innerHTML="",i.insertAdjacentHTML("beforeend",y());else{let C=function(t){t.preventDefault(),$()},$=function(){const t=k.value;if(!t||!w(t)){alert("Please enter a valid email address.");return}function a(){const r=y();x.innerHTML=r}e.length>0&&a(),alert(`Checkout completed! Total Price: $${n.toFixed(2)}.`),h.textContent="0.00",d.removeAllProducts(),f(),u()},w=function(t){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)};const c=e.map(async({_id:t,quantity:a})=>{try{return t?{...await H.getProductById(t),quantity:a}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(r){return console.error(`Error fetching product details for _id: ${t}`,r),null}}),o=(await Promise.all(c)).filter(t=>t!==null);i.innerHTML="",i.insertAdjacentHTML("beforeend",S(o));async function p(t){let a=0;return t.forEach(({price:r})=>a+=r),a}const n=await p(o);m.innerHTML="",m.insertAdjacentHTML("beforeend",_(n));async function v(){return{totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")}}const{totalPriceElement:h,emailInput:k,checkoutButton:b,cartContainer:x,price:I}=await v();b.addEventListener("click",C),h.textContent=n.toFixed(2)}const s=e.length;q.textContent=`CART (${s})`}u();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async e=>{const s=e.target.closest(".btn-delete-all"),c=e.target.closest(".cart-btn-delete");if(s)d.removeAllProducts(),u();else if(c){const l=c.closest(".cart-product-item").dataset.productId;d.removeProduct(l),u()}f()})});
 //# sourceMappingURL=commonHelpers.js.map
