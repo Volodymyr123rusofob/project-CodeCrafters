@@ -115,15 +115,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     categories.push('Show all');
     categorySelect.innerHTML = '';
-    
-    categories.forEach(category => {
 
+    categories.forEach(category => {
       const option = document.createElement('option');
 
-      option.value = category; 
+      option.value = category;
       option.textContent = category.replace(/_/g, ' ');
       categorySelect.appendChild(option);
     });
+    // Добавляем атрибут aria-label
+    categorySelect.setAttribute('aria-label', 'Select a category');
   } catch (error) {
     console.error('Ошибка при получении категорий:', error.message);
   }
