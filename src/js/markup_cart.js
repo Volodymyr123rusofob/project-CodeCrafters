@@ -54,7 +54,7 @@ export const getEmptyCartMarkup = () =>
 
 export const getCartMarkup = products =>
   `
-  <div>
+  
      <div class="delete-all">
     <button type="button" class="btn-delete-all" aria-label="Delete All"> Delete All 
       <span class="icon-close">
@@ -97,21 +97,20 @@ export const getCartMarkup = products =>
       )
       .join('')}
   </ul>
-  </div>
+  
 `;
 
-export const getcheckoutMarkup = products => {
-  let prices = 0;
-  products.forEach(({ price }) => (prices += price));
-  return `
-    <div>
+export const getcheckoutMarkup = (products) =>{
+  
+        return`
+    
       <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
-        <p class="checkout-total">$${prices.toFixed(2)}</p>
+        <p class="checkout-total">$${products.toFixed(2)}</p>
       </div>
 
-      <div class="checkout-input-wrap">
+      < class="checkout-input-wrap">
         <label class="checkout-input-label" for="checkoutEmail"></label>
         <input
           class="checkout-input-email"
@@ -122,6 +121,6 @@ export const getcheckoutMarkup = products => {
           required
         />
         <button class="checkout-button" type="submit" aria-label="Proceed to Checkout">Checkout</button>
-        </div>
-        `;
-};
+        
+        `};
+
