@@ -4,6 +4,7 @@ import ApiService from './requests';
 import {
   displayProducts,
   addEventListenersToBasketButtons,
+  updateData,
 } from './products_list';
 import icons from '../img/symbol-defs.svg';
 
@@ -59,6 +60,7 @@ pagination.on('beforeMove', async event => {
   const newProducts = await apiService.getAllProducts(currentPage, 9);
   displayProducts(newProducts.results, productsList);
   addEventListenersToBasketButtons();
+  updateData();
   // После обновления контента прокрутите страницу вверх
   window.scrollTo({
     top: 900,
