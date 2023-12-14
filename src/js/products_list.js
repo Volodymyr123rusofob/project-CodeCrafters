@@ -71,6 +71,7 @@ export function addEventListenersToBasketButtons() {
       basketButton.addEventListener('click', handleBasketButtonClick);
     });
   }
+  updateData();
 }
 
 function handleBasketButtonClick(event) {
