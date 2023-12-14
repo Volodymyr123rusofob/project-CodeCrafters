@@ -111,8 +111,6 @@ export const getcheckoutMarkup = (products) =>{
         <p class="checkout-text">Total</p>
         <p class="checkout-total">$${products.toFixed(2)}</p>
       </div>
-
-      < class="checkout-input-wrap">
         <label class="checkout-input-label" for="checkoutEmail"></label>
         <input
           class="checkout-input-email"
