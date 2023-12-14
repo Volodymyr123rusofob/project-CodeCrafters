@@ -60,8 +60,18 @@ pagination.on('beforeMove', async event => {
   displayProducts(newProducts.results, productsList);
   addEventListenersToBasketButtons();
   // После обновления контента прокрутите страницу вверх
+  let scrollToTop;
+
+  // Рассчитываем значение scrollToTop в зависимости от ширины экрана
+  if (window.innerWidth >= 1440) {
+    scrollToTop = 750;
+  } else if (window.innerWidth >= 768) {
+    scrollToTop = 1100;
+  } else {
+    scrollToTop = 900;
+  }
   window.scrollTo({
-    top: 900,
+    top: scrollToTop,
     behavior: 'smooth',
   });
 });
