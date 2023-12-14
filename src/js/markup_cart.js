@@ -102,25 +102,26 @@ export const getCartMarkup = products =>
   
 `;
 
-export const getcheckoutMarkup = (products) =>{
-  
-        return`
+export const getcheckoutMarkup = products => {
+  return `
     
       <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
         <p class="checkout-text">Total</p>
         <p class="checkout-total">$${products.toFixed(2)}</p>
       </div>
+      <div class="checkout-input-wrap">
         <label class="checkout-input-label" for="checkoutEmail"></label>
         <input
           class="checkout-input-email"
           type="email"
           id="checkoutEmail"
           name="email"
-          placeholder="example@mail.com:"
+          placeholder="example@mail.com"
           required
         />
         <button class="checkout-button" type="submit" aria-label="Proceed to Checkout">Checkout</button>
+        </div>
         
-        `};
-
+        `;
+};
