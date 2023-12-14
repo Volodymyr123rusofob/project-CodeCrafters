@@ -149,18 +149,20 @@
   /* fill: var(--second-bg);*/
   background-color: var(--second-bg);
   border-radius: 50%;
-  /*width: 100%;
-    height: 100%;*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 34px;
+  height: 34px;
   padding: 8px;
+  pointer-events: auto;
 }
 
 .cart-icon {
   fill: var(--main-bg);
   width: 18px;
   height: 18px;
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  pointer-events: none;
 }
 
 element.style {

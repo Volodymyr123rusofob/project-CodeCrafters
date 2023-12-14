@@ -27,9 +27,10 @@ export class ShopStorage {
       newProduct.amount = 1;
       products.push(newProduct);
     } else {
-      // searchProduct.amount += 1;
-      alertPopUp('This product has already been added to the cart!',
-      'warning');
+    //  searchProduct.amount += 1;
+      // alertPopUp('This product has already been added to the cart!',
+      // 'warning');
+      return;
     }
     this.#writeToLocalStorage(products);
   }
