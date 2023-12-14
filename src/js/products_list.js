@@ -74,6 +74,8 @@ export function addEventListenersToBasketButtons() {
   updateData();
 }
 
+updateData ();
+
 function handleBasketButtonClick(event) {
   const basketButton = event.target.closest('.cart-button');
 
