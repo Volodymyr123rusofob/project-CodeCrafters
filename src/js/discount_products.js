@@ -50,10 +50,6 @@ function onClickCart(e) {
   e.preventDefault();
   const clickedEl = e.target;
   
-  if (clickedEl.tagName.toLowerCase() === 'button') {
-  return;
-  }
-  
   if (clickedEl.closest('li') && clickedEl.closest('.discount-product-item')) {
     const id = clickedEl.closest('li').dataset.productId;
     const product = productsOnePage.find(item => item._id === id);
