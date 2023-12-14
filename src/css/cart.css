@@ -335,7 +335,7 @@
 }
 
 .checkout-input-label:before {
-  content: 'Mail: ';
+  content: '';
   position: absolute;
   left: 20px;
   top: 24%;

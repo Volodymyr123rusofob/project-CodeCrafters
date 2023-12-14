@@ -112,7 +112,7 @@ function isValidEmail(email) {
 }
 
 
-   totalPriceElement.textContent = totalPrice.toFixed(2);
+  //  totalPriceElement.textContent = totalPrice.toFixed(2);
    //  $$=====###33@@@@@@@@@@@@@@@@@@@@@
   }
   const productCount = products.length;
