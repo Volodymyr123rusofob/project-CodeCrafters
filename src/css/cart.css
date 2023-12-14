@@ -453,6 +453,7 @@
 
   .cart-desktop-wrap {
     display: flex;
+    justify-content: center;
   }
 
   .checkout-title {
