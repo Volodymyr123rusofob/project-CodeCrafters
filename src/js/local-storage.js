@@ -28,8 +28,8 @@ export class ShopStorage {
       products.push(newProduct);
     } else {
       // searchProduct.amount += 1;
-      alertPopUp(message = 'This product has already been added to the cart!',
-      icon = 'warning');
+      alertPopUp('This product has already been added to the cart!',
+      'warning');
     }
     this.#writeToLocalStorage(products);
   }
