@@ -102,8 +102,17 @@
   border-radius: 30px;
   background: var(--second-bg);
   padding: 8px;
-  align-items: center;
-  display: flex;  
+  /*align-items: center;
+  display: flex;  */
+  pointer-events: auto;
+}
+
+.cart-button-disk .cart-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
 }
 
 .div-icon-discount{

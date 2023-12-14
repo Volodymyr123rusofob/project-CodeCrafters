@@ -43,12 +43,12 @@ function updateBasketIcon(cartButton, inCart) {
   const button = document.querySelector('.cart-button');
 
   if (inCart) {
-    cartButton.innerHTML = `<svg class="cart-icon-pop">
+    cartButton.innerHTML = `<svg class="cart-icon-pop" pointer-events: none;>
   <use href="${icons}#icon-check" width="12" height="12"></use>
   </svg>`;
     button.disabled = true;
   } else {
-    cartButton.innerHTML = `<svg class="cart-icon-pop">
+    cartButton.innerHTML = `<svg class="cart-icon-pop" pointer-events: none;>
   <use href="${icons}#icon-basket" width="12" height="12"></use>
   </svg>`;
     button.disabled = false;
@@ -59,12 +59,31 @@ function displayProducts(productsOnePage, container) {
   container.innerHTML = createMarkupPopular(productsOnePage);
 }
 
+// function onClickCart(e) {
+//   e.preventDefault();
+//   const clickedEl = e.target;
+
+//   if (clickedEl.closest('li') && clickedEl.closest('.popular-product-item')) {
+//     const id = clickedEl.closest('li').dataset.productId;
+//     const product = productsOnePage.find(item => item._id === id);
+//     openModal(product).catch(error => {
+//       console.error('Помилка при отриманні продукта за айді:', error.message);
+//     });
+//   }
+// }
+
 function onClickCart(e) {
   e.preventDefault();
   const clickedEl = e.target;
 
-  if (clickedEl.closest('li') && clickedEl.closest('.popular-product-item')) {
-    const id = clickedEl.closest('li').dataset.productId;
+  if (clickedEl.tagName.toLowerCase() === 'button') {
+    return;
+  }
+
+  const productItem = clickedEl.closest('.popular-product-item');
+
+  if (productItem) {
+    const id = productItem.dataset.productId;
     const product = productsOnePage.find(item => item._id === id);
     openModal(product).catch(error => {
       console.error('Помилка при отриманні продукта за айді:', error.message);

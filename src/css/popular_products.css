@@ -72,21 +72,21 @@
 }
 /* !======================== */
 .cart-button-pop {
-  /* fill: var(--second-bg); */
-  display: flex;
   background-color: var(--second-bg);
   border-radius: 50%;
-  justify-content: center;
-  align-items: center;
   padding: 4px;
   position: absolute;
   top: 0;
   right: 0;
+  pointer-events: auto;
 }
 
 .cart-button-pop .cart-icon {
   width: 12px;
   height: 12px;
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
 }
 
 .popular-con {

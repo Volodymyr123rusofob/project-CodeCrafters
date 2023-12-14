@@ -17,11 +17,11 @@ const itemsPerPage = 9;
 let productsOnePage;
 let basketButtons;
 
-const markupSvgCheck = `<svg class="cart-icon" width="18" height="18">
+const markupSvgCheck = `<svg class="cart-icon" width="18" height="18" pointer-events: none;>
 <use href="${icons}#icon-check"></use>
 </svg>`;
 
-const markupSvgCart = `<svg class="cart-icon" width="18" height="18">
+const markupSvgCart = `<svg class="cart-icon" width="18" height="18" pointer-events: none;>
 <use href="${icons}#icon-basket"></use>
 </svg>`;
 
@@ -122,12 +122,31 @@ function updateBasketIcon(cartButton, inCart) {
 
 prod();
 
+// function onClickCart(e) {
+//   e.preventDefault();
+//   const clickedEl = e.target;
+
+//   if (clickedEl.closest('li') && clickedEl.closest('.product-item')) {
+//     const id = clickedEl.closest('li').dataset.productId;
+//     const product = productsOnePage.find(item => item._id === id);
+//     openModal(product).catch(error => {
+//       console.error('Помилка при отриманні продукта за айді:', error.message);
+//     });
+//   }
+// }
+
 function onClickCart(e) {
   e.preventDefault();
   const clickedEl = e.target;
 
-  if (clickedEl.closest('li') && clickedEl.closest('.product-item')) {
-    const id = clickedEl.closest('li').dataset.productId;
+  if (clickedEl.tagName.toLowerCase() === 'button') {
+    return;
+  }
+
+  const productItem = clickedEl.closest('.product-item');
+
+  if (productItem) {
+    const id = productItem.dataset.productId;
     const product = productsOnePage.find(item => item._id === id);
     openModal(product).catch(error => {
       console.error('Помилка при отриманні продукта за айді:', error.message);
