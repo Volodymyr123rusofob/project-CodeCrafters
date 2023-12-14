@@ -148,7 +148,7 @@
     <h2 class="filters-section-title">Filters:</h2>
       <form class="filter-form">
         <div class="input-box">
-          <input type="text" class="keyword-input" placeholder="Search for anything" />
+          <input type="text" class="keyword-input" placeholder="Search for anything" aria-label="Key word"/>
           <button type="submit" class="submit-btn">
             <svg class="icon-search" width="20" height="20">
               <use
@@ -162,15 +162,15 @@
           <!-- Категории будут добавлены динамически через JavaScript -->
         </select>
         <!-- for add task! -->
-        <select  class="category-select-letter arrow-icon">
-          <option value="a-z">A to Z</option>
-          <option value="z-a">Z to A</option>
-          <option value="cheap">Cheap</option>
-          <option value="expensive">Expensive</option>
-          <option value="popular">Popular</option>
-          <option value="not-popular">Not popular</option>
-          <option value="show-all">Show all</option>
-        </select>
+        <select class="category-select-letter arrow-icon" aria-label="Sort by">
+  <option value="a-z" aria-label="Sort A to Z">A to Z</option>
+  <option value="z-a" aria-label="Sort Z to A">Z to A</option>
+  <option value="cheap" aria-label="Sort by Cheap">Cheap</option>
+  <option value="expensive" aria-label="Sort by Expensive">Expensive</option>
+  <option value="popular" aria-label="Sort by Popular">Popular</option>
+  <option value="not-popular" aria-label="Sort by Not Popular">Not popular</option>
+  <option value="show-all" aria-label="Show All">Show all</option>
+</select>
       </form>
     </div>
    </section>
