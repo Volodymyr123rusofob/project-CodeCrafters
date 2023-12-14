@@ -1,3 +1,4 @@
+import alertPopUp from './alert';
 import ApiService from './requests';
 import { ShopStorage } from './local-storage';
 import {
@@ -92,7 +93,10 @@ const {totalPriceElement, emailInput, checkoutButton, cartContainer, price} = aw
  
 
   // Повідомлення про успішний чекаут
-  alert(`Checkout completed! Total Price: $${totalPrice.toFixed(2)}.`);
+  alertPopUp(
+      `Checkout completed! Total Price: $${totalPrice.toFixed(2)}.`,
+      'success'
+    );
 
   // Скидає в нуль
   totalPriceElement.textContent = '0.00';
