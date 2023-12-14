@@ -63,7 +63,9 @@ function onClickCart(e) {
   e.preventDefault();
   const clickedEl = e.target;
 
-  console.log(clickedEl);
+  if (clickedEl.tagName.toLowerCase() === 'button') {
+  return;
+   }
 
   if (clickedEl.closest('li') && clickedEl.closest('.popular-product-item')) {
     const id = clickedEl.closest('li').dataset.productId;
