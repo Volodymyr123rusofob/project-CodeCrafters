@@ -1,4 +1,4 @@
-import{i as g,S as M,u as f,A as P}from"./assets/footer-60fa8694.js";import"./assets/vendor-ab16d78c.js";const A="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",D="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",E="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",T="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",j="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png",L="/project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png",y=()=>`<div class="empty-cart">
+import{i as g,S as M,u as f,A as P}from"./assets/footer-6251e8af.js";import"./assets/vendor-ab16d78c.js";const A="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",D="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",E="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",T="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",j="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png",L="/project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png",y=()=>`<div class="empty-cart">
       <div class="empty-picture">
       <picture>
           <source
