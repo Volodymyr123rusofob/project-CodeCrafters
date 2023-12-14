@@ -1,13 +1,30 @@
+	
+
+
 import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
-import {
-  addEventListenersToBasketButtons,
-  displayProducts,
-} from './products_list.js';
+// import {
+//   addEventListenersToBasketButtons,
+//   displayProducts,
+// } from './products_list.js';
 // import { FilterStorage } from './filter_helpers.js';
 // import {alertPopUp} from './alert';
 // alertPopUp('The product has been removed from the basket!');
 import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import {
+  displayProducts,
+  addEventListenersToBasketButtons,
+  updateData,
+} from './products_list';
+import icons from '../img/symbol-defs.svg';
+
+const productsList = document.querySelector('.js-products-list');
+// const apiService = new ApiService();
+const container = document.getElementById('pagination');
+
+
+// ******************************************************************************************
 
 document.addEventListener('DOMContentLoaded', async () => {
   localStorage.setItem('noResultsMessageDisplayed', 'false');
@@ -17,21 +34,25 @@ document.addEventListener('DOMContentLoaded', async () => {
   const categorySelect = document.querySelector('.category-select');
 
   categorySelect.addEventListener('change', async () => {
+    const selectedCategory = categorySelect.value;
+     console.log('2Selected Category:', categorySelect.value);
+    localStorage.setItem('selectedCategory', selectedCategory);
     await filterProducts();
   });
 
   async function filterProducts() {
     const keywordInput = document.querySelector('.keyword-input');
     const selectedCategory = categorySelect.value;
+
     const filters = {
       keyword: keywordInput.value || null,
-      category:
-        selectedCategory === 'Show all' || selectedCategory === 'Categories'
+      category: selectedCategory === 'Show all' || selectedCategory === 'Categories'
           ? ''
           : selectedCategory,
       page: 1,
       limit: 9,
     };
+    console.log('1Category:', filters.category);
     localStorage.setItem('filters', JSON.stringify(filters));
     keywordInput.value = '';
 
@@ -39,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       let products;
 
       // Перевіряємо, чи є ключове слово
-      if (!filters.keyword && filters.category === null) {
+      if (!filters.keyword && filters.category === '') {
         // Якщо і ключове слово, і категорія відсутні,
         // Запит на отримання всіх продуктів
         products = await apiService.getAllProducts(filters.page, filters.limit);
@@ -60,8 +81,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         );
       }
 
-      //  console.log('Полученные продукты:(products=>)', products);
-
+       console.log('Полученные продукты:(products=>)', products.totalPages);
+let totalPages = products.totalPages;
       // Сохранение products.results в локальное хранилище для пагинации (totalPages)
       localStorage.setItem('products', JSON.stringify(products));
 
@@ -98,6 +119,88 @@ document.addEventListener('DOMContentLoaded', async () => {
         removeNoResultsMessage();
         // Устанавливаем флаг в false, так как результаты найдены
         localStorage.setItem('noResultsMessageDisplayed', 'false');
+        
+        
+        const options = {
+          totalItems: totalPages,
+          itemsPerPage: 9,
+          visiblePages: 3,
+          page: 1,
+          centerAlign: true,
+          template: {
+            prev:
+              `<a href="#" class="tui-page-btn tui-prev">` +
+              `<svg class="icon-svg"><use href="${icons}#icon-Nav-Button-Prev"></use></svg>` +
+              `</a>`,
+            firstPageLink: `<a href="#" class="tui-page-btn tui-first">{{page}}</a>`,
+            page: `<a href="#" class="tui-page-btn tui-{{type}}">{{page}}</a>`,
+            currentPage: `<strong class="tui-page-btn tui-is-selected">{{page}}</strong>`,
+            moveButton:
+              `<a href="#" class="tui-page-btn tui-{{type}}">` +
+              // `<span class="tui-ico-{{type}}">{{type}}</span>` +
+              `<svg class="tui-ico-{{type}}" width="32" height="32"><use href="${icons}#icon-Nav-Button-Next"></use></svg>` +
+              `</a>`,
+
+            disabledMoveButton:
+              `<span class="tui-page-btn tui-is-disabled tui-{{type}}">` +
+              // `<span class="tui-ico-{{type}}">{{type}}</span>` +
+              `<svg class="tui-ico-{{type}}" width="32" height="32"><use href="${icons}#icon-Nav-Button-Next"></use></svg>` +
+              `</span>`,
+
+            moreButton:
+              `<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">` +
+              `<span class="tui-ico-ellip">...</span>` +
+              // `<svg class="tui-ico-ellip" width="14" height="14"><use href="{{type}}"></use></svg>` +
+              `</a>`,
+            lastPageLink: `<a href="#" class="tui-page-btn tui-last">{{page}}</a>`,
+            next:
+              `<a href="#" class="tui-page-btn tui-next">` +
+              `<svg class="icon-svg"><use href="next.svg#next"></use></svg>` +
+              `</a>`,
+          },
+        };
+        const pagination = new Pagination(container, options);
+
+       pagination.on('beforeMove', async event => {
+         const currentPage = event.page;
+         const selectedCategory = categorySelect.value;
+
+         let newProducts;
+
+         if (
+           selectedCategory === 'Show all' ||
+           selectedCategory === 'Categories'
+         ) {
+           // Если выбраны 'Show all' или 'Categories', делаем запрос без категории
+           newProducts = await apiService.getAllProducts(currentPage, 9);
+         } else {
+           // В противном случае делаем запрос с указанием текущей категории
+           newProducts = await apiService.getProductsInCategories(
+             selectedCategory,
+             currentPage,
+             9
+           );
+         }
+
+         displayProducts(newProducts.results, productsList);
+         addEventListenersToBasketButtons();
+         updateData();
+         // После обновления контента прокрутите страницу вверх
+         let scrollToTop;
+
+         // Рассчитываем значение scrollToTop в зависимости от ширины экрана
+         if (window.innerWidth >= 1440) {
+           scrollToTop = 750;
+         } else if (window.innerWidth >= 768) {
+           scrollToTop = 1100;
+         } else {
+           scrollToTop = 900;
+         }
+         window.scrollTo({
+           top: scrollToTop,
+           behavior: 'smooth',
+         });
+       });
       }
     } catch (error) {
       console.error('Ошибка при получении продуктов:', error.message);
@@ -242,3 +345,13 @@ function renderNoResultsMessage() {
   // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
   localStorage.setItem('noResultsMessageDisplayed', 'true');
 }
+
+
+
+
+
+
+
+
+
+
