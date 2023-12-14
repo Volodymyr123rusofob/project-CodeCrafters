@@ -79,7 +79,7 @@ const {totalPriceElement, emailInput, checkoutButton, cartContainer, price} = aw
 
   // Валідація в інпуті
   if (!emailValue || !isValidEmail(emailValue)) {
-    alert('Please enter a valid email address.');
+    alertPopUp('Please enter a valid email address.', 'error');
     return;
   }
   function carMar() {
