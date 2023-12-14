@@ -1,26 +1,26 @@
-import{i as h,S as M,u as y,A as P}from"./assets/footer-16642b62.js";import"./assets/vendor-ab16d78c.js";const A="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",D="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",E="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",T="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",j="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png",L="/project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png",g=()=>`<div class="empty-cart">
+import{i as h,S as P,u as y,a as M,A}from"./assets/footer-ecf76238.js";import"./assets/vendor-6a322d96.js";const D="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",E="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",T="/project-CodeCrafters/assets/empty-cart-desktop-1x-1da79769.png",j="/project-CodeCrafters/assets/empty-cart-desktop-2x-490faf55.png",L="/project-CodeCrafters/assets/empty-cart-mob-1x-971d1e28.png",S="/project-CodeCrafters/assets/empty-cart-mob-2x-7db9012b.png",g=()=>`<div class="empty-cart">
       <div class="empty-picture">
       <picture>
           <source
             srcset="
-              ${A} 1x,
-              ${D} 2x
+              ${D} 1x,
+              ${E} 2x
             "
             media="
             (min-width: 1440px)"
           />
           <source
             srcset="
-              ${E} 1x,
-              ${T} 2x
+              ${T} 1x,
+              ${j} 2x
             "
             media="
             (min-width: 768px)"
           />
           <source
             srcset="
-             ${j} 1x,
-              ${L} 2x
+             ${L} 1x,
+              ${S} 2x
             "
             media="
             (min-width: 375px)"
@@ -43,7 +43,7 @@ import{i as h,S as M,u as y,A as P}from"./assets/footer-16642b62.js";import"./as
           Go to the main page to select your favorite products and add them to
           the cart.
         </p></div></div>
-    `,S=e=>`
+    `,_=e=>`
   
      <div class="delete-all">
     <button type="button" class="btn-delete-all" aria-label="Delete All"> Delete All 
@@ -82,7 +82,7 @@ import{i as h,S as M,u as y,A as P}from"./assets/footer-16642b62.js";import"./as
       </li>`).join("")}
   </ul>
   
-`,_=e=>`
+`,q=e=>`
     
       <h2 class="checkout-title">Your order</h2>
       <div class="checkout-total-wrap">
@@ -102,5 +102,5 @@ import{i as h,S as M,u as y,A as P}from"./assets/footer-16642b62.js";import"./as
         <button class="checkout-button" type="submit" aria-label="Proceed to Checkout">Checkout</button>
         </div>
         
-        `,i=document.querySelector(".container-div-cart-js-one"),m=document.querySelector(".container-div-cart-js-two"),q=document.getElementById("cart-counter-page"),d=new M("productsBasket"),H=new P;async function u(){const e=d.getAllProducts();if(e.length===0)i.innerHTML="",m.innerHTML="",i.insertAdjacentHTML("beforeend",g());else{let C=function(t){t.preventDefault(),$()},$=function(){const t=k.value;if(!t||!w(t)){alert("Please enter a valid email address.");return}function a(){const r=g();x.innerHTML=r}e.length>0&&a(),alert(`Checkout completed! Total Price: $${l.toFixed(2)}.`),f.textContent="0.00",d.removeAllProducts(),y(),u()},w=function(t){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)};const c=e.map(async({_id:t,quantity:a})=>{try{return t?{...await H.getProductById(t),quantity:a}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(r){return console.error(`Error fetching product details for _id: ${t}`,r),null}}),o=(await Promise.all(c)).filter(t=>t!==null);i.innerHTML="",i.insertAdjacentHTML("beforeend",S(o));async function p(t){let a=0;return t.forEach(({price:r})=>a+=r),a}const l=await p(o);m.innerHTML="",m.insertAdjacentHTML("beforeend",_(l));async function v(){return{totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")}}const{totalPriceElement:f,emailInput:k,checkoutButton:b,cartContainer:x,price:I}=await v();b.addEventListener("click",C)}const s=e.length;q.textContent=`CART (${s})`}u();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async e=>{const s=e.target.closest(".btn-delete-all"),c=e.target.closest(".cart-btn-delete");if(s)d.removeAllProducts(),u();else if(c){const n=c.closest(".cart-product-item").dataset.productId;d.removeProduct(n),u()}y()})});
+        `,i=document.querySelector(".container-div-cart-js-one"),m=document.querySelector(".container-div-cart-js-two"),H=document.getElementById("cart-counter-page"),d=new P("productsBasket"),I=new A;async function u(){const e=d.getAllProducts();if(e.length===0)i.innerHTML="",m.innerHTML="",i.insertAdjacentHTML("beforeend",g());else{let C=function(t){t.preventDefault(),$()},$=function(){const t=k.value;if(!t||!w(t)){alert("Please enter a valid email address.");return}function a(){const r=g();x.innerHTML=r}e.length>0&&a(),M(`Checkout completed! Total Price: $${l.toFixed(2)}.`,"success"),f.textContent="0.00",d.removeAllProducts(),y(),u()},w=function(t){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)};const c=e.map(async({_id:t,quantity:a})=>{try{return t?{...await I.getProductById(t),quantity:a}:(console.error("_id is undefined or empty for a product in the cart"),null)}catch(r){return console.error(`Error fetching product details for _id: ${t}`,r),null}}),o=(await Promise.all(c)).filter(t=>t!==null);i.innerHTML="",i.insertAdjacentHTML("beforeend",_(o));async function p(t){let a=0;return t.forEach(({price:r})=>a+=r),a}const l=await p(o);m.innerHTML="",m.insertAdjacentHTML("beforeend",q(l));async function v(){return{totalPriceElement:document.querySelector(".checkout-total"),emailInput:document.querySelector(".checkout-input-email"),checkoutButton:document.querySelector(".checkout-button"),cartContainer:document.querySelector(".cart-products-list"),price:document.querySelector(".price")}}const{totalPriceElement:f,emailInput:k,checkoutButton:b,cartContainer:x,price:B}=await v();b.addEventListener("click",C)}const s=e.length;H.textContent=`CART (${s})`}u();document.addEventListener("DOMContentLoaded",()=>{document.body.addEventListener("click",async e=>{const s=e.target.closest(".btn-delete-all"),c=e.target.closest(".cart-btn-delete");if(s)d.removeAllProducts(),u();else if(c){const n=c.closest(".cart-product-item").dataset.productId;d.removeProduct(n),u()}y()})});
 //# sourceMappingURL=commonHelpers.js.map
