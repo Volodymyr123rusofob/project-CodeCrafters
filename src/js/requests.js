@@ -5,6 +5,14 @@ class ApiService {
     this.BASE_URL = 'https://food-boutique.b.goit.study/api';
   }
 
+hidePagination () {
+	document.getElementById('pagination').classList.add('hiden');
+}
+
+showPagination () {
+	document.getElementById('pagination').classList.remove('hidden');
+}
+
   async getProductsByName(name, categories, page = 1, limit = 9) {
     const params = new URLSearchParams({
       keyword: name,
@@ -12,9 +20,18 @@ class ApiService {
       page,
       limit,
     });
+
+	 this.showPagination();
+
     try {
       const resp = await axios.get(`${this.BASE_URL}/products?${params}`);
-      return resp.data;
+     
+		if (resp.data.page > resp.data.totalPages) {
+			this.hidePagination();
+		}
+		
+		
+		return resp.data;
     } catch {
       console.error('Помилка при отриманні продуктів:', error.message);
       throw error;
@@ -22,6 +39,7 @@ class ApiService {
   }
 
   async getAllProducts(page = 1, limit = 9) {
+	this.showPagination();
     try {
       const response = await axios.get(`${this.BASE_URL}/products`, {
         params: {
@@ -29,6 +47,9 @@ class ApiService {
           limit,
         },
       });
+		if (response.data.page > response.data.totalPages) {
+			this.hidePagination();
+		}
 
       return response.data;
     } catch (error) {
@@ -36,6 +57,7 @@ class ApiService {
       throw error;
     }
   }
+  
 
   async getPopularProducts(limit) {
     try {
