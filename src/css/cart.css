@@ -333,6 +333,19 @@
   font-style: italic;
 }
 
+
+.checkout-input-label:before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 24%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(1, 1, 1, 0.5);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
 .checkout-input-wrap {
   display: flex;
   flex-direction: column;

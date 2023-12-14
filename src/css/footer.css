@@ -149,10 +149,10 @@ border: 3px solid var(--main-bg);
 color: var(--second-bg); */
 box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
 }
-.footer-form-input:hover {
+/*.footer-form-input:hover {
   background-color: var(--main-bg);
   color: var(--second-bg);
-}
+}*/
 .footer-form-input::placeholder {
   color: rgba(232, 232, 226, 0.6);
 }
