@@ -1,4 +1,4 @@
-import{g as u,i as d,b as I,a as y,r as R,u as C,A as g}from"./assets/footer-ecf76238.js";import{P as H}from"./assets/vendor-6a322d96.js";const j=`<svg class="cart-icon" width="18" height="18">
+import{g as u,i as d,b as I,a as y,r as R,u as C,A as g}from"./assets/footer-ac1bc1ef.js";import{P as H}from"./assets/vendor-6a322d96.js";const j=`<svg class="cart-icon" width="18" height="18">
 <use href="${d}#icon-check"></use>
 </svg>`,F=`<svg class="cart-icon" width="18" height="18">
 <use href="${d}#icon-basket"></use>
