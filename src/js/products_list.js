@@ -78,13 +78,13 @@ updateData ();
 
 function handleBasketButtonClick(event) {
   const basketButton = event.target.closest('.cart-button');
-
   if (basketButton) {
     const itemId = basketButton.dataset.itemId;
     const { message, icon } = handleBasketClick(basketButton, itemId);
     alertPopUp(message, icon);
     updateCartCounter();
     updateData();
+    basketButton.disabled = true;
   }
 }
 
@@ -104,6 +104,7 @@ export function handleBasketClick(cartButton, itemId) {
 export function updateBasketIconByProductId(productId, inCart) {
   basketButtons.forEach(button => {
     if (button.dataset.itemId === productId) {
+      button.disabled = false;
       updateBasketIcon(button, inCart);
     }
   });
@@ -113,7 +114,7 @@ function updateBasketIcon(cartButton, inCart) {
   const button = document.querySelector('.cart-button');
   if (inCart) {
     cartButton.innerHTML = markupSvgCheck;
-    button.disabled = true;
+   // button.disabled = true;
   } else {
     cartButton.innerHTML = markupSvgCart;
     button.disabled = false;
