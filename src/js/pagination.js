@@ -11,11 +11,11 @@ import icons from '../img/symbol-defs.svg';
 const productsList = document.querySelector('.js-products-list');
 const apiService = new ApiService();
 const container = document.getElementById('pagination');
-let totalPages = 0;
+let totalPages = 90;
 
 const options = {
   totalItems: totalPages,
-  itemsPerPage: 6,
+  itemsPerPage: 9,
   visiblePages: 3,
   page: 1,
   centerAlign: true,
@@ -54,20 +54,21 @@ const options = {
 const pagination = new Pagination(container, options);
 // Обробник події перед переміщенням на іншу сторінку
 pagination.on('beforeMove', async event => {
+  
   const currentPage = event.page;
-  const newProducts = await apiService.getAllProducts(currentPage, 6);
+  const newProducts = await apiService.getAllProducts(currentPage, 9);
   displayProducts(newProducts.results, productsList);
   addEventListenersToBasketButtons();
-
   // После обновления контента прокрутите страницу вверх
   window.scrollTo({
-    top: 100,
+    top: 900,
     behavior: 'smooth',
   });
 });
 // // Показуємо або приховуємо пагінацію відповідно до умови
-// // if (totalPages > 1) {
-// // paginationContainer.style.display = 'block';
-// // } else {
-// // paginationContainer.style.display = 'none';
-// // } (edited)
+// if (totalPages > 1) {
+// paginationContainer.style.display = 'block';
+// } else {
+// paginationContainer.style.display = 'none';
+// } (edited)
+// pagination.reset();

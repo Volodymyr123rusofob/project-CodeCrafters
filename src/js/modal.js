@@ -1,20 +1,24 @@
 import icons from '../img/symbol-defs.svg';
-import {getAllProducts,addProductOnClickButton,removeProductOnClickButton} from './local-storage-interface'
+import {
+  getAllProducts,
+  addProductOnClickButton,
+  removeProductOnClickButton,
+} from './local-storage-interface';
 import alertPopUp from './alert';
-import {updateBasketIconByProductId} from './products_list';
+import { updateBasketIconByProductId } from './products_list';
 import { updateCartCounter } from './header';
-import ApiService from './requests'
+import ApiService from './requests';
 
 const modal = document.querySelector('.modal-prod-wrapper');
-const api = new ApiService()
+const api = new ApiService();
 export async function openModal(product) {
   modal.classList.add('modal-active');
   modal.classList.add('loader');
 
   const productWithDescription = await api.getProductById(product._id);
   modal.classList.remove('loader');
-  renderModal( productWithDescription);
-  syncAddProductButtonStatus( productWithDescription);
+  renderModal(productWithDescription);
+  syncAddProductButtonStatus(productWithDescription);
 }
 
 //! Функція яка зберігає стан кнопки залежно від стану корзини
@@ -37,26 +41,31 @@ export function renderModal(productDetails) {
 
     modal.innerHTML = `
   <div class="modal-prod-card">
-  <button type="button" class="modal-prod-close-btn">
+  <button type="button" class="modal-prod-close-btn" aria-label="Close">
     <svg class="modal-prod-close-icon" width="22" height="22">
       <use href="${icons}#icon-ion_close-sharp"></use>
     </svg>
   </button>
   <div class="modal-prod-information-wrap">
   <div class="modal-prod-img-wrap">
-      <img class="modal-prod-img" src="${productDetails.img}" alt="${productDetails.name}" />
+      <img class="modal-prod-img" src="${productDetails.img}" alt="${productDetails.name}" loading="lazy" />
   </div>
   <div class="modal-prod-name-wrap">
   <p class="modal-prod-name">${productDetails.name}</p>
   <ul class="modal-prod-list">
     <li class="modal-prod-item">
-      <p class="modal-prod-text">Category: <span>${productDetails.category.replace(/_/g, ' ')}</span></p>
+      <p class="modal-prod-text">Category: <span>${productDetails.category.replace(
+        /_/g,
+        ' '
+      )}</span></p>
     </li>
     <li class="modal-prod-item">
       <p class="modal-prod-text">Size: <span>${productDetails.size}</span></p>
     </li>
     <li class="modal-prod-item">
-      <p class="modal-prod-text">Popularity: <span>${productDetails.popularity}</span></p>
+      <p class="modal-prod-text">Popularity: <span>${
+        productDetails.popularity
+      }</span></p>
     </li>
   </ul>
   <p class="modal-prod-desc">${productDetails.desc}</p>
@@ -64,7 +73,7 @@ export function renderModal(productDetails) {
   </div>
   <div class="modal-prod-price-elem">
   <p class="modal-prod-price">&#36;${productDetails.price}</p>
-  <button class="modal-prod-add-btn" >
+  <button class="modal-prod-add-btn" aria-label="Add to cart" >
       <p class="modal-prod-add-text">Add to</p>
       <svg class="modal-prod-basket-icon" >
         <use href="${icons}#icon-basket"></use>
@@ -75,7 +84,9 @@ export function renderModal(productDetails) {
   `;
 
     const addBtn = document.querySelector('.modal-prod-add-btn');
-    addBtn.addEventListener('click', () => addOrRemoveProductToBasket(productDetails));
+    addBtn.addEventListener('click', () =>
+      addOrRemoveProductToBasket(productDetails)
+    );
 
     const closeBtn = document.querySelector('.modal-prod-close-btn');
     closeBtn.addEventListener('click', () => closeModal());
@@ -92,21 +103,18 @@ export function addOrRemoveProductToBasket(productDetails) {
   const productId = productDetails._id;
   //
   const allProducts = getAllProducts();
-  const isProductInBasket = allProducts.some(
-    item => item._id === productId
-  );
+  const isProductInBasket = allProducts.some(item => item._id === productId);
   const addBtnText = document.querySelector('.modal-prod-add-text');
   if (!isProductInBasket) {
-    addProductOnClickButton({ _id: productId, amount: 1 })
-    alertPopUp()
+    addProductOnClickButton({ _id: productId, amount: 1 });
+    alertPopUp();
     addBtnText.textContent = 'Remove from';
-    updateBasketIconByProductId(productId,true)
-
+    updateBasketIconByProductId(productId, true);
   } else {
-    removeProductOnClickButton(productId)
+    removeProductOnClickButton(productId);
     addBtnText.textContent = 'Add to';
-    updateBasketIconByProductId(productId,false)
-    alertPopUp("The product has been removed the basket!",'info')
+    updateBasketIconByProductId(productId, false);
+    alertPopUp('The product has been removed the basket!', 'info');
   }
   updateCartCounter();
 }

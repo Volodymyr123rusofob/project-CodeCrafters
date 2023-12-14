@@ -1,6 +1,6 @@
 
 .footer {
-  background-color: #6d8434;
+  background-color: var(--second-bg);
   /* height: 652px; */
   padding-top: 40px;
   padding-bottom: 20px;
@@ -21,7 +21,7 @@
 
 .footer-logo-link {
   display: flex;
-  color: #e8e8e2;
+  color: var(--main-bg);
   text-decoration: none;
   align-items: center;
   gap: 8px;
@@ -31,14 +31,15 @@
 .footer-logo-link:hover {
 background: rgba(232, 232, 226, 0.20);
 border-radius: 30px;
+border: 3px solid var(--main-bg);
 }
 .footer-logo-link:focus {
-outline: none;
+/* outline: none; */
 box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
 border-radius: 30px;
 }
 .logo-span {
-  color: #e8e8e2;
+  color: var(--main-bg);
   align-items: center;
   width: 118px;
   height: 20px;
@@ -52,15 +53,11 @@ border-radius: 30px;
 }
 
 .footer-logo-icon {
-  fill: #6d8434;
+  fill: var(--second-bg);
 
-  background-color: #e8e8e2;
+  background-color: var(--main-bg);
   /* padding: 6px; */
   border-radius: 50%;
-}
-
-.footer-social {
-
 }
 
 .footer-social-list {
@@ -68,43 +65,26 @@ border-radius: 30px;
   gap: 12px;
 }
 
-.list {
-}
-
-.footer-social-item {
-}
-
-.footer-social-link {
-  outline: none;
-}
-.footer-social-link:focus {
-  /* box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70); */
-}
-
-.link {
-}
-
 .footer-img-icons {
-  color: #e8e8e2;
+  color: var(--main-bg);
   border-radius: 10px;
   border: 1px solid rgba(232, 232, 226, 0.3);
 }
 
 .footer-img-icons:hover {
 background: rgba(232, 232, 226, 0.20);
+border: 3px solid var(--main-bg);
 }
 
 .footer-img-icons:focus {
   outline: none;
   background: rgba(232, 232, 226, 0.20);
-  box-shadow: 0 0 0 3px rgba(226, 232, 226, 0.8);
-  
-}
-.footer-reklam {
+  box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.2);
+  border: 3px solid var(--main-bg);
 }
 
 .footer-reklam-title {
-  color: #e8e8e2;
+  color: var(--main-bg);
   font-family: Neue Montreal;
   font-size: 20px;
   font-style: normal;
@@ -134,7 +114,7 @@ background: rgba(232, 232, 226, 0.20);
 }
 
 .footer-form-text {
-  color: #e8e8e2;
+  color: var(--main-bg);
   font-family: Neue Montreal;
   font-size: 14px;
   font-style: normal;
@@ -145,14 +125,11 @@ background: rgba(232, 232, 226, 0.20);
   margin-bottom: 20px;
 }
 
-.footer-form-label {
-}
-
 .footer-form-input {
   width: 285px;
   height: 42px;
   border-radius: 30px;
-  border: 1px solid #e8e8e2;
+  border: 1px solid var(--main-bg);
   background-color: transparent;
   color: rgba(232, 232, 226, 0.6);
   /* margin-bottom: 14px; */
@@ -168,19 +145,26 @@ background: rgba(232, 232, 226, 0.20);
   
 }
 .footer-form-input:focus {
-/* background-color: #e8e8e2;
-color: #6d8434; */
+/* background-color: var(--main-bg);
+color: var(--second-bg); */
 box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
+}
+.footer-form-input:hover {
+  background-color: var(--main-bg);
+  color: var(--second-bg);
 }
 .footer-form-input::placeholder {
   color: rgba(232, 232, 226, 0.6);
 }
 
+.footer-form-input::placeholder:hover {
+  color: var(--second-bg);
+}
 .footer-form-button {
   width: 285px;
   height: 42px;
   border-radius: 30px;
-  background: #e8e8e2;
+  background: var(--main-bg);
   justify-content: center;
   align-items: center;
   border: none;
@@ -194,25 +178,20 @@ box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
   margin-bottom: 80px;
   /* padding: 12px 149px; */
   outline: none;
-   
 }
 
 .footer-form-button:hover {
-  color:#6d8434;
+  color:var(--second-bg);
 }
 
 .footer-form-button:focus {
-  color: #6d8434;
+  color: var(--second-bg);
   box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
-}
-
-.footer-privacy {
-  /* margin-bottom: 20px; */
 }
 
 .footer-privacy-text {
   margin-bottom: 8px;
-  color: #e8e8e2;
+  color: var(--main-bg);
   font-family: Neue Montreal;
   font-size: 14px;
   font-style: normal;
@@ -223,7 +202,7 @@ box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
 }
 
 .footer-privacy-polisy {
-  color: #e8e8e2;
+  color: var(--main-bg);
   font-family: Neue Montreal;
   font-size: 14px;
   font-style: normal;
@@ -233,7 +212,7 @@ box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
 }
 
 .footer-span {
-  color: #e8e8e2;
+  color: var(--main-bg);
   font-size: 14px;
 }
 
@@ -341,7 +320,7 @@ box-shadow: 0 0 0 3px rgba(232, 232, 226, 0.70);
   }
   .footer-reklam {
     width: 410px;
-    margin-right: ;
+    
   }
   .footer-reklam-title {
     line-height: 1.2em;

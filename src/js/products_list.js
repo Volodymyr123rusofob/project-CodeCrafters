@@ -25,12 +25,29 @@ const markupSvgCart = `<svg class="cart-icon" width="18" height="18">
 <use href="${icons}#icon-basket"></use>
 </svg>`;
 
+export const updateData = () => {
+  const dataFromLocalStorage = getAllProducts();
+  const buttons = document.querySelectorAll('.cart-button');
+
+  buttons.forEach(button => {
+    const isProductInBasket = dataFromLocalStorage.some(
+      item => item._id === button.dataset.itemId
+    );
+    updateBasketIcon(button, isProductInBasket);
+  });
+};
+
+updateData();
+
 async function prod() {
   const allProducts = await apiService.getAllProducts();
   const productsOnePage = allProducts.results.slice(0, itemsPerPage);
 
   displayProducts(productsOnePage, productsList);
-  addEventListenerToCardButton();
+
+
+  addEventListenersToBasketButtons();
+
   basketButtons.forEach(button => {
     const isProductInBasket = getAllProducts().some(
       item => item._id === button.dataset.itemId
@@ -46,12 +63,9 @@ export function displayProducts(products, container) {
 
 const cartState = getAllProducts();
 
-function addEventListenerToCardButton() {
-  addEventListenersToBasketButtons();
-}
-
 export function addEventListenersToBasketButtons() {
   basketButtons = document.querySelectorAll('.cart-button');
+
   if (basketButtons) {
     basketButtons.forEach(basketButton => {
       basketButton.addEventListener('click', handleBasketButtonClick);
@@ -67,6 +81,7 @@ function handleBasketButtonClick(event) {
     const { message, icon } = handleBasketClick(basketButton, itemId);
     alertPopUp(message, icon);
     updateCartCounter();
+    updateData();
   }
 }
 

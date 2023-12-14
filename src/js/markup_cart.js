@@ -38,6 +38,7 @@ export const getEmptyCartMarkup = () =>
             src="/img/empty_cart/empty-cart-mob-1x.png"
             alt="Empty Cart Image"
             class="empty-cart-image"
+            loading="lazy"
           />
         </picture>
         </div>
@@ -55,7 +56,7 @@ export const getCartMarkup = products =>
   `
   
      <div class="delete-all">
-    <button type="button" class="btn-delete-all"> Delete All 
+    <button type="button" class="btn-delete-all" aria-label="Delete All"> Delete All 
       <span class="icon-close">
         <svg class="btn-x" width="24" height="24">
           <use href="${icons}#icon-ion_close-sharp"></use>
@@ -70,7 +71,7 @@ export const getCartMarkup = products =>
       <li class="cart-product-item" data-product-id="${_id}">
         <div class="cart-product-container">
           <div class="cart-product-img-container">
-            <img src="${img}" alt="${name}" width="64" height="64" class="cart-product-img">
+            <img src="${img}" alt="${name}" width="64" height="64" class="cart-product-img" loading="lazy">
           </div>
           <div class="cart-product-parameter-container">
             <h2 class="cart-product-title">${name}</h2>
@@ -83,7 +84,7 @@ export const getCartMarkup = products =>
             <p class="price">$${price}</p>
           </div>
           <div class="cart-delete">
-            <button type="button" class="cart-btn-delete">
+            <button type="button" class="cart-btn-delete" aria-label="Delete">
               <span class="cart-icon-close">
                 <svg class="icon-close" width="18" height="18">
                   <use href="${icons}#icon-ion_close-sharp"></use>
@@ -119,6 +120,7 @@ export const getcheckoutMarkup = (products) =>{
           placeholder="example@mail.com:"
           required
         />
-        <button class="checkout-button" type="submit">Checkout</button>
+        <button class="checkout-button" type="submit" aria-label="Proceed to Checkout">Checkout</button>
         
         `};
+
