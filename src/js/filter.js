@@ -1,6 +1,3 @@
-	
-
-
 import createMarkup from './markup_products_list.js';
 import ApiService from './requests.js';
 // import {
@@ -11,7 +8,7 @@ import ApiService from './requests.js';
 // import {alertPopUp} from './alert';
 // alertPopUp('The product has been removed from the basket!');
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+import 'tui-pagination/dist/tui-pagination.min.css';
 import {
   displayProducts,
   addEventListenersToBasketButtons,
@@ -23,8 +20,8 @@ const productsList = document.querySelector('.js-products-list');
 // const apiService = new ApiService();
 const container = document.getElementById('pagination');
 
-
 // ******************************************************************************************
+const paginationContainer = document.getElementById('pagination');
 
 document.addEventListener('DOMContentLoaded', async () => {
   localStorage.setItem('noResultsMessageDisplayed', 'false');
@@ -35,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   categorySelect.addEventListener('change', async () => {
     const selectedCategory = categorySelect.value;
-     console.log('2Selected Category:', categorySelect.value);
+    // console.log('2Selected Category:', categorySelect.value);
     localStorage.setItem('selectedCategory', selectedCategory);
     await filterProducts();
   });
@@ -46,16 +43,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const filters = {
       keyword: keywordInput.value || null,
-      category: selectedCategory === 'Show all' || selectedCategory === 'Categories'
+      category:
+        selectedCategory === 'Show all' || selectedCategory === 'Categories'
           ? ''
           : selectedCategory,
       page: 1,
       limit: 9,
     };
-    console.log('1Category:', filters.category);
+    // console.log('1Category:', filters.category);
     localStorage.setItem('filters', JSON.stringify(filters));
-    keywordInput.value = '';
-
+    // keywordInput.value = '';
+    let options;
     try {
       let products;
 
@@ -81,11 +79,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         );
       }
 
-       console.log('Полученные продукты:(products=>)', products.totalPages);
-let totalPages = products.totalPages;
+      console.log('Полученные продукты:(products=>)', products);
+      console.log('Количество страниц:(totalPages=>)', products.totalPages);
+      let totalPages = products.totalPages;
       // Сохранение products.results в локальное хранилище для пагинации (totalPages)
+      // Переключаем отображение/скрытие пагинации в зависимости от totalPages
+      if (totalPages <= 1) {
+        paginationContainer.style.display = 'none';
+        // paginationContainer.classList.add('hidden');
+        // console.log("Спрятали");
+      } else {
+         paginationContainer.style.display = 'flex';
+        // paginationContainer.classList.remove('hidden');
+        // console.log("Показали");
+      }
+      
       localStorage.setItem('products', JSON.stringify(products));
-
       //  Создаем экземпляр  FilterStorage:
       //  const storageKey = 'filterOfProducts';
       //  const filterStorageInstance = new FilterStorage(storageKey);
@@ -119,10 +128,9 @@ let totalPages = products.totalPages;
         removeNoResultsMessage();
         // Устанавливаем флаг в false, так как результаты найдены
         localStorage.setItem('noResultsMessageDisplayed', 'false');
-        
-        
+console.log('filters.limit', filters.limit);
         const options = {
-          totalItems: totalPages,
+          totalItems: products.totalPages * filters.limit,
           itemsPerPage: 9,
           visiblePages: 3,
           page: 1,
@@ -161,46 +169,46 @@ let totalPages = products.totalPages;
         };
         const pagination = new Pagination(container, options);
 
-       pagination.on('beforeMove', async event => {
-         const currentPage = event.page;
-         const selectedCategory = categorySelect.value;
+        pagination.on('beforeMove', async event => {
+          const currentPage = event.page;
+          const selectedCategory = categorySelect.value;
 
-         let newProducts;
+          let newProducts;
 
-         if (
-           selectedCategory === 'Show all' ||
-           selectedCategory === 'Categories'
-         ) {
-           // Если выбраны 'Show all' или 'Categories', делаем запрос без категории
-           newProducts = await apiService.getAllProducts(currentPage, 9);
-         } else {
-           // В противном случае делаем запрос с указанием текущей категории
-           newProducts = await apiService.getProductsInCategories(
-             selectedCategory,
-             currentPage,
-             9
-           );
-         }
+          if (
+            selectedCategory === 'Show all' ||
+            selectedCategory === 'Categories'
+          ) {
+            // Если выбраны 'Show all' или 'Categories', делаем запрос без категории
+            newProducts = await apiService.getAllProducts(currentPage, 9);
+          } else {
+            // В противном случае делаем запрос с указанием текущей категории
+            newProducts = await apiService.getProductsInCategories(
+              selectedCategory,
+              currentPage,
+              9
+            );
+          }
 
-         displayProducts(newProducts.results, productsList);
-         addEventListenersToBasketButtons();
-         updateData();
-         // После обновления контента прокрутите страницу вверх
-         let scrollToTop;
+          displayProducts(newProducts.results, productsList);
+          addEventListenersToBasketButtons();
+          updateData();
+          // После обновления контента прокрутите страницу вверх
+          let scrollToTop;
 
-         // Рассчитываем значение scrollToTop в зависимости от ширины экрана
-         if (window.innerWidth >= 1440) {
-           scrollToTop = 750;
-         } else if (window.innerWidth >= 768) {
-           scrollToTop = 1100;
-         } else {
-           scrollToTop = 900;
-         }
-         window.scrollTo({
-           top: scrollToTop,
-           behavior: 'smooth',
-         });
-       });
+          // Рассчитываем значение scrollToTop в зависимости от ширины экрана
+          if (window.innerWidth >= 1440) {
+            scrollToTop = 750;
+          } else if (window.innerWidth >= 768) {
+            scrollToTop = 1100;
+          } else {
+            scrollToTop = 900;
+          }
+          window.scrollTo({
+            top: scrollToTop,
+            behavior: 'smooth',
+          });
+        });
       }
     } catch (error) {
       console.error('Ошибка при получении продуктов:', error.message);
@@ -276,6 +284,14 @@ let totalPages = products.totalPages;
 
     // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
     localStorage.setItem('noResultsMessageDisplayed', 'true');
+    // **********************
+    // Отобразить пагинацию
+    if (paginationContainer) {
+      // Удалить класс для отображения
+      paginationContainer.classList.remove('hidden');
+    }
+
+    // ************************
   }
 
   // Ініціалізація значень за замовчуванням під час завантаження сторінки
@@ -344,14 +360,13 @@ function renderNoResultsMessage() {
 
   // Устанавливаем флаг в локальное хранилище, чтобы помнить, что сообщение уже было выведено
   localStorage.setItem('noResultsMessageDisplayed', 'true');
+  // ***********************************
+  // Скрыть пагинацию
+  if (paginationContainer) {
+    // console.log('hidden', paginationContainer);
+    paginationContainer.classList.add('hidden');
+
+  }
+
+  // *****************************************
 }
-
-
-
-
-
-
-
-
-
-

@@ -1,3 +1,16 @@
+/* header {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: transparent;
+  z-index: 1000;
+} */
+
+
+
+
 /* ------------mobile first------------ */
 /* mobile */
 @media screen and (max-width: 767px) {
@@ -571,6 +584,9 @@ line-height: 24px;
   }
 }
 /* ****************************************пагинация*************************************************** */
+.hidden {
+  display: none;
+}
 .pagination-container {
   display: flex;
   gap: 4px;
@@ -578,6 +594,10 @@ line-height: 24px;
   text-align: center;
   margin-top: 40px;
   margin-bottom: 80px;
+}
+
+.pagination-container.hidden {
+  display: none;
 }
 
 .tui-page-btn,
@@ -699,3 +719,8 @@ margin-right: 19px;
     margin: 40px auto 61px;
   }
 }
+#pagination {
+  /* position: absolute; */
+  bottom: 61px; 
+}
+
