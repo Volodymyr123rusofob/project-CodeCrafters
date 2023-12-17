@@ -31,7 +31,7 @@
 .footer-logo-link:hover {
 background: rgba(232, 232, 226, 0.20);
 border-radius: 30px;
-border: 3px solid var(--main-bg);
+outline: 3px solid var(--main-bg);
 }
 .footer-logo-link:focus {
 /* outline: none; */
