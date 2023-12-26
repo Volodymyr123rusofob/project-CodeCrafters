@@ -9,6 +9,7 @@ import ApiService from './requests.js';
 // alertPopUp('The product has been removed from the basket!');
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
+import '../css/filters.css';
 import {
   displayProducts,
   addEventListenersToBasketButtons,
@@ -22,6 +23,22 @@ const container = document.getElementById('pagination');
 
 // ******************************************************************************************
 const paginationContainer = document.getElementById('pagination');
+let visiblePages = 4;
+
+function updateVisiblePages() {
+  if (window.innerWidth <= 375){
+    visiblePages = 2;
+  } else {
+    visiblePages = 4;
+  }
+}
+// Вызывать функцию обновления при изменении размера окна
+  window.addEventListener('resize', updateVisiblePages);
+
+  // Инициализировать значение при загрузке страницы
+updateVisiblePages();
+  
+
 
 document.addEventListener('DOMContentLoaded', async () => {
   localStorage.setItem('noResultsMessageDisplayed', 'false');
@@ -53,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // console.log('1Category:', filters.category);
     localStorage.setItem('filters', JSON.stringify(filters));
     // keywordInput.value = '';
-    let options;
+    // let options;
     try {
       let products;
 
@@ -132,15 +149,23 @@ console.log('filters.limit', filters.limit);
         const options = {
           totalItems: products.totalPages * filters.limit,
           itemsPerPage: 9,
-          visiblePages: 3,
+          visiblePages: visiblePages,
           page: 1,
           centerAlign: true,
           template: {
             prev:
               `<a href="#" class="tui-page-btn tui-prev">` +
-              `<svg class="icon-svg"><use href="${icons}#icon-Nav-Button-Prev"></use></svg>` +
+              // `<svg class="icon-svg"><use href="${icons}#icon-Nav-Button-Prev"></use></svg>` +
               `</a>`,
-            firstPageLink: `<a href="#" class="tui-page-btn tui-first">{{page}}</a>`,
+            // firstPageLink: `<a href="#" class="tui-page-btn tui-first">{{page}}</a>`,
+            firstPageLink:
+              `<a href="#" class="tui-page-btn tui-first">` +
+              `<svg class="icon-svg">` +
+              // `<use href="${icons}#icon-Nav-Button-Prev"></use>` +
+              // `<use href="${icons}#icon-Nav-Button-Prev" transform="scale(-1, 1)"></use>` +
+              `</svg>` +
+              `</a>`,
+
             page: `<a href="#" class="tui-page-btn tui-{{type}}">{{page}}</a>`,
             currentPage: `<strong class="tui-page-btn tui-is-selected">{{page}}</strong>`,
             moveButton:
@@ -160,11 +185,19 @@ console.log('filters.limit', filters.limit);
               `<span class="tui-ico-ellip">...</span>` +
               // `<svg class="tui-ico-ellip" width="14" height="14"><use href="{{type}}"></use></svg>` +
               `</a>`,
-            lastPageLink: `<a href="#" class="tui-page-btn tui-last">{{page}}</a>`,
+            // lastPageLink: `<a href="#" class="tui-page-btn tui-last">{{page}}</a>`,
+            lastPageLink:
+              `<a href="#" class="tui-page-btn tui-last">` +
+              `<svg class="icon-svg">` +
+              // `<use href="${icons}#icon-Nav-Button-Next"></use>` +
+              // `<use href="${icons}#icon-Nav-Button-Next" transform="scale(-1, 1)"></use>` +
+              `</svg>` +
+              `</a>`,
             next:
               `<a href="#" class="tui-page-btn tui-next">` +
               `<svg class="icon-svg"><use href="next.svg#next"></use></svg>` +
               `</a>`,
+              
           },
         };
         const pagination = new Pagination(container, options);
