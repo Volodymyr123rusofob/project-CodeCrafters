@@ -8,7 +8,9 @@ import ApiService from './requests.js';
 // import {alertPopUp} from './alert';
 // alertPopUp('The product has been removed from the basket!');
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.min.css';
+// import 'tui-pagination/dist/tui-pagination.min.css';
+import 'tui-pagination/dist/tui-pagination.css';
+
 import '../css/filters.css';
 import {
   displayProducts,
@@ -21,12 +23,15 @@ const productsList = document.querySelector('.js-products-list');
 // const apiService = new ApiService();
 const container = document.getElementById('pagination');
 
+
+
 // ******************************************************************************************
 const paginationContainer = document.getElementById('pagination');
+paginationContainer.classList.add('tui-pagination');
 let visiblePages = 4;
 
 function updateVisiblePages() {
-  if (window.innerWidth <= 375){
+  if (window.innerWidth <= 767){
     visiblePages = 2;
   } else {
     visiblePages = 4;
@@ -49,7 +54,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   categorySelect.addEventListener('change', async () => {
     const selectedCategory = categorySelect.value;
-    // console.log('2Selected Category:', categorySelect.value);
     localStorage.setItem('selectedCategory', selectedCategory);
     await filterProducts();
   });
@@ -67,7 +71,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       page: 1,
       limit: 9,
     };
-    // console.log('1Category:', filters.category);
     localStorage.setItem('filters', JSON.stringify(filters));
     // keywordInput.value = '';
     // let options;
@@ -96,19 +99,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         );
       }
 
-      console.log('Полученные продукты:(products=>)', products);
-      console.log('Количество страниц:(totalPages=>)', products.totalPages);
       let totalPages = products.totalPages;
       // Сохранение products.results в локальное хранилище для пагинации (totalPages)
       // Переключаем отображение/скрытие пагинации в зависимости от totalPages
       if (totalPages <= 1) {
         paginationContainer.style.display = 'none';
         // paginationContainer.classList.add('hidden');
-        // console.log("Спрятали");
       } else {
          paginationContainer.style.display = 'flex';
         // paginationContainer.classList.remove('hidden');
-        // console.log("Показали");
       }
       
       localStorage.setItem('products', JSON.stringify(products));
@@ -145,59 +144,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         removeNoResultsMessage();
         // Устанавливаем флаг в false, так как результаты найдены
         localStorage.setItem('noResultsMessageDisplayed', 'false');
-console.log('filters.limit', filters.limit);
-        const options = {
+        let options = {
           totalItems: products.totalPages * filters.limit,
           itemsPerPage: 9,
           visiblePages: visiblePages,
           page: 1,
           centerAlign: true,
+          firstItemClassName: 'tui-first-child',
+          lastItemClassName: 'tui-last-child',
           template: {
-            prev:
-              `<a href="#" class="tui-page-btn tui-prev">` +
-              // `<svg class="icon-svg"><use href="${icons}#icon-Nav-Button-Prev"></use></svg>` +
-              `</a>`,
-            // firstPageLink: `<a href="#" class="tui-page-btn tui-first">{{page}}</a>`,
-            firstPageLink:
-              `<a href="#" class="tui-page-btn tui-first">` +
-              `<svg class="icon-svg">` +
-              // `<use href="${icons}#icon-Nav-Button-Prev"></use>` +
-              // `<use href="${icons}#icon-Nav-Button-Prev" transform="scale(-1, 1)"></use>` +
-              `</svg>` +
-              `</a>`,
-
-            page: `<a href="#" class="tui-page-btn tui-{{type}}">{{page}}</a>`,
-            currentPage: `<strong class="tui-page-btn tui-is-selected">{{page}}</strong>`,
+            page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+            currentPage:
+              '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
             moveButton:
-              `<a href="#" class="tui-page-btn tui-{{type}}">` +
-              // `<span class="tui-ico-{{type}}">{{type}}</span>` +
-              `<svg class="tui-ico-{{type}}" width="32" height="32"><use href="${icons}#icon-Nav-Button-Next"></use></svg>` +
-              `</a>`,
-
+              '<a href="#" class="tui-page-btn tui-{{type}}">' +
+              '<span class="tui-ico-{{type}}">{{type}}</span>' +
+              '</a>',
             disabledMoveButton:
-              `<span class="tui-page-btn tui-is-disabled tui-{{type}}">` +
-              // `<span class="tui-ico-{{type}}">{{type}}</span>` +
-              `<svg class="tui-ico-{{type}}" width="32" height="32"><use href="${icons}#icon-Nav-Button-Next"></use></svg>` +
-              `</span>`,
-
+              '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+              '<span class="tui-ico-{{type}}">{{type}}</span>' +
+              '</span>',
             moreButton:
-              `<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">` +
-              `<span class="tui-ico-ellip">...</span>` +
-              // `<svg class="tui-ico-ellip" width="14" height="14"><use href="{{type}}"></use></svg>` +
-              `</a>`,
-            // lastPageLink: `<a href="#" class="tui-page-btn tui-last">{{page}}</a>`,
-            lastPageLink:
-              `<a href="#" class="tui-page-btn tui-last">` +
-              `<svg class="icon-svg">` +
-              // `<use href="${icons}#icon-Nav-Button-Next"></use>` +
-              // `<use href="${icons}#icon-Nav-Button-Next" transform="scale(-1, 1)"></use>` +
-              `</svg>` +
-              `</a>`,
-            next:
-              `<a href="#" class="tui-page-btn tui-next">` +
-              `<svg class="icon-svg"><use href="next.svg#next"></use></svg>` +
-              `</a>`,
-              
+              '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+              '<span class="tui-ico-ellip">...</span>' +
+              '</a>',
           },
         };
         const pagination = new Pagination(container, options);
@@ -244,7 +214,6 @@ console.log('filters.limit', filters.limit);
         });
       }
     } catch (error) {
-      console.error('Ошибка при получении продуктов:', error.message);
     }
   }
 
@@ -265,7 +234,6 @@ console.log('filters.limit', filters.limit);
     // Добавляем атрибут aria-label
     categorySelect.setAttribute('aria-label', 'Select a category');
   } catch (error) {
-    console.error('Ошибка при получении категорий:', error.message);
   }
 
   // Обробка події відправлення форми
@@ -396,7 +364,6 @@ function renderNoResultsMessage() {
   // ***********************************
   // Скрыть пагинацию
   if (paginationContainer) {
-    // console.log('hidden', paginationContainer);
     paginationContainer.classList.add('hidden');
 
   }
